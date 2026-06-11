@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Panorama Global IA 2026 — Informe Interactivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#04060f;--bg2:#080d1a;--bg3:#0d1424;--surface:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.04);
+  --text:#e8eaf6;--muted:#6b7280;--muted2:#4b5563;
+  --purple:#8b5cf6;--blue:#3b82f6;--cyan:#06b6d4;
+  --orange:#f97316;--green:#22c55e;--red:#ef4444;--yellow:#eab308;
+  --pink:#ec4899;--gray:#94a3b8;--teal:#14b8a6;
+  --radius:12px;--radius-sm:8px;--radius-lg:16px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 40% at 15% 20%,rgba(139,92,246,.07) 0,transparent 60%),radial-gradient(ellipse 50% 35% at 85% 80%,rgba(6,182,212,.05) 0,transparent 60%);pointer-events:none;z-index:0}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+
+/* ── Nav ── */
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(4,6,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 32px}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:8px;min-height:56px}
+.nav-brand{font-size:15px;font-weight:800;background:linear-gradient(135deg,#fff,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:16px;white-space:nowrap}
+.nav-tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-tabs::-webkit-scrollbar{display:none}
+.tab-btn{padding:10px 16px;border:none;background:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border-radius:var(--radius-sm);white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:6px}
+.tab-btn:hover{color:var(--text);background:var(--surface)}
+.tab-btn.active{color:#fff;background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.3)}
+.tab-badge{font-size:10px;background:rgba(139,92,246,.3);color:var(--purple);padding:2px 6px;border-radius:100px;font-weight:700}
+
+/* ── Layout ── */
+.main{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:32px 24px 80px}
+.section{display:none}
+.section.active{display:block}
+
+/* ── Cards & helpers ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.card-header{padding:20px 24px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:flex-start;gap:12px}
+.card-body{padding:20px 24px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;background:rgba(255,255,255,.06);border:1px solid var(--border)}
+.pill{display:inline-block;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:500;background:rgba(255,255,255,.05);border:1px solid var(--border2)}
+h1{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.03em;line-height:1.1}
+h2{font-size:22px;font-weight:800;letter-spacing:-.02em}
+h3{font-size:16px;font-weight:700}
+h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.gradient-text{background:linear-gradient(135deg,#fff 0%,#a78bfa 40%,#38bdf8 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-header{margin-bottom:28px}
+.section-header p{color:var(--muted);font-size:14px;margin-top:8px;line-height:1.6}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.flex{display:flex;align-items:center}
+.flex-gap{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mt-4{margin-top:4px}.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mt-32{margin-top:32px}
+.mb-4{margin-bottom:4px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}.mb-16{margin-bottom:16px}.mb-24{margin-bottom:24px}
+.text-muted{color:var(--muted)}
+.text-sm{font-size:13px}
+.text-xs{font-size:11px}
+.font-mono{font-family:'JetBrains Mono',monospace}
+
+/* Vendor colors */
+.v-openai{color:#10a37f;}.v-anthropic{color:#d4863a;}.v-google{color:#4285f4;}.v-meta{color:#0866ff;}.v-microsoft{color:#7fba00;}.v-deepseek{color:#4d9de0;}.v-mistral{color:#ff6a00;}.v-alibaba{color:#ff6900;}.v-codeium{color:#09b6a2;}.v-anysphere{color:#a78bfa;}.v-cognition{color:#f97316;}.v-deepmind{color:#4ade80;}.v-steipete{color:#fb923c;}.v-monica{color:#e879f9;}.v-perplexity{color:#20b2aa;}.v-xai{color:#fff;}.v-oss{color:#fbbf24;}
+
+/* ── Bar chart ── */
+.bar-wrap{display:flex;align-items:center;gap:8px;margin:3px 0}
+.bar-label{font-size:10px;font-weight:600;color:var(--muted);width:80px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.bar-val{font-size:10px;font-weight:700;width:36px;text-align:right;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+
+/* ── Price ── */
+.price-big{font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace}
+.price-unit{font-size:12px;color:var(--muted);margin-left:4px}
+.price-free{color:var(--green)}
+.price-low{color:#86efac}
+.price-mid{color:var(--yellow)}
+.price-high{color:var(--orange)}
+
+/* ── OVERVIEW section ── */
+.overview-layers{display:flex;flex-direction:column;gap:10px}
+.ov-layer{border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden;cursor:default;transition:transform .2s,box-shadow .2s}
+.ov-layer:hover{transform:translateY(-2px)}
+.ov-header{display:flex;align-items:center;gap:14px;padding:16px 22px 12px;border-bottom:1px solid var(--border2)}
+.ov-num{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.ov-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.ov-sub{font-size:11px;color:var(--muted);margin-top:2px;font-weight:400;text-transform:none;letter-spacing:0}
+.ov-tags{display:flex;flex-wrap:wrap;gap:6px;padding:14px 22px 16px}
+.ov-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;font-size:11px;font-weight:600;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);transition:all .18s;cursor:default;white-space:nowrap}
+.ov-tag:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
+.ov-tag-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.ov-star{color:gold;font-size:9px}
+.ov-divider{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted2);padding:4px 22px 0;display:block}
+.axis-row{display:flex;align-items:center;gap:12px;margin:20px 0 28px;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.axis-track{flex:1;height:3px;border-radius:100px;background:linear-gradient(90deg,rgba(148,163,184,.2) 0%,rgba(59,130,246,.5) 30%,rgba(6,182,212,.6) 55%,rgba(249,115,22,.7) 75%,rgba(139,92,246,.9) 100%)}
+
+/* ── LLM Models ── */
+.model-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filter-btn{padding:6px 14px;border-radius:100px;border:1px solid var(--border);background:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s}
+.filter-btn:hover{border-color:rgba(255,255,255,.2);color:var(--text)}
+.filter-btn.active{background:rgba(139,92,246,.2);border-color:rgba(139,92,246,.5);color:#fff}
+
+/* Benchmark table */
+.bench-table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border)}
+.bench-table{width:100%;border-collapse:collapse;font-size:13px}
+.bench-table th{padding:12px 16px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none}
+.bench-table th:hover{color:var(--text)}
+.bench-table th.sorted-asc::after{content:' ↑'}
+.bench-table th.sorted-desc::after{content:' ↓'}
+.bench-table td{padding:10px 16px;border-bottom:1px solid var(--border2);vertical-align:middle}
+.bench-table tr:last-child td{border-bottom:none}
+.bench-table tr:hover td{background:rgba(255,255,255,.02)}
+.bench-score{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600}
+.bench-bar-mini{width:40px;height:4px;background:rgba(255,255,255,.06);border-radius:100px;overflow:hidden;flex-shrink:0}
+.bench-bar-fill{height:100%;border-radius:100px}
+.n-a{color:var(--muted2);font-size:11px}
+.model-name-cell{display:flex;align-items:center;gap:10px}
+.model-logo{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.sort-hint{font-size:10px;color:var(--muted2);margin-bottom:8px;text-align:right}
+
+/* Model detail card */
+.model-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:24px}
+.model-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s}
+.model-card:hover{border-color:rgba(255,255,255,.15);box-shadow:0 8px 24px rgba(0,0,0,.3);transform:translateY(-2px)}
+
+/* ── Pricing ── */
+.price-plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;position:relative;transition:all .2s}
+.price-card.featured{border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.05)}
+.price-card.featured::before{content:'Popular';position:absolute;top:-1px;right:20px;background:var(--purple);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:0 0 8px 8px;text-transform:uppercase;letter-spacing:.08em}
+.price-plan-name{font-size:18px;font-weight:800;margin-bottom:4px}
+.price-amount{font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;margin:12px 0 4px}
+.price-period{font-size:12px;color:var(--muted)}
+.price-features{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.price-feat{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--muted);line-height:1.4}
+.price-feat-icon{color:var(--green);font-size:12px;flex-shrink:0;margin-top:1px}
+.price-feat-icon.x{color:var(--red)}
+.price-divider{height:1px;background:var(--border);margin:16px 0}
+
+/* API Pricing table */
+.api-table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);margin-top:20px}
+.api-table{width:100%;border-collapse:collapse;font-size:13px}
+.api-table th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:rgba(255,255,255,.03);border-bottom:1px solid var(--border)}
+.api-table td{padding:10px 14px;border-bottom:1px solid var(--border2);vertical-align:middle}
+.api-table tr:last-child td{border-bottom:none}
+.api-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* ── Tools section ── */
+.tool-cat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.tool-tab{padding:7px 14px;border-radius:100px;border:1px solid var(--border);background:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:6px}
+.tool-tab:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.tool-tab.active{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+.tool-section{display:none}
+.tool-section.active{display:block}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s}
+.tool-card:hover{border-color:rgba(255,255,255,.15);box-shadow:0 8px 24px rgba(0,0,0,.3);transform:translateY(-2px)}
+.tool-vendor{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.tool-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px}
+.tool-feats{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.tool-feat{font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;background:rgba(255,255,255,.05);border:1px solid var(--border2);color:var(--muted)}
+.tool-highlight{border-color:rgba(139,92,246,.35)!important;background:rgba(139,92,246,.06)!important}
+.tool-badges{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.oss-badge{font-size:9px;font-weight:800;padding:2px 6px;border-radius:4px;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:#fbbf24;text-transform:uppercase}
+.new-badge{font-size:9px;font-weight:800;padding:2px 6px;border-radius:4px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:var(--green);text-transform:uppercase}
+.beta-badge{font-size:9px;font-weight:800;padding:2px 6px;border-radius:4px;background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.3);color:var(--cyan);text-transform:uppercase}
+
+/* ── MATRIX ── */
+.matrix-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.matrix-cat-btns{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.matrix-cat-btn{padding:6px 12px;border-radius:100px;border:1px solid var(--border);background:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .18s;text-transform:uppercase;letter-spacing:.07em}
+.matrix-cat-btn:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.matrix-cat-btn.active{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+.matrix-search{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;outline:none;min-width:180px}
+.matrix-search:focus{border-color:rgba(139,92,246,.5);background:rgba(139,92,246,.05)}
+.matrix-search::placeholder{color:var(--muted2)}
+.compare-fab{position:fixed;bottom:28px;right:28px;z-index:200;display:none;align-items:center;gap:8px;padding:14px 22px;border-radius:100px;background:linear-gradient(135deg,var(--purple),#6366f1);color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(139,92,246,.4);transition:all .2s;animation:popIn .3s cubic-bezier(.34,1.56,.64,1)}
+.compare-fab:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 40px rgba(139,92,246,.5)}
+.compare-fab-count{background:rgba(255,255,255,.25);border-radius:100px;padding:2px 8px;font-size:12px}
+@keyframes popIn{from{opacity:0;transform:translateY(20px) scale(.8)}to{opacity:1;transform:translateY(0) scale(1)}}
+.matrix-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border)}
+.matrix-table{width:100%;border-collapse:collapse;font-size:12px}
+.matrix-table th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0}
+.matrix-table th:hover{color:var(--text)}
+.matrix-table td{padding:10px 14px;border-bottom:1px solid var(--border2);vertical-align:middle;white-space:nowrap}
+.matrix-table tr:last-child td{border-bottom:none}
+.matrix-table tr.selected-row{background:rgba(139,92,246,.08)}
+.matrix-table tr.selected-row td{border-color:rgba(139,92,246,.15)}
+.matrix-table tr:hover td{background:rgba(255,255,255,.025)}
+.matrix-cb{width:16px;height:16px;cursor:pointer;accent-color:var(--purple)}
+.cat-pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:.05em}
+.yes-val{color:var(--green);font-weight:700}
+.no-val{color:var(--muted2)}
+.score-cell{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600}
+.score-high{color:#86efac}
+.score-mid{color:var(--yellow)}
+.score-low{color:var(--orange)}
+
+/* Comparison overlay */
+.compare-overlay{position:fixed;inset:0;z-index:300;background:rgba(4,6,15,.97);backdrop-filter:blur(12px);overflow-y:auto;padding:32px 24px 80px;display:none}
+.compare-overlay.open{display:block}
+.compare-header{display:flex;align-items:center;gap:16px;max-width:1400px;margin:0 auto 28px}
+.compare-close{padding:10px 20px;border-radius:100px;border:1px solid var(--border);background:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;margin-left:auto}
+.compare-close:hover{color:var(--text);border-color:rgba(255,255,255,.3)}
+.compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:1400px;margin:0 auto}
+.compare-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.compare-attr{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.compare-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2);font-size:12px}
+.compare-row:last-child{border-bottom:none}
+.compare-row-label{color:var(--muted);font-weight:600}
+.compare-row-val{font-weight:700;text-align:right}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .main{padding:20px 16px 60px}
+  .top-nav{padding:0 16px}
+  .nav-brand{display:none}
+  .compare-grid{grid-template-columns:1fr}
+  .bench-table th,.bench-table td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- ── Navigation ── -->
+<nav class="top-nav">
+  <div class="nav-inner">
+    <div class="nav-brand">🌐 Panorama IA 2026</div>
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('overview')">🗺️ Resumen</button>
+      <button class="tab-btn" onclick="switchTab('models')">🧠 Modelos LLM <span class="tab-badge">14</span></button>
+      <button class="tab-btn" onclick="switchTab('tools')">🛠️ Herramientas <span class="tab-badge">40+</span></button>
+      <button class="tab-btn" onclick="switchTab('pricing')">💰 Precios & Suscripciones</button>
+      <button class="tab-btn" onclick="switchTab('matrix')">📊 Matriz Comparativa</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 1 · OVERVIEW
+═══════════════════════════════════════════════════════ -->
+<div id="section-overview" class="section active">
+  <div class="section-header">
+    <h1 class="gradient-text">El Panorama Global de la IA</h1>
+    <p>6 capas del ecosistema — desde los modelos base hasta los agentes autónomos. Pasa el cursor sobre cada elemento para más detalle.</p>
+  </div>
+  <div class="axis-row">
+    <span>🧱 Base / Infraestructura</span>
+    <div class="axis-track"></div>
+    <span>🤖 Mayor Autonomía →</span>
+  </div>
+  <div class="overview-layers" id="overview-layers"></div>
+  <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="card">
+      <div class="card-header"><h3>🎯 ¿Qué herramienta usar?</h3></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--muted)">Pregunta puntual →</span> <strong>ChatGPT, Claude.ai, Gemini</strong></div>
+        <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--muted)">Programar más rápido →</span> <strong>Antigravity, Cursor, Windsurf</strong></div>
+        <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--muted)">Agente autónomo →</span> <strong>Manus, OpenClaw, Operator</strong></div>
+        <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--muted)">Privacidad / Sin coste →</span> <strong>Ollama, OpenClaude, LM Studio</strong></div>
+        <div style="font-size:13px"><span style="color:var(--muted)">Crear mis propios agentes →</span> <strong>LangChain, CrewAI, AutoGen</strong></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>📈 Tendencias 2026</h3></div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--cyan)">●</span> Los IDEs se vuelven agentes autónomos completos</div>
+        <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--purple)">●</span> Fusión de capas — asistentes vs agentes vs IDEs</div>
+        <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--green)">●</span> Open source alcanza a modelos propietarios</div>
+        <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--orange)">●</span> Agentes con memoria 24/7 y acceso al mundo real</div>
+        <div style="font-size:13px"><span style="color:var(--yellow)">●</span> Inferencia local cada vez más potente y accesible</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 2 · LLM MODELS
+═══════════════════════════════════════════════════════ -->
+<div id="section-models" class="section">
+  <div class="section-header">
+    <h2 class="gradient-text">Modelos Fundacionales LLM</h2>
+    <p>Benchmarks y características de los principales modelos de lenguaje. Los % son aproximados basados en evaluaciones públicas.</p>
+  </div>
+  <div class="model-filters" id="model-filters"></div>
+  <div class="sort-hint">Haz clic en los encabezados para ordenar</div>
+  <div class="bench-table-wrap">
+    <table class="bench-table" id="bench-table">
+      <thead>
+        <tr>
+          <th onclick="sortTable('name')">Modelo</th>
+          <th onclick="sortTable('vendor')">Empresa</th>
+          <th onclick="sortTable('type')">Tipo</th>
+          <th onclick="sortTable('context')">Contexto</th>
+          <th onclick="sortTable('mmlu')">MMLU %</th>
+          <th onclick="sortTable('gpqa')">GPQA %</th>
+          <th onclick="sortTable('humaneval')">HumanEval %</th>
+          <th onclick="sortTable('math')">MATH %</th>
+          <th onclick="sortTable('sweBench')">SWE-bench %</th>
+          <th onclick="sortTable('apiIn')">API $/1M in</th>
+          <th onclick="sortTable('apiOut')">API $/1M out</th>
+        </tr>
+      </thead>
+      <tbody id="bench-tbody"></tbody>
+    </table>
+  </div>
+  <div style="margin-top:10px;font-size:11px;color:var(--muted2)">
+    * MMLU: conocimiento general | GPQA: ciencia avanzada | HumanEval: código | MATH: matemáticas | SWE-bench: ingeniería software. Datos aproximados, metodologías varían por proveedor. Fuente: papers y benchmarks públicos.
+  </div>
+  <div class="model-cards" id="model-cards"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 3 · TOOLS
+═══════════════════════════════════════════════════════ -->
+<div id="section-tools" class="section">
+  <div class="section-header">
+    <h2 class="gradient-text">Herramientas del Ecosistema</h2>
+    <p>Asistentes, IDEs con IA, agentes autónomos, frameworks y soluciones self-hosted.</p>
+  </div>
+  <div class="tool-cat-tabs" id="tool-cat-tabs"></div>
+  <div id="tool-sections"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 4 · PRICING
+═══════════════════════════════════════════════════════ -->
+<div id="section-pricing" class="section">
+  <div class="section-header">
+    <h2 class="gradient-text">Precios y Suscripciones</h2>
+    <p>Planes de suscripción de los principales proveedores y precios de API. Precios en USD, actualizado junio 2026.</p>
+  </div>
+  <div id="pricing-content"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 5 · COMPARISON MATRIX
+═══════════════════════════════════════════════════════ -->
+<div id="section-matrix" class="section">
+  <div class="section-header">
+    <h2 class="gradient-text">Matriz Comparativa Interactiva</h2>
+    <p>Selecciona 2 o más elementos y pulsa "Comparar" para ver un análisis lado a lado. Filtra por categoría o busca por nombre.</p>
+  </div>
+  <div class="matrix-controls">
+    <div class="matrix-cat-btns" id="matrix-cat-btns"></div>
+    <input type="text" class="matrix-search" placeholder="🔍 Buscar..." id="matrix-search" oninput="filterMatrix()"/>
+  </div>
+  <div class="matrix-wrap">
+    <table class="matrix-table" id="matrix-table">
+      <thead>
+        <tr>
+          <th style="width:32px"></th>
+          <th onclick="sortMatrix('name')">Herramienta</th>
+          <th onclick="sortMatrix('category')">Categoría</th>
+          <th onclick="sortMatrix('vendor')">Empresa</th>
+          <th onclick="sortMatrix('type')">Tipo</th>
+          <th onclick="sortMatrix('context')">Contexto</th>
+          <th onclick="sortMatrix('mmlu')">MMLU %</th>
+          <th onclick="sortMatrix('humaneval')">HumanEval %</th>
+          <th onclick="sortMatrix('apiIn')">API $/1M</th>
+          <th onclick="sortMatrix('openSource')">Open Source</th>
+          <th onclick="sortMatrix('selfHosted')">Self-hosted</th>
+          <th onclick="sortMatrix('startPrice')">Desde $/mes</th>
+          <th>Plataformas</th>
+        </tr>
+      </thead>
+      <tbody id="matrix-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<!-- Compare FAB -->
+<button class="compare-fab" id="compare-fab" onclick="openComparison()">
+  ⚡ Comparar <span class="compare-fab-count" id="compare-count">0</span> seleccionados
+</button>
+
+<!-- Compare Overlay -->
+<div class="compare-overlay" id="compare-overlay">
+  <div class="compare-header">
+    <h2 class="gradient-text">Comparativa</h2>
+    <button class="compare-close" onclick="closeComparison()">✕ Cerrar</button>
+  </div>
+  <div class="compare-grid" id="compare-grid"></div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════
+   DATA
+════════════════════════════════════════════════════════ */
+
+const MODELS = [
+  {id:'gpt4o',name:'GPT-4o',emoji:'🟢',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:128000,mmlu:88.7,gpqa:53.6,humaneval:90.2,math:76.6,sweBench:33.2,mmmu:69.1,apiIn:2.50,apiOut:10.00,startPrice:0,platforms:'Web, API, Mobile',description:'Modelo multimodal de OpenAI. Procesa texto, imágenes y audio con baja latencia.',features:['Multimodal (texto, imagen, audio)','Vision avanzada','Function calling','JSON mode','Streaming SSE','Batch API','128K contexto'],strengths:['Velocidad','Multimodalidad','Coste-beneficio'],releaseDate:'May 2024'},
+  {id:'o3',name:'o3 / o4-mini',emoji:'🔵',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:200000,mmlu:96.7,gpqa:87.7,humaneval:99.8,math:97.3,sweBench:71.7,mmmu:null,apiIn:10.00,apiOut:40.00,startPrice:200,platforms:'Web Pro, API',description:'Modelo de razonamiento de OpenAI. Piensa antes de responder — ideal para problemas complejos.',features:['Razonamiento extendido','200K contexto','SWE-bench líder','AIME 2024: 96.7%','Búsqueda web integrada'],strengths:['Razonamiento','Código complejo','Matemáticas'],releaseDate:'Dic 2024'},
+  {id:'gpt4omini',name:'GPT-4o-mini',emoji:'🟡',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:128000,mmlu:82.0,gpqa:40.2,humaneval:87.2,math:70.2,sweBench:null,mmmu:null,apiIn:0.15,apiOut:0.60,startPrice:0,platforms:'Web, API, Mobile',description:'Versión compacta y económica de GPT-4o. Ideal para tareas de alto volumen.',features:['128K contexto','Muy bajo coste','Batch API','Vision básica','Alto throughput'],strengths:['Velocidad','Precio','Volumen'],releaseDate:'Jul 2024'},
+  {id:'claude37',name:'Claude 3.7 Sonnet',emoji:'🟠',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:200000,mmlu:88.3,gpqa:84.8,humaneval:93.7,math:81.0,sweBench:70.3,mmmu:null,apiIn:3.00,apiOut:15.00,startPrice:0,platforms:'Web, API, Mobile',description:'El modelo de Anthropic más capaz. Extended Thinking permite razonamiento visible paso a paso.',features:['Extended Thinking (razonamiento visible)','200K contexto','SWE-bench top','Muy bajo en alucinaciones','Computer Use','Excelente en código'],strengths:['Razonamiento','Código','Fiabilidad'],releaseDate:'Feb 2026'},
+  {id:'claude35haiku',name:'Claude 3.5 Haiku',emoji:'🟤',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:200000,mmlu:81.2,gpqa:41.6,humaneval:88.1,math:69.0,sweBench:null,mmmu:null,apiIn:0.80,apiOut:4.00,startPrice:0,platforms:'Web, API',description:'Modelo rápido y económico de Anthropic. Ideal para producción con alto volumen.',features:['Muy rápido','Económico','200K contexto','Vision','Function calling'],strengths:['Velocidad','Precio','Volumen'],releaseDate:'Nov 2024'},
+  {id:'gemini25pro',name:'Gemini 2.5 Pro',emoji:'🔷',vendor:'Google',vclass:'v-google',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:89.0,gpqa:86.4,humaneval:87.0,math:91.6,sweBench:63.8,mmmu:81.7,apiIn:1.25,apiOut:10.00,startPrice:0,platforms:'Web, API, Mobile',description:'El modelo más avanzado de Google. Contexto de 1 MILLÓN de tokens — mayor del sector.',features:['1M tokens de contexto ⭐','Multimodal avanzado','Video nativo','Deep Research integrado','Thinking mode','Google Search nativo'],strengths:['Contexto enorme','Multimodalidad','Precio/rendimiento'],releaseDate:'Mar 2025'},
+  {id:'gemini20flash',name:'Gemini 2.0 Flash',emoji:'⚡',vendor:'Google',vclass:'v-google',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:86.0,gpqa:62.1,humaneval:82.0,math:79.0,sweBench:null,mmmu:null,apiIn:0.10,apiOut:0.40,startPrice:0,platforms:'Web, API',description:'Flash de Google: ultra-rápido, precio mínimo, 1M de contexto. Ideal para producción.',features:['1M contexto','$0.10/1M tokens','Extremadamente rápido','Multimodal','Gratis en API (con límites)'],strengths:['Precio','Velocidad','Contexto'],releaseDate:'Feb 2025'},
+  {id:'llama33',name:'Llama 3.3 70B',emoji:'🦙',vendor:'Meta',vclass:'v-meta',type:'Open Source',openSource:true,selfHosted:true,context:128000,mmlu:86.0,gpqa:50.7,humaneval:88.4,math:77.0,sweBench:null,mmmu:null,apiIn:0.59,apiOut:0.79,startPrice:0,platforms:'Self-hosted, APIs externas',description:'El modelo open source más popular del mundo. Rival de GPT-4o con licencia comercial.',features:['100% Open Source','Licencia comercial','128K contexto','Self-hosteable','Via Groq: ultrarrápido','Múltiples quantizaciones'],strengths:['Open Source','Precio','Comunidad'],releaseDate:'Dic 2024'},
+  {id:'deepseekv3',name:'DeepSeek V3',emoji:'🔬',vendor:'DeepSeek',vclass:'v-deepseek',type:'Open Source',openSource:true,selfHosted:true,context:128000,mmlu:88.5,gpqa:59.1,humaneval:82.6,math:87.1,sweBench:null,mmmu:null,apiIn:0.27,apiOut:1.10,startPrice:0,platforms:'Self-hosted, API DeepSeek',description:'MoE (Mixture of Experts) de 685B parámetros activos 37B. Rendimiento frontier a precio mínimo.',features:['Open Source (MIT)','685B parámetros (37B activos)','Mixture of Experts','$0.27/1M input ⭐','128K contexto','Destilación eficiente'],strengths:['Precio','Rendimiento','Open Source'],releaseDate:'Dic 2024'},
+  {id:'deepseekr1',name:'DeepSeek R1',emoji:'🧮',vendor:'DeepSeek',vclass:'v-deepseek',type:'Open Source',openSource:true,selfHosted:true,context:128000,mmlu:90.8,gpqa:71.5,humaneval:92.3,math:91.0,sweBench:49.2,mmmu:null,apiIn:0.55,apiOut:2.19,startPrice:0,platforms:'Self-hosted, API DeepSeek',description:'Modelo de razonamiento de DeepSeek, rival de o1. Open source con rendimiento excepcional.',features:['Open Source','Razonamiento cadena de pensamiento','AIME 2024: 79.8%','Self-hosteable','Destilaciones pequeñas disponibles'],strengths:['Razonamiento','Open Source','MATH'],releaseDate:'Ene 2025'},
+  {id:'mistral',name:'Mistral Large 2',emoji:'🌬️',vendor:'Mistral AI',vclass:'v-mistral',type:'Propietario/OSS',openSource:true,selfHosted:true,context:128000,mmlu:84.0,gpqa:55.7,humaneval:92.1,math:75.7,sweBench:null,mmmu:null,apiIn:2.00,apiOut:6.00,startPrice:0,platforms:'API, Self-hosted',description:'El modelo más potente de Mistral. Europeo, multilingüe, fuerte en código.',features:['128K contexto','Muy fuerte en código','Multilingüe (FR, ES, DE...)','Function calling avanzado','JSON mode','Self-hosteable'],strengths:['Código','Europeo','Multilingüe'],releaseDate:'Jul 2024'},
+  {id:'qwen25',name:'Qwen 2.5 72B',emoji:'🇨🇳',vendor:'Alibaba',vclass:'v-alibaba',type:'Open Source',openSource:true,selfHosted:true,context:128000,mmlu:86.7,gpqa:49.5,humaneval:86.7,math:82.3,sweBench:null,mmmu:null,apiIn:0.40,apiOut:1.20,startPrice:0,platforms:'Self-hosted, Qwen API',description:'El mejor modelo abierto de Alibaba. Muy fuerte en asiático y código, sorprendentemente capaz.',features:['128K contexto','Open Source (Apache 2.0)','Fuerte en código','Asiático nativo','Múltiples tamaños (0.5B-72B)'],strengths:['Precio','Código','Asiático'],releaseDate:'Sep 2024'},
+  {id:'phi4',name:'Phi-4',emoji:'Φ',vendor:'Microsoft',vclass:'v-microsoft',type:'Open Source',openSource:true,selfHosted:true,context:16000,mmlu:84.8,gpqa:56.1,humaneval:82.6,math:80.4,sweBench:null,mmmu:null,apiIn:0.07,apiOut:0.14,startPrice:0,platforms:'Self-hosted, Azure AI',description:'14B parámetros con rendimiento de modelos 5x más grandes. Ideal para edge computing.',features:['Solo 14B parámetros','Open Source (MIT)','Ideal para edge/local','Muy fuerte en STEM','Funciona en laptop','16K contexto'],strengths:['Tamaño','Edge','STEM'],releaseDate:'Dic 2024'},
+  {id:'gemma3',name:'Gemma 3 27B',emoji:'💎',vendor:'Google',vclass:'v-google',type:'Open Source',openSource:true,selfHosted:true,context:128000,mmlu:82.2,gpqa:44.1,humaneval:80.0,math:75.5,sweBench:null,mmmu:null,apiIn:0.20,apiOut:0.60,startPrice:0,platforms:'Self-hosted, Google Cloud',description:'Modelo open source de Google. Multimodal, eficiente, ideal para deployment propio.',features:['128K contexto','Multimodal (imagen)','Open Source','Múltiples tamaños','Eficiente en GPU','Licencia comercial'],strengths:['Multimodal','Eficiencia','Google ecosystem'],releaseDate:'Mar 2025'},
+];
+
+const TOOLS_DATA = {
+  assistants: [
+    {id:'chatgpt',name:'ChatGPT',emoji:'🟢',vendor:'OpenAI',vclass:'v-openai',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'El asistente IA más popular del mundo. Accede a GPT-4o, búsqueda web, DALL-E, análisis de datos y plugins.',features:['Búsqueda web en tiempo real','Generación de imágenes (DALL-E 3)','Análisis de datos y gráficos','Memory (recuerda preferencias)','Plugins y GPTs custom','Voz avanzada','Code Interpreter'],platforms:'Web, iOS, Android, API',highlight:false,badges:[]},
+    {id:'claudeai',name:'Claude.ai',emoji:'🟠',vendor:'Anthropic',vclass:'v-anthropic',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Anthropic con foco en seguridad y fiabilidad. Extended Thinking visible. Muy fuerte en escritura y análisis.',features:['Extended Thinking (razonamiento visible)','200K contexto (más largo)','Análisis de documentos largos','Muy bajo en alucinaciones','Carga de archivos (PDF, CSV, imgs)','Projects (memoria organizada)'],platforms:'Web, iOS, Android, API',highlight:false,badges:[]},
+    {id:'gemini',name:'Gemini',emoji:'🔷',vendor:'Google',vclass:'v-google',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Google con integración nativa en Gmail, Drive, Docs. Deep Research para investigación autónoma.',features:['1M tokens de contexto','Integración Gmail/Drive/Docs','Deep Research autónomo','Video y audio nativo','Google Search nativo','Gems (asistentes custom)','Extensions (YouTube, Maps...)'],platforms:'Web, iOS, Android, API',highlight:false,badges:['New']},
+    {id:'copilot',name:'Microsoft Copilot',emoji:'🟣',vendor:'Microsoft',vclass:'v-microsoft',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IA de Microsoft integrada en Windows, Edge, Office 365. Acceso a GPT-4o y DALL-E 3.',features:['Integrado en Windows 11','Copilot en Word/Excel/PowerPoint','Edge browser integrado','Búsqueda Bing avanzada','Generación de imágenes','Designer (ex DALL-E)'],platforms:'Windows, Web, iOS, Android, Office',highlight:false,badges:[]},
+    {id:'perplexity',name:'Perplexity AI',emoji:'🔍',vendor:'Perplexity',vclass:'v-perplexity',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Motor de búsqueda con IA. Respuestas con fuentes verificadas en tiempo real. Accede a múltiples modelos.',features:['Búsqueda en tiempo real con fuentes','Elección de modelo (GPT-4, Claude, Gemini)','Pro Search avanzado','Páginas y reportes','Subida de archivos','API disponible'],platforms:'Web, iOS, Android, API',highlight:false,badges:[]},
+    {id:'metaai',name:'Meta AI',emoji:'🔵',vendor:'Meta',vclass:'v-meta',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Meta integrado en WhatsApp, Instagram, Messenger y Facebook. Basado en Llama.',features:['Integrado en WhatsApp/Instagram','Generación de imágenes','Llama 3.3 base','Búsqueda web','Gratis incluido en apps Meta'],platforms:'WhatsApp, Instagram, Facebook, Messenger, Web',highlight:false,badges:[]},
+    {id:'grok',name:'Grok 3',emoji:'𝕏',vendor:'xAI',vclass:'v-xai',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IA de Elon Musk integrada en X (Twitter). DeepSearch para investigación. Acceso a datos en tiempo real de X.',features:['Integrado en X (Twitter)','Datos en tiempo real de X/Twitter','DeepSearch (investigación profunda)','Imagen (Aurora)','Think mode','Contexto muy largo'],platforms:'X (Twitter), Web, iOS, Android',highlight:false,badges:['New']},
+  ],
+  devTools: [
+    {id:'antigravity',name:'Antigravity',emoji:'🚀',vendor:'Google DeepMind',vclass:'v-deepmind',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Agente IA integrado nativamente en el IDE. Contexto completo del workspace, memoria, planificación multi-paso y ejecución de herramientas.',features:['Integración IDE nativa completa','Contexto completo del workspace','Ejecución de comandos terminal','Lectura/escritura de archivos','Búsqueda web integrada','Generación de imágenes','Planificación con artefactos','Memoria de conversación','Multi-paso autónomo'],platforms:'IDE nativo (este)',highlight:true,badges:['⭐ Destacado']},
+    {id:'cursor',name:'Cursor',emoji:'🖱️',vendor:'Anysphere',vclass:'v-anysphere',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'El IDE con IA más adoptado por desarrolladores en 2025. Fork de VS Code con IA profundamente integrada.',features:['Completado IA multi-línea','Chat con contexto del codebase','Edit modo (edición directa)','Composer (cambios multi-archivo)','.cursorrules para customizar','Soporte GPT-4, Claude, Gemini','@codebase, @docs, @web'],platforms:'Windows, macOS, Linux',highlight:false,badges:[]},
+    {id:'windsurf',name:'Windsurf',emoji:'🏄',vendor:'Codeium',vclass:'v-codeium',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IDE con IA de Codeium. Flow (modo agente) para tareas multi-paso. Muy valorado por su contexto profundo del repositorio.',features:['Cascade (agente autónomo)','Búsqueda profunda en repo','Edit & apply inteligente','MCP (Model Context Protocol)','Completado ultrarrápido','Múltiples modelos','Generación de tests'],platforms:'Windows, macOS, Linux',highlight:false,badges:[]},
+    {id:'vscode',name:'VS Code + Copilot',emoji:'🔵',vendor:'Microsoft',vclass:'v-microsoft',startPrice:0,type:'OSS + Propietario',openSource:true,selfHosted:false,description:'El editor más popular del mundo con GitHub Copilot integrado. Extensión de IA más adoptada (>1M usuarios).',features:['Completado en línea','Chat contextual','Inline edits','@workspace, @terminal','Múltiples modelos (GPT-4, Claude)','Extensiones de terceros','Agent mode (beta)'],platforms:'Windows, macOS, Linux, Web',highlight:false,badges:[]},
+    {id:'claudecode',name:'Claude Code',emoji:'⌨️',vendor:'Anthropic',vclass:'v-anthropic',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'Agente de terminal de Anthropic. Trabaja directamente en tu repositorio con acceso completo a archivos y terminal.',features:['Terminal-first (sin GUI)','Acceso completo al filesystem','Git nativo','Ejecuta tests y builds','Plan + execute (multi-paso)','Muy autónomo','Requiere suscripción Pro'],platforms:'macOS, Linux, Windows (WSL)',highlight:false,badges:[]},
+    {id:'codex',name:'Codex (OpenAI)',emoji:'📦',vendor:'OpenAI',vclass:'v-openai',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'Agente de nube de OpenAI. Opera en sandboxes aislados, abre PRs, ejecuta tests de forma asíncrona.',features:['Sandboxes aislados en nube','Abre Pull Requests','Ejecuta tests automáticamente','Operación asíncrona','GitHub integration','Múltiples tareas paralelas'],platforms:'Web (GitHub)',highlight:false,badges:['New']},
+    {id:'devin',name:'Devin',emoji:'🤖',vendor:'Cognition AI',vclass:'v-cognition',startPrice:500,type:'Propietario',openSource:false,selfHosted:false,description:'El primer "software engineer" IA. Trabaja de forma completamente autónoma durante horas en tareas complejas.',features:['Completamente autónomo','Navegador propio','Terminal propio','Resuelve issues de GitHub','Aprende codebase completo','SWE-bench: 14.3%'],platforms:'Web',highlight:false,badges:[]},
+    {id:'zed',name:'Zed',emoji:'⚡',vendor:'Zed Industries',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:false,description:'Editor ultrarrápido escrito en Rust con colaboración en tiempo real y IA integrada.',features:['Ultrarrápido (Rust nativo)','Colaboración en tiempo real','IA inline y chat','Claude, GPT-4, llama.cpp','Multibuffer editing','Zed Assistant','Open source'],platforms:'macOS, Linux (Windows próximo)',highlight:false,badges:['OSS']},
+    {id:'aider',name:'Aider',emoji:'🔧',vendor:'Open Source',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Agente de código en terminal, open source. Edita directamente tu repositorio desde la línea de comandos.',features:['100% Open Source','CLI basado en git','Soporta 100+ LLMs','Funciona con Ollama local','Edición multi-archivo','Commits automáticos','.aider.conf personalizable'],platforms:'macOS, Linux, Windows',highlight:false,badges:['OSS']},
+    {id:'jetbrains',name:'JetBrains AI',emoji:'🧠',vendor:'JetBrains',vclass:'v-oss',startPrice:10,type:'Propietario',openSource:false,selfHosted:false,description:'IA integrada en todos los IDEs de JetBrains (IntelliJ, PyCharm, WebStorm, etc.).',features:['Integrado en todos los IDEs JetBrains','Completado contextual avanzado','Chat con contexto proyecto','Generación de tests','Refactoring IA','Múltiples LLMs','AI Actions'],platforms:'Windows, macOS, Linux',highlight:false,badges:[]},
+  ],
+  agents: [
+    {id:'manus',name:'Manus',emoji:'🤖',vendor:'Monica AI',vclass:'v-monica',startPrice:39,type:'Propietario',openSource:false,selfHosted:false,description:'El agente general más capaz de 2025. Benchmarks líderes. Realiza tareas complejas del mundo real de forma autónoma.',features:['Navegador web propio','Sistema de archivos propio','Terminal / ejecución de código','Búsqueda y scraping web','Gestión de emails y docs','Multi-step planning','Memoria persistente','GAIA benchmark: líder'],platforms:'Web (nube)',highlight:true,badges:['⭐ Líder 2025']},
+    {id:'openclaw',name:'OpenClaw 🦞',emoji:'🦞',vendor:'@steipete',vclass:'v-steipete',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Agente personal open source. Vive en WhatsApp/Telegram/Discord. Memoria 24/7, tareas proactivas y extensible con plugins.',features:['WhatsApp/Telegram/Discord nativo','Memoria persistente 24/7','Cron jobs y tareas proactivas','Sistema de skills extensible','Self-hackable (se extiende solo)','Self-hosted en tu PC','Instalación: 1 comando','Open source (GitHub)'],platforms:'WhatsApp, Telegram, Discord, Web',highlight:true,badges:['⭐ OSS','Self-hosted']},
+    {id:'operator',name:'OpenAI Operator',emoji:'🌐',vendor:'OpenAI',vclass:'v-openai',startPrice:200,type:'Propietario',openSource:false,selfHosted:false,description:'Agente web de OpenAI. Controla el navegador como un humano: rellena formularios, hace compras, reservas, etc.',features:['Control total del navegador','Formularios y pagos','Reservas y compras','Login en sitios web','Operación asíncrona','CUA (Computer Use Agent)'],platforms:'Web (solo Pro plan)',highlight:false,badges:[]},
+    {id:'deepresearch',name:'Gemini Deep Research',emoji:'🔬',vendor:'Google',vclass:'v-google',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'Agente de investigación de Google. Navega la web autónomamente y genera informes detallados con fuentes.',features:['Investigación web autónoma','Informes con fuentes verificadas','Integración Google Scholar','100+ páginas de contexto','Export a Google Docs','Múltiples rondas de búsqueda'],platforms:'Web (Gemini Advanced)',highlight:false,badges:[]},
+    {id:'autogpt',name:'AutoGPT',emoji:'⚙️',vendor:'Significant Gravitas',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El pionero de los agentes autónomos open source. Inspiró toda la categoría.',features:['100% Open Source','Plugins extensibles','Memoria vectorial','Búsqueda web','Ejecución de código','Auto-critique','Self-hosted'],platforms:'Self-hosted',highlight:false,badges:['OSS','Pionero']},
+    {id:'openclaude',name:'OpenClaude',emoji:'🦀',vendor:'Quanlai Li',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Servidor LLM open source construido en Rust. API compatible con OpenAI. Self-hosted, sin keys, sin límites.',features:['Servidor en Rust (<2ms latencia)','API compatible con OpenAI','GGUF model support (Llama, Mistral...)','WASM plugin system','Self-hosted, datos locales','~15MB binary','Air-gapped capaz','MIT license'],platforms:'macOS, Linux, Windows',highlight:true,badges:['OSS','Infraestructura']},
+  ],
+  frameworks: [
+    {id:'langchain',name:'LangChain',emoji:'🔗',vendor:'LangChain Inc.',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El framework más adoptado para construir aplicaciones con LLMs. Chains, agents, memory, RAG.',features:['Chains y pipelines LLM','Agentes con herramientas','Retrieval-Augmented Generation (RAG)','Memoria de corto/largo plazo','100+ integraciones','LCEL (expression language)','LangSmith (observabilidad)'],platforms:'Python, JavaScript',highlight:false,badges:['OSS']},
+    {id:'langgraph',name:'LangGraph',emoji:'📊',vendor:'LangChain Inc.',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Framework para agentes con grafos de estado. Multi-agente con memoria compartida y ciclos complejos.',features:['Grafos de estado con ciclos','Multi-agente nativo','Memoria persistente entre pasos','Human-in-the-loop','Streaming de pasos','LangGraph Cloud disponible','Built on LangChain'],platforms:'Python, JavaScript',highlight:false,badges:['OSS']},
+    {id:'crewai',name:'CrewAI',emoji:'👥',vendor:'CrewAI Inc.',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Framework para crear equipos de agentes IA con roles definidos. Como empleados con tareas específicas.',features:['Agentes con roles y objetivos','Tareas asignadas por rol','Memoria compartida del equipo','Delegación entre agentes','Procesos secuenciales y paralelos','Múltiples LLMs por agente'],platforms:'Python',highlight:false,badges:['OSS']},
+    {id:'autogen',name:'AutoGen',emoji:'🔄',vendor:'Microsoft Research',vclass:'v-microsoft',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Framework multi-agente conversacional de Microsoft. Agentes que se comunican entre sí para resolver tareas.',features:['Conversación multi-agente','Human-in-the-loop fácil','Code execution nativo','Múltiples LLMs','GroupChat (agentes en grupo)','Teachable agents (aprenden)'],platforms:'Python',highlight:false,badges:['OSS']},
+    {id:'semantickernel',name:'Semantic Kernel',emoji:'🎯',vendor:'Microsoft',vclass:'v-microsoft',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Framework de Microsoft para integrar LLMs en aplicaciones de producción. Fuerte en .NET y Python.',features:['C# / Python / Java','Enterprise-ready','Plugin system','Memory & vector stores','Planner (auto-plan)','OpenAI + Azure AI','Múltiples LLMs'],platforms:'.NET, Python, Java',highlight:false,badges:['OSS']},
+    {id:'swarm',name:'OpenAI Agents SDK',emoji:'🌊',vendor:'OpenAI',vclass:'v-openai',startPrice:0,type:'OSS',openSource:true,selfHosted:false,description:'SDK oficial de OpenAI para crear agentes y handoffs entre ellos. Simple, potente, oficial.',features:['Handoffs entre agentes','Guardrails integrados','Trazabilidad nativa','Tool calling avanzado','Streaming','Open source (MIT)','Diseño minimalista'],platforms:'Python',highlight:false,badges:['OSS','Nuevo']},
+  ],
+  selfHosted: [
+    {id:'ollama',name:'Ollama',emoji:'🦙',vendor:'Ollama',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'La forma más fácil de ejecutar LLMs localmente. Un comando para descargar y correr cualquier modelo.',features:['1 comando para instalar cualquier modelo','200+ modelos disponibles','API compatible con OpenAI','Modelfile (customización)','GPU acceleration (CUDA, Metal)','REST API','Docker support','Multiplataforma'],platforms:'macOS, Linux, Windows',highlight:true,badges:['OSS','⭐ Más popular']},
+    {id:'lmstudio',name:'LM Studio',emoji:'🎛️',vendor:'LM Studio',vclass:'v-oss',startPrice:0,type:'Gratis/Propietario',openSource:false,selfHosted:true,description:'Interfaz gráfica para ejecutar LLMs localmente. Descarga modelos de Hugging Face con un clic.',features:['GUI amigable','Descarga desde Hugging Face','API local compatible con OpenAI','Chat integrado','GPU acceleration','GGUF support','Sin cuenta necesaria'],platforms:'macOS, Windows, Linux',highlight:false,badges:[]},
+    {id:'openclaudeinfra',name:'OpenClaude (servidor)',emoji:'🦀',vendor:'Quanlai Li',vclass:'v-oss',startPrice:0,type:'OSS (MIT)',openSource:true,selfHosted:true,description:'Servidor de inferencia en Rust. Ultrarrápido, binario único de 15MB. API compatible con OpenAI.',features:['Binario único ~15MB','Rust nativo (<2ms latencia)','67 tok/s vs ~42 en Python','API OpenAI-compatible','WASM plugins','Air-gapped capaz','cargo install openclaude'],platforms:'macOS, Linux, Windows',highlight:false,badges:['OSS']},
+    {id:'localai',name:'LocalAI',emoji:'🏠',vendor:'Ettore Di Giacinto',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'API REST compatible con OpenAI que corre localmente. Soporta texto, imágenes, audio y embeddings.',features:['API compatible con OpenAI','GGUF, GPTQ support','Imágenes (Stable Diffusion)','Audio (Whisper, TTS)','Embeddings locales','Docker-friendly','Sin GPU requerida (opcional)'],platforms:'Docker, Linux, macOS, Windows',highlight:false,badges:['OSS']},
+    {id:'janai',name:'Jan.ai',emoji:'🌙',vendor:'Jan',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Alternativa open source a LM Studio. App de escritorio para correr LLMs localmente con interfaz limpia.',features:['GUI limpia','Modelos de Hugging Face','API local OpenAI-compatible','Extensiones','Model Hub integrado','100% offline','Open source'],platforms:'macOS, Windows, Linux',highlight:false,badges:['OSS']},
+    {id:'llamacpp',name:'llama.cpp',emoji:'⚙️',vendor:'Georgi Gerganov',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'La implementación original de Llama en C++. Ultra eficiente, la base de casi todas las herramientas de inferencia local.',features:['C++ puro, máxima eficiencia','GGUF format estándar','CPU inference excelente','GPU opcional (CUDA, Metal, Vulkan)','Quantización Q4 a Q8','La base de Ollama, LM Studio, etc.','Server mode incluido'],platforms:'macOS, Linux, Windows, Android, iOS',highlight:false,badges:['OSS','Base tecnológica']},
+  ],
+};
+
+const VENDORS_PRICING = [
+  {
+    vendor:'OpenAI', emoji:'🟢', vclass:'v-openai',
+    plans:[
+      {name:'Free',price:0,period:'mes',features:['GPT-4o (limitado)','DALL-E básico','Búsqueda web','5 mensajes/día con o3-mini'],highlight:false},
+      {name:'Plus',price:20,period:'mes',features:['GPT-4o ilimitado','o3-mini acceso','DALL-E 3','Búsqueda web avanzada','Plugins y GPTs','Análisis de datos','Voice avanzado'],highlight:true},
+      {name:'Pro',price:200,period:'mes',features:['Todo de Plus','o3 ilimitado','o3-pro acceso','Acceso prioritario','Sin límites de uso','Projects avanzados'],highlight:false},
+      {name:'Team',price:30,period:'usuario/mes',features:['Todo de Plus','Workspace compartido','Privacidad de datos garantizada','Admin panel','Min. 2 usuarios'],highlight:false},
+    ]
+  },
+  {
+    vendor:'Anthropic', emoji:'🟠', vclass:'v-anthropic',
+    plans:[
+      {name:'Free',price:0,period:'mes',features:['Claude 3.5 Haiku limitado','Upload de archivos básico','Proyectos básicos'],highlight:false},
+      {name:'Pro',price:20,period:'mes',features:['Claude 3.7 Sonnet','Extended Thinking','200K contexto','5x más usos que Free','Projects ilimitados','Upload archivos grandes'],highlight:true},
+      {name:'Team',price:25,period:'usuario/mes',features:['Todo de Pro','Workspace colaborativo','Admin panel','Datos no usados para entrenamiento','Min. 5 usuarios'],highlight:false},
+      {name:'Enterprise',price:null,period:'custom',features:['Modelos custom','Contexto 1M tokens','SSO/SAML','Deployment on-premise','SLA garantizado'],highlight:false},
+    ]
+  },
+  {
+    vendor:'Google', emoji:'🔷', vclass:'v-google',
+    plans:[
+      {name:'Free',price:0,period:'mes',features:['Gemini 2.0 Flash','Contexto estándar','Integración Google básica'],highlight:false},
+      {name:'Gemini Advanced',price:19.99,period:'mes',features:['Gemini 2.5 Pro','1M tokens contexto','Deep Research','Integración Drive/Gmail/Docs','Gems custom','Google One 2TB storage'],highlight:true},
+      {name:'Workspace AI',price:30,period:'usuario/mes',features:['Gemini en Docs/Sheets/Slides','Gemini en Gmail','NotebookLM Plus','Meet AI notes','Admin controls'],highlight:false},
+    ]
+  },
+  {
+    vendor:'Cursor', emoji:'🖱️', vclass:'v-anysphere',
+    plans:[
+      {name:'Hobby',price:0,period:'mes',features:['2000 completados/mes','50 preguntas slow','Modelos básicos'],highlight:false},
+      {name:'Pro',price:20,period:'mes',features:['Completados ilimitados','500 requests rápidos (GPT-4, Claude)','Unlimited slow requests','Acceso a todos los modelos'],highlight:true},
+      {name:'Business',price:40,period:'usuario/mes',features:['Todo de Pro','Admin dashboard','SSO/SAML','Facturación centralizada','Privacidad garantizada'],highlight:false},
+    ]
+  },
+  {
+    vendor:'Windsurf', emoji:'🏄', vclass:'v-codeium',
+    plans:[
+      {name:'Free',price:0,period:'mes',features:['25 flow actions/mes','Completado básico','Chat básico'],highlight:false},
+      {name:'Pro',price:15,period:'mes',features:['Flows ilimitados','Acceso a modelos rápidos','Cascade Agent completo','500 premium credits'],highlight:true},
+      {name:'Teams',price:35,period:'usuario/mes',features:['Todo de Pro','Admin panel','SSO','Facturación centralizada','Privacidad datos'],highlight:false},
+    ]
+  },
+  {
+    vendor:'Perplexity', emoji:'🔍', vclass:'v-perplexity',
+    plans:[
+      {name:'Free',price:0,period:'mes',features:['5 Pro searches/día','Modelos estándar','Búsqueda básica'],highlight:false},
+      {name:'Pro',price:20,period:'mes',features:['Búsquedas ilimitadas','GPT-4o, Claude, Gemini','Subida de archivos','Exportar a PDF/Docs','API acceso ($5 de crédito)'],highlight:true},
+    ]
+  },
+];
+
+/* ════════════════════════════════════════════════════════
+   STATE
+════════════════════════════════════════════════════════ */
+let activeTab = 'overview';
+let selectedTools = new Set();
+let modelFilter = 'all';
+let toolCat = 'assistants';
+let matrixCat = 'all';
+let sortKey = null, sortDir = 1;
+let matrixSortKey = null, matrixSortDir = 1;
+
+/* ════════════════════════════════════════════════════════
+   UTILS
+════════════════════════════════════════════════════════ */
+function fmtCtx(n){if(!n)return'—';if(n>=1000000)return(n/1000000).toFixed(0)+'M';if(n>=1000)return(n/1000).toFixed(0)+'K';return n}
+function fmtPrice(n){if(n===null)return'Consultar';if(n===0)return'Gratis';return'$'+n}
+function scoreColor(v){if(!v&&v!==0)return'';if(v>=85)return 'score-high';if(v>=70)return 'score-mid';return 'score-low'}
+function barColor(v){if(!v&&v!==0)return'#4b5563';if(v>=85)return'#86efac';if(v>=70)return'#eab308';return'#f97316'}
+function catLabel(c){const m={model:'Modelo LLM',assistant:'Asistente',devTool:'IDE/Dev',agent:'Agente',framework:'Framework',selfHosted:'Self-hosted'};return m[c]||c}
+function catColor(c){const m={model:'var(--purple)',assistant:'var(--blue)',devTool:'var(--cyan)',agent:'var(--orange)',framework:'var(--green)',selfHosted:'var(--gray)'};return m[c]||'var(--muted)'}
+function catBg(c){const m={model:'rgba(139,92,246,.15)',assistant:'rgba(59,130,246,.15)',devTool:'rgba(6,182,212,.15)',agent:'rgba(249,115,22,.15)',framework:'rgba(34,197,94,.12)',selfHosted:'rgba(148,163,184,.12)'};return m[c]||'rgba(255,255,255,.06)'}
+
+/* ════════════════════════════════════════════════════════
+   TABS
+════════════════════════════════════════════════════════ */
+function switchTab(tab){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('section-'+tab).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b=>{if(b.onclick.toString().includes("'"+tab+"'"))b.classList.add('active')});
+  activeTab=tab;
+  if(tab==='models')renderModels();
+  if(tab==='tools')renderTools();
+  if(tab==='pricing')renderPricing();
+  if(tab==='matrix')renderMatrix();
+}
+
+/* ════════════════════════════════════════════════════════
+   OVERVIEW
+════════════════════════════════════════════════════════ */
+const OV_LAYERS = [
+  {num:6,color:'var(--gray)',bg:'rgba(148,163,184,.15)',title:'🖥️ Infraestructura Self-Hosted',sub:'Ejecuta modelos en tu hardware — sin API keys, sin enviar datos, sin límites de uso',badge:'Privacidad total',
+   items:[{t:'Ollama ⭐',tip:'El más popular: descarga y corre modelos con 1 comando'},{t:'OpenClaude',tip:'Servidor Rust, API OpenAI-compatible, <2ms latencia'},{t:'LM Studio',tip:'GUI para LLMs locales, descarga de Hugging Face'},{t:'LocalAI',tip:'API REST local compatible con OpenAI, texto+imagen+audio'},{t:'Jan.ai',tip:'Alternativa OSS a LM Studio, app de escritorio'},{t:'llama.cpp',tip:'La base C++ que usa todo el ecosistema local'}]},
+  {num:5,color:'var(--green)',bg:'rgba(34,197,94,.1)',title:'🔧 Frameworks Multi-Agente',sub:'Para desarrolladores — orquestan múltiples agentes IA con roles, memoria y herramientas',badge:'Dev / Técnico',
+   items:[{t:'LangChain',tip:'El más adoptado: chains, agents, RAG, memory'},{t:'LangGraph',tip:'Grafos de estado con ciclos, multi-agente avanzado'},{t:'CrewAI',tip:'Equipos de agentes con roles como empleados'},{t:'AutoGen (Microsoft)',tip:'Multi-agente conversacional'},{t:'Semantic Kernel',tip:'Enterprise de Microsoft (.NET, Python, Java)'},{t:'OpenAI Agents SDK',tip:'SDK oficial de OpenAI para agentes con handoffs'}]},
+  {num:4,color:'var(--orange)',bg:'rgba(249,115,22,.1)',title:'🤖 Agentes IA Generales',sub:'Autónomos — reciben un objetivo y actúan en el mundo real: web, email, archivos, apps',badge:'Alta autonomía',
+   items:[{t:'Manus ⭐',tip:'Referente 2025: GAIA benchmark líder, el más autónomo'},{t:'OpenClaw 🦞 ⭐',tip:'OSS, vive en WhatsApp/Telegram, memoria 24/7 — @steipete'},{t:'OpenAI Operator',tip:'Controla el navegador como un humano'},{t:'Gemini Deep Research',tip:'Investigación web autónoma con fuentes verificadas'},{t:'AutoGPT',tip:'El pionero open source de los agentes autónomos'},{t:'Claude Research',tip:'Investigación profunda de Anthropic'}]},
+  {num:3,color:'var(--cyan)',bg:'rgba(6,182,212,.1)',title:'💻 IDEs con IA & Agentes de Código',sub:'Integrados en el editor — planifican, escriben, depuran y despliegan software de forma autónoma',badge:'Dev / Código',
+   dividers:[{after:-1,label:'IDEs Integrados'},{after:4,label:'Agentes Terminal / Nube'}],
+   items:[{t:'Antigravity ⭐ (este)',tip:'Google DeepMind — agente IDE nativo completo: herramientas, memoria, workspace',star:true},{t:'Cursor',tip:'IDE fork de VS Code — el más adoptado por devs 2025'},{t:'Windsurf',tip:'IDE de Codeium con Cascade agent'},{t:'VS Code + Copilot',tip:'El más accesible — 1M+ usuarios'},{t:'Zed',tip:'Editor en Rust, ultrarrápido, colaborativo'},{t:'JetBrains AI',tip:'IA en IntelliJ, PyCharm, WebStorm...'},{t:'Claude Code',tip:'Agente de terminal de Anthropic, muy autónomo'},{t:'Codex (OpenAI)',tip:'Agente de nube — abre PRs, tests en sandbox'},{t:'Devin',tip:'El primer "software engineer" IA autónomo'},{t:'Aider',tip:'CLI agente OSS — edita repos desde terminal'}]},
+  {num:2,color:'var(--blue)',bg:'rgba(59,130,246,.1)',title:'💬 Asistentes IA',sub:'Reactivos — responden preguntas, no actúan solos. Basados en LLMs de capa 1',badge:'Reactivo',
+   items:[{t:'ChatGPT',tip:'OpenAI — el más popular del mundo'},{t:'Claude.ai',tip:'Anthropic — líder en razonamiento y escritura'},{t:'Gemini',tip:'Google — integrado con Gmail, Drive, Docs'},{t:'Microsoft Copilot',tip:'Microsoft — integrado en Windows y Office'},{t:'Perplexity',tip:'Búsqueda con IA y fuentes verificadas'},{t:'Meta AI',tip:'Meta — en WhatsApp, Instagram, Facebook'},{t:'Grok 3 (xAI)',tip:'xAI de Elon Musk — datos de X en tiempo real'},{t:'Apple Intelligence',tip:'Apple — integrado en iOS/macOS'}]},
+  {num:1,color:'var(--purple)',bg:'rgba(139,92,246,.12)',title:'🧠 Modelos Fundacionales',sub:'El cerebro — todo el ecosistema se construye sobre ellos. Son el motor de razonamiento',badge:'Capa base',
+   dividers:[{after:-1,label:'Propietarios (cerrados)'},{after:3,label:'Open Source (libres)'}],
+   items:[{t:'GPT-4o / o3 (OpenAI)',tip:'GPT-4o: multimodal líder | o3: razonamiento líder'},{t:'Claude 3.7 Sonnet (Anthropic)',tip:'Mejor en código y razonamiento extendido'},{t:'Gemini 2.5 Pro (Google)',tip:'1M contexto, GPQA líder entre propietarios'},{t:'Llama 3.3 70B (Meta) ⭐',tip:'Open source más usado, licencia comercial, gratuito'},{t:'DeepSeek V3 / R1 ⭐',tip:'Rendimiento frontier a precio mínimo, OSS'},{t:'Mistral Large 2',tip:'Europeo, fuerte en código y multilingüe'},{t:'Qwen 2.5 72B (Alibaba)',tip:'OSS, fuerte en código y asiático'},{t:'Phi-4 (Microsoft)',tip:'14B parámetros, rendimiento de modelos mucho mayores'},{t:'Gemma 3 (Google)',tip:'OSS multimodal de Google, eficiente'}]},
+];
+
+function renderOverview(){
+  const c=document.getElementById('overview-layers');
+  c.innerHTML='';
+  [...OV_LAYERS].reverse().forEach(layer=>{
+    const div=document.createElement('div');
+    div.className='ov-layer';
+    div.style=`background:linear-gradient(135deg,${layer.bg} 0%,transparent 100%);border-color:${layer.color}33`;
+    div.style.setProperty('--hc',layer.color);
+    div.onmouseenter=()=>{div.style.boxShadow=`0 8px 32px ${layer.color}22`;div.style.transform='translateY(-2px)'};
+    div.onmouseleave=()=>{div.style.boxShadow='';div.style.transform=''};
+    let tagsHtml='<div class="ov-tags">';
+    layer.items.forEach((item,i)=>{
+      if(layer.dividers){const d=layer.dividers.find(x=>x.after===i-1);if(d)tagsHtml+=`</div><span class="ov-divider">${d.label}</span><div class="ov-tags">`}
+      const starred=item.t.includes('⭐')||item.star;
+      tagsHtml+=`<span class="ov-tag" title="${item.tip}" style="${starred?`border-color:${layer.color}66;background:${layer.bg}`:''}">
+        <span class="ov-tag-dot" style="background:${layer.color}"></span>
+        ${item.t.replace('⭐','<span class="ov-star">⭐</span>')}
+      </span>`;
+    });
+    tagsHtml+='</div>';
+    div.innerHTML=`<div class="ov-header">
+      <div class="ov-num" style="background:${layer.bg};color:${layer.color}">${layer.num}</div>
+      <div style="flex:1"><div class="ov-title" style="color:${layer.color}">${layer.title}</div><div class="ov-sub">${layer.sub}</div></div>
+      <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;border:1px solid ${layer.color}55;color:${layer.color}">${layer.badge}</span>
+    </div>${tagsHtml}`;
+    c.appendChild(div);
+  });
+}
+
+/* ════════════════════════════════════════════════════════
+   MODELS
+════════════════════════════════════════════════════════ */
+let filteredModels=[...MODELS];
+
+function renderModelFilters(){
+  const c=document.getElementById('model-filters');
+  const vendors=['all','OpenAI','Anthropic','Google','Meta','DeepSeek','Mistral AI','Alibaba','Microsoft'];
+  c.innerHTML=vendors.map(v=>`<button class="filter-btn${v===modelFilter?' active':''}" onclick="setModelFilter('${v}')">${v==='all'?'Todos los modelos':v}</button>`).join('');
+}
+
+function setModelFilter(v){
+  modelFilter=v;
+  filteredModels=v==='all'?[...MODELS]:MODELS.filter(m=>m.vendor===v);
+  renderModelFilters();
+  renderBenchTable();
+  renderModelCards();
+}
+
+function sortTable(key){
+  if(sortKey===key)sortDir*=-1; else{sortKey=key;sortDir=1}
+  filteredModels.sort((a,b)=>{
+    let av=a[key],bv=b[key];
+    if(av===null||av===undefined)av=-999;
+    if(bv===null||bv===undefined)bv=-999;
+    if(typeof av==='string')return av.localeCompare(bv)*sortDir;
+    return(av-bv)*sortDir;
+  });
+  renderBenchTable();
+}
+
+function renderBenchTable(){
+  const tbody=document.getElementById('bench-tbody');
+  tbody.innerHTML=filteredModels.map(m=>{
+    const score=(v,max=100)=>v!=null?`<span class="bench-score">
+      <span class="${scoreColor(v)}">${v}%</span>
+      <span class="bench-bar-mini"><span class="bench-bar-fill" style="width:${v}%;background:${barColor(v)}"></span></span>
+    </span>`:'<span class="n-a">—</span>';
+    const apiIn=m.apiIn!=null?`<span class="font-mono" style="color:${m.apiIn<0.5?'#86efac':m.apiIn<3?'#fbbf24':'#f97316'}">$${m.apiIn}</span>`:'<span class="yes-val">Free</span>';
+    const apiOut=m.apiOut!=null?`<span class="font-mono" style="color:${m.apiOut<2?'#86efac':m.apiOut<10?'#fbbf24':'#f97316'}">$${m.apiOut}</span>`:'<span class="yes-val">Free</span>';
+    return`<tr>
+      <td><div class="model-name-cell">
+        <div class="model-logo" style="background:rgba(255,255,255,.06)">${m.emoji}</div>
+        <div><div style="font-weight:700;font-size:13px">${m.name}</div><div class="text-xs text-muted">${m.releaseDate}</div></div>
+      </div></td>
+      <td><span class="${m.vclass}" style="font-weight:700;font-size:12px">${m.vendor}</span></td>
+      <td><span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;background:${m.openSource?'rgba(251,191,36,.12)':'rgba(255,255,255,.05)'};border:1px solid ${m.openSource?'rgba(251,191,36,.3)':'rgba(255,255,255,.08)'};color:${m.openSource?'#fbbf24':'var(--muted)'}">${m.type}</span></td>
+      <td><span class="font-mono" style="font-size:12px">${fmtCtx(m.context)}</span></td>
+      <td>${score(m.mmlu)}</td>
+      <td>${score(m.gpqa)}</td>
+      <td>${score(m.humaneval)}</td>
+      <td>${score(m.math)}</td>
+      <td>${score(m.sweBench)}</td>
+      <td>${apiIn}</td>
+      <td>${apiOut}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderModelCards(){
+  const c=document.getElementById('model-cards');
+  c.innerHTML=filteredModels.map(m=>{
+    const bars=[
+      {l:'MMLU',v:m.mmlu},{l:'GPQA',v:m.gpqa},{l:'HumanEval',v:m.humaneval},
+      {l:'MATH',v:m.math},{l:'SWE-bench',v:m.sweBench}
+    ].filter(b=>b.v!=null);
+    return`<div class="model-card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:18px">${m.emoji}</div>
+        <div>
+          <div style="font-weight:800;font-size:14px">${m.name}</div>
+          <div class="${m.vclass}" style="font-size:11px;font-weight:700">${m.vendor} · ${m.releaseDate}</div>
+        </div>
+        ${m.openSource?'<span class="oss-badge" style="margin-left:auto">OSS</span>':''}
+      </div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px">${m.description}</p>
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+        <div style="background:rgba(255,255,255,.05);border-radius:7px;padding:6px 10px;font-size:11px"><span style="color:var(--muted)">Contexto</span><br/><strong class="font-mono">${fmtCtx(m.context)}</strong></div>
+        <div style="background:rgba(255,255,255,.05);border-radius:7px;padding:6px 10px;font-size:11px"><span style="color:var(--muted)">API entrada</span><br/><strong class="font-mono ${m.apiIn<1?'price-low':m.apiIn<5?'price-mid':'price-high'}">${m.apiIn!=null?'$'+m.apiIn:' OSS'}</strong></div>
+        <div style="background:rgba(255,255,255,.05);border-radius:7px;padding:6px 10px;font-size:11px"><span style="color:var(--muted)">API salida</span><br/><strong class="font-mono ${m.apiOut<2?'price-low':m.apiOut<12?'price-mid':'price-high'}">${m.apiOut!=null?'$'+m.apiOut:' OSS'}</strong></div>
+      </div>
+      <div style="margin-bottom:12px">${bars.map(b=>`<div class="bar-wrap">
+        <span class="bar-label">${b.l}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${b.v}%;background:${barColor(b.v)}"></div></div>
+        <span class="bar-val" style="color:${barColor(b.v)}">${b.v}%</span>
+      </div>`).join('')}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">${m.features.slice(0,5).map(f=>`<span class="tag">${f}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderModels(){
+  renderModelFilters();
+  renderBenchTable();
+  renderModelCards();
+}
+
+/* ════════════════════════════════════════════════════════
+   TOOLS
+════════════════════════════════════════════════════════ */
+const TOOL_CATS=[
+  {id:'assistants',label:'💬 Asistentes',data:TOOLS_DATA.assistants,category:'assistant'},
+  {id:'devTools',label:'💻 IDEs & Dev',data:TOOLS_DATA.devTools,category:'devTool'},
+  {id:'agents',label:'🤖 Agentes Generales',data:TOOLS_DATA.agents,category:'agent'},
+  {id:'frameworks',label:'🔧 Frameworks',data:TOOLS_DATA.frameworks,category:'framework'},
+  {id:'selfHosted',label:'🖥️ Self-Hosted',data:TOOLS_DATA.selfHosted,category:'selfHosted'},
+];
+
+function renderTools(){
+  const tabs=document.getElementById('tool-cat-tabs');
+  tabs.innerHTML=TOOL_CATS.map(c=>`<button class="tool-tab${toolCat===c.id?' active':''}" onclick="setToolCat('${c.id}')">${c.label} <span style="font-size:10px;opacity:.6">${c.data.length}</span></button>`).join('');
+  const secs=document.getElementById('tool-sections');
+  secs.innerHTML=TOOL_CATS.map(cat=>`<div class="tool-section${toolCat===cat.id?' active':''}" id="tool-${cat.id}">
+    <div class="grid-2">${cat.data.map(t=>renderToolCard(t,cat.category)).join('')}</div>
+  </div>`).join('');
+}
+
+function setToolCat(id){
+  toolCat=id;
+  document.querySelectorAll('.tool-tab').forEach(b=>{b.classList.toggle('active',b.onclick.toString().includes("'"+id+"'"))});
+  document.querySelectorAll('.tool-section').forEach(s=>{s.classList.toggle('active',s.id==='tool-'+id)});
+}
+
+function renderToolCard(t,cat){
+  const badgesHtml=t.badges.map(b=>b.includes('⭐')?`<span class="new-badge">⭐ Destacado</span>`:b==='OSS'?`<span class="oss-badge">Open Source</span>`:b==='New'?`<span class="new-badge">${b}</span>`:b==='Beta'?`<span class="beta-badge">${b}</span>`:`<span class="beta-badge">${b}</span>`).join('');
+  return`<div class="tool-card${t.highlight?' tool-highlight':''}">
+    <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">${t.emoji}</div>
+      <div style="flex:1">
+        <div style="font-weight:800;font-size:15px">${t.name}</div>
+        <div class="${t.vclass} tool-vendor">${t.vendor}</div>
+      </div>
+    </div>
+    ${badgesHtml?`<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">${badgesHtml}</div>`:''}
+    <p class="tool-desc">${t.description}</p>
+    <div class="tool-feats">${t.features.map(f=>`<span class="tool-feat">${f}</span>`).join('')}</div>
+    <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:11px;color:var(--muted)">${t.platforms}</span>
+      <span style="font-size:12px;font-weight:700;${t.startPrice===0?'color:var(--green)':t.startPrice<30?'color:#86efac':'color:var(--yellow)'}">${t.startPrice===0?'Gratis':'Desde $'+t.startPrice+'/mes'}</span>
+    </div>
+  </div>`;
+}
+
+/* ════════════════════════════════════════════════════════
+   PRICING
+════════════════════════════════════════════════════════ */
+function renderPricing(){
+  const c=document.getElementById('pricing-content');
+  let html='';
+  VENDORS_PRICING.forEach(vp=>{
+    html+=`<div style="margin-bottom:36px">
+      <h3 class="${vp.vclass}" style="font-size:18px;font-weight:800;margin-bottom:16px">${vp.emoji} ${vp.vendor}</h3>
+      <div class="price-plans">${vp.plans.map(p=>`<div class="price-card${p.highlight?' featured':''}">
+        <div class="price-plan-name">${p.name}</div>
+        <div class="price-amount ${p.price===0?'price-free':p.price<25?'price-low':p.price<100?'price-mid':'price-high'}">${p.price===null?'Custom':p.price===0?'0':p.price}<span class="price-period">  ${p.price===null?'':'$'} / ${p.period}</span></div>
+        <div class="price-divider"></div>
+        <div class="price-features">${p.features.map(f=>`<div class="price-feat"><span class="price-feat-icon">✓</span>${f}</div>`).join('')}</div>
+      </div>`).join('')}</div>
+    </div>`;
+  });
+
+  // API pricing table
+  html+=`<div style="margin-top:12px">
+    <h3 style="font-size:18px;font-weight:800;margin-bottom:8px">📡 Precios de API (por 1M tokens)</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:4px">Precios aproximados de junio 2026. Pueden variar con descuentos por volumen.</p>
+    <div class="api-table-wrap"><table class="api-table">
+      <thead><tr><th>Modelo</th><th>Empresa</th><th>Tipo</th><th>Entrada ($/1M)</th><th>Salida ($/1M)</th><th>Contexto</th></tr></thead>
+      <tbody>${MODELS.map(m=>{
+        const pIn=m.apiIn!=null?`<span class="font-mono" style="color:${m.apiIn===0?'#86efac':m.apiIn<1?'#86efac':m.apiIn<5?'#fbbf24':'#f97316'}">$${m.apiIn}</span>`:'<span style="color:#86efac;font-weight:700">Free (OSS)</span>';
+        const pOut=m.apiOut!=null?`<span class="font-mono" style="color:${m.apiOut===0?'#86efac':m.apiOut<2?'#86efac':m.apiOut<10?'#fbbf24':'#f97316'}">$${m.apiOut}</span>`:'<span style="color:#86efac;font-weight:700">Free (OSS)</span>';
+        return`<tr><td><strong>${m.emoji} ${m.name}</strong></td><td class="${m.vclass}" style="font-weight:700;font-size:12px">${m.vendor}</td><td><span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;background:${m.openSource?'rgba(251,191,36,.12)':'rgba(255,255,255,.05)'};color:${m.openSource?'#fbbf24':'var(--muted)'}">${m.type}</span></td><td>${pIn}</td><td>${pOut}</td><td class="font-mono" style="font-size:12px">${fmtCtx(m.context)}</td></tr>`;
+      }).join('')}</tbody>
+    </table></div>
+    <p style="font-size:11px;color:var(--muted2);margin-top:8px">* Modelos Open Source pueden usarse gratis via self-hosting. Precios via APIs de terceros (Groq, Together, etc.) pueden diferir.</p>
+  </div>`;
+  c.innerHTML=html;
+}
+
+/* ════════════════════════════════════════════════════════
+   MATRIX
+════════════════════════════════════════════════════════ */
+// All tools combined with category
+const ALL_TOOLS = [
+  ...MODELS.map(m=>({...m,category:'model',catLabel:'Modelo LLM'})),
+  ...TOOLS_DATA.assistants.map(t=>({...t,category:'assistant',catLabel:'Asistente',mmlu:null,humaneval:null})),
+  ...TOOLS_DATA.devTools.map(t=>({...t,category:'devTool',catLabel:'IDE/Dev',mmlu:null,humaneval:null})),
+  ...TOOLS_DATA.agents.map(t=>({...t,category:'agent',catLabel:'Agente',mmlu:null,humaneval:null})),
+  ...TOOLS_DATA.frameworks.map(t=>({...t,category:'framework',catLabel:'Framework',mmlu:null,humaneval:null,context:null,apiIn:null})),
+  ...TOOLS_DATA.selfHosted.map(t=>({...t,category:'selfHosted',catLabel:'Self-hosted',mmlu:null,humaneval:null,context:null,apiIn:null})),
+];
+
+const MATRIX_CATS=['all','model','assistant','devTool','agent','framework','selfHosted'];
+const MATRIX_CAT_LABELS={all:'Todos',model:'Modelos',assistant:'Asistentes',devTool:'IDEs/Dev',agent:'Agentes',framework:'Frameworks',selfHosted:'Self-hosted'};
+
+let matrixData=[...ALL_TOOLS];
+
+function renderMatrixCatBtns(){
+  const c=document.getElementById('matrix-cat-btns');
+  c.innerHTML=MATRIX_CATS.map(cat=>`<button class="matrix-cat-btn${matrixCat===cat?' active':''}" onclick="setMatrixCat('${cat}')">${MATRIX_CAT_LABELS[cat]}</button>`).join('');
+}
+
+function setMatrixCat(cat){
+  matrixCat=cat;
+  document.querySelectorAll('.matrix-cat-btn').forEach(b=>{b.classList.toggle('active',b.onclick.toString().includes("'"+cat+"'"))});
+  filterMatrix();
+}
+
+function filterMatrix(){
+  const q=document.getElementById('matrix-search').value.toLowerCase();
+  matrixData=ALL_TOOLS.filter(t=>{
+    const catOk=matrixCat==='all'||t.category===matrixCat;
+    const nameOk=!q||t.name.toLowerCase().includes(q)||t.vendor.toLowerCase().includes(q)||t.catLabel.toLowerCase().includes(q);
+    return catOk&&nameOk;
+  });
+  renderMatrixTable();
+}
+
+function sortMatrix(key){
+  if(matrixSortKey===key)matrixSortDir*=-1; else{matrixSortKey=key;matrixSortDir=1}
+  filterMatrix();
+}
+
+function renderMatrixTable(){
+  const tbody=document.getElementById('matrix-tbody');
+  let data=[...matrixData];
+  if(matrixSortKey){
+    data.sort((a,b)=>{
+      let av=a[matrixSortKey],bv=b[matrixSortKey];
+      if(av===null||av===undefined)av=matrixSortDir>0?-999:'ZZZZZ';
+      if(bv===null||bv===undefined)bv=matrixSortDir>0?-999:'ZZZZZ';
+      if(typeof av==='string')return av.localeCompare(bv)*matrixSortDir;
+      return(av-bv)*matrixSortDir;
+    });
+  }
+  tbody.innerHTML=data.map(t=>{
+    const sel=selectedTools.has(t.id);
+    const sc=(v)=>v!=null?`<span class="score-cell ${scoreColor(v)}">${v}%</span>`:'<span class="no-val">—</span>';
+    return`<tr class="${sel?'selected-row':''}" id="mrow-${t.id}">
+      <td><input type="checkbox" class="matrix-cb" ${sel?'checked':''} onchange="toggleSelect('${t.id}')"/></td>
+      <td><div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px">${t.emoji||'·'}</span><div><div style="font-weight:700;font-size:13px">${t.name}</div><div style="font-size:10px;color:var(--muted)">${t.vendor}</div></div></div></td>
+      <td><span class="cat-pill" style="background:${catBg(t.category)};color:${catColor(t.category)}">${t.catLabel}</span></td>
+      <td class="${t.vclass}" style="font-weight:600;font-size:12px">${t.vendor}</td>
+      <td><span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;background:${t.openSource?'rgba(251,191,36,.12)':'rgba(255,255,255,.05)'};color:${t.openSource?'#fbbf24':'var(--muted)'}">${t.type||'—'}</span></td>
+      <td class="font-mono" style="font-size:12px">${t.context?fmtCtx(t.context):'<span class="no-val">—</span>'}</td>
+      <td>${sc(t.mmlu)}</td>
+      <td>${sc(t.humaneval)}</td>
+      <td>${t.apiIn!=null?`<span class="font-mono" style="font-size:12px;color:${t.apiIn<1?'#86efac':t.apiIn<5?'#fbbf24':'#f97316'}">$${t.apiIn}</span>`:'<span class="no-val">—</span>'}</td>
+      <td>${t.openSource?'<span class="yes-val">✓ Sí</span>':'<span class="no-val">No</span>'}</td>
+      <td>${t.selfHosted?'<span class="yes-val">✓ Sí</span>':'<span class="no-val">No</span>'}</td>
+      <td>${t.startPrice!=null?`<span style="font-weight:700;color:${t.startPrice===0?'var(--green)':t.startPrice<30?'#86efac':'var(--yellow)'}">${t.startPrice===0?'Gratis':'$'+t.startPrice}</span>`:'<span class="no-val">—</span>'}</td>
+      <td style="font-size:11px;color:var(--muted);max-width:150px;overflow:hidden;text-overflow:ellipsis">${t.platforms||'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderMatrix(){
+  renderMatrixCatBtns();
+  filterMatrix();
+}
+
+function toggleSelect(id){
+  if(selectedTools.has(id))selectedTools.delete(id);
+  else selectedTools.add(id);
+  const fab=document.getElementById('compare-fab');
+  const cnt=document.getElementById('compare-count');
+  cnt.textContent=selectedTools.size;
+  fab.style.display=selectedTools.size>=2?'flex':'none';
+  const row=document.getElementById('mrow-'+id);
+  if(row)row.classList.toggle('selected-row',selectedTools.has(id));
+}
+
+function openComparison(){
+  const overlay=document.getElementById('compare-overlay');
+  const grid=document.getElementById('compare-grid');
+  const tools=ALL_TOOLS.filter(t=>selectedTools.has(t.id));
+  grid.innerHTML=tools.map(t=>{
+    const bars=[
+      {l:'MMLU',v:t.mmlu},{l:'GPQA',v:t.gpqa},{l:'HumanEval',v:t.humaneval},
+      {l:'MATH',v:t.math},{l:'SWE-bench',v:t.sweBench}
+    ].filter(b=>b&&b.v!=null);
+    const feats=(t.features||[]).slice(0,8);
+    return`<div class="compare-card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <div style="width:44px;height:44px;border-radius:11px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:22px">${t.emoji||'·'}</div>
+        <div>
+          <div style="font-weight:900;font-size:16px">${t.name}</div>
+          <div class="${t.vclass}" style="font-size:12px;font-weight:700">${t.vendor}</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px">${t.description||''}</p>
+      <div class="compare-attr">
+        <div class="compare-row"><span class="compare-row-label">Categoría</span><span class="compare-row-val" style="color:${catColor(t.category)}">${t.catLabel}</span></div>
+        <div class="compare-row"><span class="compare-row-label">Tipo</span><span class="compare-row-val" style="color:${t.openSource?'#fbbf24':'var(--muted)'}">${t.type||'—'}</span></div>
+        <div class="compare-row"><span class="compare-row-label">Contexto</span><span class="compare-row-val font-mono">${t.context?fmtCtx(t.context):'—'}</span></div>
+        <div class="compare-row"><span class="compare-row-label">Self-hosted</span><span class="compare-row-val" style="color:${t.selfHosted?'var(--green)':'var(--muted2)'}">${t.selfHosted?'✓ Sí':'✗ No'}</span></div>
+        <div class="compare-row"><span class="compare-row-label">Open Source</span><span class="compare-row-val" style="color:${t.openSource?'#fbbf24':'var(--muted2)'}">${t.openSource?'✓ Sí':'✗ No'}</span></div>
+        <div class="compare-row"><span class="compare-row-label">Precio desde</span><span class="compare-row-val" style="color:${t.startPrice===0?'var(--green)':t.startPrice<30?'#86efac':'var(--yellow)'}">${t.startPrice!=null?(t.startPrice===0?'Gratis':'$'+t.startPrice+'/mes'):'—'}</span></div>
+        <div class="compare-row"><span class="compare-row-label">API entrada</span><span class="compare-row-val font-mono">${t.apiIn!=null?'$'+t.apiIn+'/1M':'—'}</span></div>
+        <div class="compare-row"><span class="compare-row-label">Plataformas</span><span class="compare-row-val" style="font-size:10px;text-align:right;max-width:140px">${t.platforms||'—'}</span></div>
+      </div>
+      ${bars.length?`<div style="margin-top:14px;border-top:1px solid var(--border2);padding-top:12px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">Benchmarks</div>${bars.map(b=>`<div class="bar-wrap">
+        <span class="bar-label">${b.l}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${b.v}%;background:${barColor(b.v)}"></div></div>
+        <span class="bar-val" style="color:${barColor(b.v)}">${b.v}%</span>
+      </div>`).join('')}</div>`:''}
+      ${feats.length?`<div style="margin-top:14px;border-top:1px solid var(--border2);padding-top:12px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">Características</div><div style="display:flex;flex-wrap:wrap;gap:4px">${feats.map(f=>`<span class="tag">${f}</span>`).join('')}</div></div>`:''}
+    </div>`;
+  }).join('');
+  overlay.classList.add('open');
+}
+
+function closeComparison(){
+  document.getElementById('compare-overlay').classList.remove('open');
+}
+
+/* ════════════════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════════════ */
+renderOverview();
+</script>
+</body>
+</html>
