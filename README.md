@@ -10,6 +10,7 @@
 ## 🗺️ El Ecosistema IA en 6 Capas
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#f0f4ff', 'edgeLabelBackground': '#ffffff'}}}%%
 flowchart TB
     subgraph L6["🖥️ CAPA 6 — Infraestructura Self-Hosted  |  PRIVACIDAD TOTAL"]
         direction LR
@@ -21,7 +22,7 @@ flowchart TB
     end
     subgraph L4["🤖 CAPA 4 — Agentes IA Generales  |  ALTA AUTONOMÍA"]
         direction LR
-        Manus["🤖 Manus ⭐"] --- OpenClaw["🦞 OpenClaw ⭐"] --- Operator["🌐 Operator"] --- DeepR["🔬 Deep Research"]
+        Manus["🤖 Manus ⭐"] --- OpenHands["🙌 OpenHands"] --- Operator["🌐 Operator"] --- DeepR["🔬 Deep Research"]
     end
     subgraph L3["💻 CAPA 3 — IDEs con IA & Agentes de Código  |  DEV / CÓDIGO"]
         direction LR
@@ -40,12 +41,12 @@ flowchart TB
     L1 --> L3
     L6 --> L1
 
-    style L1 fill:#1a0a2e,stroke:#8b5cf6,color:#e8eaf6
-    style L2 fill:#0a1a2e,stroke:#3b82f6,color:#e8eaf6
-    style L3 fill:#0a2e1a,stroke:#06b6d4,color:#e8eaf6
-    style L4 fill:#2e1a0a,stroke:#f97316,color:#e8eaf6
-    style L5 fill:#1a2e0a,stroke:#22c55e,color:#e8eaf6
-    style L6 fill:#2e0a1a,stroke:#ec4899,color:#e8eaf6
+    style L1 fill:#ede9fe,stroke:#7c3aed,color:#1e1b4b
+    style L2 fill:#dbeafe,stroke:#2563eb,color:#1e3a5f
+    style L3 fill:#d1fae5,stroke:#059669,color:#064e3b
+    style L4 fill:#ffedd5,stroke:#ea580c,color:#431407
+    style L5 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style L6 fill:#fce7f3,stroke:#db2777,color:#500724
 ```
 
 ---
@@ -53,12 +54,13 @@ flowchart TB
 ## 📊 Autonomía vs Privacidad
 
 ```mermaid
+%%{init: {'theme': 'base'}}%%
 quadrantChart
-    title Posicionamiento por Autonomía y Privacidad
-    x-axis "Baja Autonomía" --> "Alta Autonomía"
+    title Posicionamiento por Autonomia y Privacidad
+    x-axis "Baja Autonomia" --> "Alta Autonomia"
     y-axis "Privacidad Nula" --> "Privacidad Total"
-    quadrant-1 Autónomo y privado
-    quadrant-2 Privado pero básico
+    quadrant-1 Autonomo y privado
+    quadrant-2 Privado pero basico
     quadrant-3 Uso personal en la nube
     quadrant-4 Muy potente, datos en la nube
     Asistentes IA: [0.15, 0.05]
@@ -107,7 +109,7 @@ mindmap
       JetBrains AI
     🤖 Agentes Generales
       Manus ⭐
-      OpenClaw 🦞
+      OpenHands
       OpenAI Operator
       Gemini Deep Research
       AutoGPT
@@ -131,6 +133,7 @@ mindmap
 ## 🧪 Benchmarks de Modelos LLM
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'xyChart': {'backgroundColor': '#ffffff', 'plotColorPalette': '#7c3aed'}}}}%%
 xychart-beta
     title "MMLU % — Conocimiento General (mayor es mejor)"
     x-axis ["o3/o4", "DeepSeek R1", "Gemini 2.5 Pro", "GPT-4o", "DeepSeek V3", "Claude 3.7", "Gemma 3", "Llama 3.3", "Qwen 2.5", "Phi-4"]
@@ -143,6 +146,7 @@ xychart-beta
 ## 💰 Precios de API (entrada, $/1M tokens)
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'xyChart': {'backgroundColor': '#ffffff', 'plotColorPalette': '#059669'}}}}%%
 xychart-beta
     title "Precio de API — Entrada $/1M tokens (menor es mejor)"
     x-axis ["o3", "Claude 3.7", "GPT-4o", "Mistral L2", "Gemini 2.5 Pro", "DeepSeek R1", "DeepSeek V3", "Llama 3.3", "Gemini Flash", "Phi-4"]
@@ -155,21 +159,22 @@ xychart-beta
 ## 🎯 ¿Qué herramienta usar?
 
 ```mermaid
+%%{init: {'theme': 'base'}}%%
 flowchart LR
-    NECESIDAD{{"¿Qué necesito?"}}
+    NECESIDAD{{"❓ Que necesito?"}}
 
     NECESIDAD -->|Pregunta puntual| ASIST["💬 Asistente IA\nChatGPT · Claude.ai · Gemini"]
-    NECESIDAD -->|Escribir / depurar código| IDE["💻 IDE con IA\nAntigravity · Cursor · Windsurf"]
-    NECESIDAD -->|Tarea compleja autónoma| AGENTE["🤖 Agente General\nManus · OpenClaw · Operator"]
+    NECESIDAD -->|Escribir / depurar codigo| IDE["💻 IDE con IA\nAntigravity · Cursor · Windsurf"]
+    NECESIDAD -->|Tarea compleja autonoma| AGENTE["🤖 Agente General\nManus · OpenHands · Operator"]
     NECESIDAD -->|Crear mis propios agentes| FW["🔧 Framework\nLangChain · CrewAI · AutoGen"]
     NECESIDAD -->|Privacidad / sin coste API| SH["🖥️ Self-Hosted\nOllama · LM Studio · LocalAI"]
 
-    style NECESIDAD fill:#8b5cf6,color:#fff,stroke:#6d28d9
-    style ASIST fill:#0a1a2e,stroke:#3b82f6,color:#e8eaf6
-    style IDE fill:#0a2e1a,stroke:#06b6d4,color:#e8eaf6
-    style AGENTE fill:#2e1a0a,stroke:#f97316,color:#e8eaf6
-    style FW fill:#1a2e0a,stroke:#22c55e,color:#e8eaf6
-    style SH fill:#2e0a1a,stroke:#ec4899,color:#e8eaf6
+    style NECESIDAD fill:#ede9fe,stroke:#7c3aed,color:#1e1b4b
+    style ASIST fill:#dbeafe,stroke:#2563eb,color:#1e3a5f
+    style IDE fill:#d1fae5,stroke:#059669,color:#064e3b
+    style AGENTE fill:#ffedd5,stroke:#ea580c,color:#431407
+    style FW fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style SH fill:#fce7f3,stroke:#db2777,color:#500724
 ```
 
 ---
