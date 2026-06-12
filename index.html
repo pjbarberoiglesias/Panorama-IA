@@ -7,28 +7,30 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>"/>
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>"/>
 <meta name="description" content="Panorama Global del Ecosistema IA 2026 — Informe interactivo con benchmarks, precios y matriz comparativa de más de 40 herramientas de IA."/>
+<meta name="keywords" content="IA, Inteligencia Artificial, LLM, Agentes IA, Autonomous Agents, AI Agents, Self-Hosted AI, MCP, LangGraph, Open Source AI, Machine Learning, Benchmarks IA"/>
 <meta name="author" content="Master en IA Aplicada"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#f0f2f8;--bg2:#ffffff;--bg3:#e8ecf4;--surface:#ffffff;
-  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.05);
-  --text:#111827;--muted:#6b7280;--muted2:#9ca3af;
-  --purple:#7c3aed;--blue:#2563eb;--cyan:#0891b2;
-  --orange:#ea580c;--green:#16a34a;--red:#dc2626;--yellow:#ca8a04;
-  --pink:#db2777;--gray:#64748b;--teal:#0d9488;
+  --bg:#0f172a;--bg2:#1e293b;--bg3:#334155;--surface:#1e293b;
+  --border:rgba(255,255,255,0.1);--border2:rgba(255,255,255,0.05);
+  --text:#f8fafc;--muted:#94a3b8;--muted2:#64748b;
+  --purple:#a855f7;--blue:#3b82f6;--cyan:#06b6d4;
+  --orange:#f97316;--green:#22c55e;--red:#ef4444;--yellow:#eab308;
+  --pink:#ec4899;--gray:#94a3b8;--teal:#14b8a6;
   --radius:12px;--radius-sm:8px;--radius-lg:16px;
 }
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 40% at 15% 20%,rgba(124,58,237,.06) 0,transparent 60%),radial-gradient(ellipse 50% 35% at 85% 80%,rgba(8,145,178,.05) 0,transparent 60%);pointer-events:none;z-index:0}
-.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 40% at 15% 20%,rgba(168,85,247,.1) 0,transparent 60%),radial-gradient(ellipse 50% 35% at 85% 80%,rgba(6,182,212,.1) 0,transparent 60%);pointer-events:none;z-index:0}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
 
 /* ── Nav ── */
-.top-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 32px;box-shadow:0 1px 12px rgba(0,0,0,.06)}
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(15,23,42,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 32px;box-shadow:0 1px 12px rgba(0,0,0,.3)}
 .nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:8px;min-height:56px}
-.nav-brand{font-size:15px;font-weight:800;background:linear-gradient(135deg,#7c3aed,#2563eb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:16px;white-space:nowrap}
+.nav-brand{font-size:15px;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:16px;white-space:nowrap}
 .nav-tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
 .nav-tabs::-webkit-scrollbar{display:none}
 .tab-btn{padding:10px 16px;border:none;background:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border-radius:var(--radius-sm);white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:6px}
@@ -42,14 +44,14 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .section.active{display:block}
 
 /* ── Cards & helpers ── */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.card:hover{border-color:rgba(124,58,237,.25);box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s,box-shadow .2s;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.card:hover{border-color:rgba(168,85,247,.4);box-shadow:0 8px 28px rgba(0,0,0,.4)}
 .card-header{padding:20px 24px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:flex-start;gap:12px}
 .card-body{padding:20px 24px}
 .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;background:rgba(0,0,0,.04);border:1px solid var(--border)}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;background:rgba(255,255,255,.05);border:1px solid var(--border)}
 .pill{display:inline-block;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700}
-.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:500;background:rgba(0,0,0,.04);border:1px solid var(--border2)}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:500;background:rgba(255,255,255,.05);border:1px solid var(--border2)}
 h1{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.03em;line-height:1.1}
 h2{font-size:22px;font-weight:800;letter-spacing:-.02em}
 h3{font-size:16px;font-weight:700}
@@ -70,12 +72,12 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 .font-mono{font-family:'JetBrains Mono',monospace}
 
 /* Vendor colors */
-.v-openai{color:#10a37f;}.v-anthropic{color:#d4863a;}.v-google{color:#4285f4;}.v-meta{color:#0866ff;}.v-microsoft{color:#7fba00;}.v-deepseek{color:#4d9de0;}.v-mistral{color:#ff6a00;}.v-alibaba{color:#ff6900;}.v-moonshot{color:#0ea5a4;}.v-zhipu{color:#2563eb;}.v-codeium{color:#09b6a2;}.v-anysphere{color:#a78bfa;}.v-cognition{color:#f97316;}.v-deepmind{color:#4ade80;}.v-steipete{color:#fb923c;}.v-monica{color:#e879f9;}.v-perplexity{color:#20b2aa;}.v-xai{color:#1d1d1f;}.v-aws{color:#ff9900;}.v-oss{color:#fbbf24;}
+.v-openai{color:#10a37f;}.v-anthropic{color:#d4863a;}.v-google{color:#60a5fa;}.v-meta{color:#3b82f6;}.v-microsoft{color:#84cc16;}.v-deepseek{color:#4d9de0;}.v-mistral{color:#f97316;}.v-alibaba{color:#f97316;}.v-moonshot{color:#0ea5a4;}.v-zhipu{color:#3b82f6;}.v-codeium{color:#09b6a2;}.v-anysphere{color:#a78bfa;}.v-cognition{color:#f97316;}.v-deepmind{color:#4ade80;}.v-steipete{color:#fb923c;}.v-monica{color:#e879f9;}.v-perplexity{color:#20b2aa;}.v-xai{color:#f8fafc;}.v-aws{color:#fbbf24;}.v-oss{color:#fbbf24;}
 
 /* ── Bar chart ── */
 .bar-wrap{display:flex;align-items:center;gap:8px;margin:3px 0}
 .bar-label{font-size:10px;font-weight:600;color:var(--muted);width:80px;text-align:right;flex-shrink:0}
-.bar-track{flex:1;height:6px;background:rgba(0,0,0,.07);border-radius:100px;overflow:hidden}
+.bar-track{flex:1;height:6px;background:var(--border);border-radius:100px;overflow:hidden}
 .bar-fill{height:100%;border-radius:100px;transition:width .6s cubic-bezier(.4,0,.2,1)}
 .bar-val{font-size:10px;font-weight:700;width:36px;text-align:right;flex-shrink:0;font-family:'JetBrains Mono',monospace}
 
@@ -89,15 +91,15 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 
 /* ── OVERVIEW section ── */
 .overview-layers{display:flex;flex-direction:column;gap:10px}
-.ov-layer{border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden;cursor:default;transition:transform .2s,box-shadow .2s;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.ov-layer:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.ov-layer{border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden;cursor:default;transition:transform .2s,box-shadow .2s;background:var(--surface);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.ov-layer:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.4)}
 .ov-header{display:flex;align-items:center;gap:14px;padding:16px 22px 12px;border-bottom:1px solid var(--border2)}
 .ov-num{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
 .ov-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
 .ov-sub{font-size:11px;color:var(--muted);margin-top:2px;font-weight:400;text-transform:none;letter-spacing:0}
 .ov-tags{display:flex;flex-wrap:wrap;gap:6px;padding:14px 22px 16px}
-.ov-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;font-size:11px;font-weight:600;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.07);transition:all .18s;cursor:default;white-space:nowrap}
-.ov-tag:hover{background:rgba(0,0,0,.08);transform:translateY(-1px)}
+.ov-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;font-size:11px;font-weight:600;background:rgba(255,255,255,.05);border:1px solid var(--border2);transition:all .18s;cursor:default;white-space:nowrap}
+.ov-tag:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
 .ov-tag-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 .ov-star{color:#ca8a04;font-size:9px}
 .ov-divider{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted2);padding:4px 22px 0;display:block}
@@ -106,14 +108,14 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 
 /* ── LLM Models ── */
 .model-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.filter-btn{padding:6px 14px;border-radius:100px;border:1px solid var(--border);background:#fff;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s}
+.filter-btn{padding:6px 14px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s}
 .filter-btn:hover{border-color:rgba(124,58,237,.3);color:var(--purple)}
 .filter-btn.active{background:var(--purple);border-color:var(--purple);color:#fff}
 
 /* Benchmark table */
-.bench-table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.bench-table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
-.bench-table th{padding:12px 16px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:#f8f9fc;border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none}
+.bench-table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.bench-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface)}
+.bench-table th{padding:12px 16px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:rgba(255,255,255,.02);border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none}
 .bench-table th:hover{color:var(--purple)}
 .bench-table th.sorted-asc::after{content:' ↑'}
 .bench-table th.sorted-desc::after{content:' ↓'}
@@ -121,7 +123,7 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 .bench-table tr:last-child td{border-bottom:none}
 .bench-table tr:hover td{background:rgba(124,58,237,.04)}
 .bench-score{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600}
-.bench-bar-mini{width:40px;height:4px;background:rgba(0,0,0,.07);border-radius:100px;overflow:hidden;flex-shrink:0}
+.bench-bar-mini{width:40px;height:4px;background:var(--border);border-radius:100px;overflow:hidden;flex-shrink:0}
 .bench-bar-fill{height:100%;border-radius:100px}
 .n-a{color:var(--muted2);font-size:11px}
 .model-name-cell{display:flex;align-items:center;gap:10px}
@@ -130,12 +132,12 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 
 /* Model detail card */
 .model-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:24px}
-.model-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.model-card:hover{border-color:rgba(124,58,237,.25);box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+.model-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.model-card:hover{border-color:rgba(168,85,247,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);transform:translateY(-2px)}
 
 /* ── Pricing ── */
 .price-plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px}
-.price-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;position:relative;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;position:relative;transition:all .2s;box-shadow:0 4px 12px rgba(0,0,0,.2)}
 .price-card.featured{border-color:rgba(124,58,237,.4);background:rgba(124,58,237,.03)}
 .price-card.featured::before{content:'Popular';position:absolute;top:-1px;right:20px;background:var(--purple);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:0 0 8px 8px;text-transform:uppercase;letter-spacing:.08em}
 .price-plan-name{font-size:18px;font-weight:800;margin-bottom:4px}
@@ -148,26 +150,26 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 .price-divider{height:1px;background:var(--border);margin:16px 0}
 
 /* API Pricing table */
-.api-table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);margin-top:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.api-table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
-.api-table th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:#f8f9fc;border-bottom:1px solid var(--border)}
+.api-table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);margin-top:20px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.api-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface)}
+.api-table th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:rgba(255,255,255,.02);border-bottom:1px solid var(--border)}
 .api-table td{padding:10px 14px;border-bottom:1px solid var(--border2);vertical-align:middle}
 .api-table tr:last-child td{border-bottom:none}
 .api-table tr:hover td{background:rgba(124,58,237,.04)}
 
 /* ── Tools section ── */
 .tool-cat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
-.tool-tab{padding:7px 14px;border-radius:100px;border:1px solid var(--border);background:#fff;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:6px}
+.tool-tab{padding:7px 14px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:6px}
 .tool-tab:hover{color:var(--purple);border-color:rgba(124,58,237,.3)}
 .tool-tab.active{color:#fff;background:var(--purple);border-color:var(--purple)}
 .tool-section{display:none}
 .tool-section.active{display:block}
-.tool-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.tool-card:hover{border-color:rgba(124,58,237,.25);box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.tool-card:hover{border-color:rgba(168,85,247,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);transform:translateY(-2px)}
 .tool-vendor{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .tool-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-top:8px}
 .tool-feats{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
-.tool-feat{font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;background:rgba(0,0,0,.04);border:1px solid var(--border2);color:var(--muted)}
+.tool-feat{font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;background:rgba(255,255,255,.05);border:1px solid var(--border2);color:var(--muted)}
 .tool-highlight{border-color:rgba(124,58,237,.35)!important;background:rgba(124,58,237,.05)!important}
 .tool-badges{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
 .oss-badge{font-size:9px;font-weight:800;padding:2px 6px;border-radius:4px;background:rgba(202,138,4,.12);border:1px solid rgba(202,138,4,.3);color:#b45309;text-transform:uppercase}
@@ -177,19 +179,19 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 /* ── MATRIX ── */
 .matrix-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
 .matrix-cat-btns{display:flex;gap:6px;flex-wrap:wrap;flex:1}
-.matrix-cat-btn{padding:6px 12px;border-radius:100px;border:1px solid var(--border);background:#fff;color:var(--muted);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .18s;text-transform:uppercase;letter-spacing:.07em}
+.matrix-cat-btn{padding:6px 12px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-family:'Inter',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .18s;text-transform:uppercase;letter-spacing:.07em}
 .matrix-cat-btn:hover{color:var(--purple);border-color:rgba(124,58,237,.3)}
 .matrix-cat-btn.active{color:#fff;background:var(--purple);border-color:var(--purple)}
-.matrix-search{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;outline:none;min-width:180px}
+.matrix-search{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;outline:none;min-width:180px}
 .matrix-search:focus{border-color:rgba(124,58,237,.5);background:rgba(124,58,237,.03)}
 .matrix-search::placeholder{color:var(--muted2)}
 .compare-fab{position:fixed;bottom:28px;right:28px;z-index:200;display:none;align-items:center;gap:8px;padding:14px 22px;border-radius:100px;background:linear-gradient(135deg,var(--purple),#4f46e5);color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(124,58,237,.35);transition:all .2s;animation:popIn .3s cubic-bezier(.34,1.56,.64,1)}
 .compare-fab:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 40px rgba(124,58,237,.45)}
 .compare-fab-count{background:rgba(255,255,255,.25);border-radius:100px;padding:2px 8px;font-size:12px}
 @keyframes popIn{from{opacity:0;transform:translateY(20px) scale(.8)}to{opacity:1;transform:translateY(0) scale(1)}}
-.matrix-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.matrix-table{width:100%;border-collapse:collapse;font-size:12px;background:#fff}
-.matrix-table th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:#f8f9fc;border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0}
+.matrix-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.matrix-table{width:100%;border-collapse:collapse;font-size:12px;background:var(--surface)}
+.matrix-table th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:rgba(255,255,255,.02);border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0}
 .matrix-table th:hover{color:var(--purple)}
 .matrix-table td{padding:10px 14px;border-bottom:1px solid var(--border2);vertical-align:middle;white-space:nowrap}
 .matrix-table tr:last-child td{border-bottom:none}
@@ -206,13 +208,13 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 .score-low{color:#c2410c}
 
 /* Comparison overlay */
-.compare-overlay{position:fixed;inset:0;z-index:300;background:rgba(240,242,248,.97);backdrop-filter:blur(12px);overflow-y:auto;padding:32px 24px 80px;display:none}
+.compare-overlay{position:fixed;inset:0;z-index:300;background:rgba(15,23,42,.97);backdrop-filter:blur(12px);overflow-y:auto;padding:32px 24px 80px;display:none}
 .compare-overlay.open{display:block}
 .compare-header{display:flex;align-items:center;gap:16px;max-width:1400px;margin:0 auto 28px}
-.compare-close{padding:10px 20px;border-radius:100px;border:1px solid var(--border);background:#fff;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;margin-left:auto}
-.compare-close:hover{color:var(--text);border-color:rgba(0,0,0,.2)}
+.compare-close{padding:10px 20px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;margin-left:auto}
+.compare-close:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
 .compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:1400px;margin:0 auto}
-.compare-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.compare-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .compare-attr{display:flex;flex-direction:column;gap:10px;margin-top:16px}
 .compare-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2);font-size:12px}
 .compare-row:last-child{border-bottom:none}
@@ -221,7 +223,7 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 
 /* ── Infografías ── */
 .ig-wrap{display:flex;flex-direction:column;gap:22px}
-.ig-panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.ig-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
 .ig-panel h3{font-size:17px;font-weight:800;margin-bottom:3px}
 .ig-sub{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.5}
 .ig-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
@@ -243,30 +245,30 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 .ig-rank{display:flex;flex-direction:column;gap:7px}
 .ig-rank-row{display:flex;align-items:center;gap:10px}
 .ig-rank-name{width:160px;font-size:12px;font-weight:600;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ig-rank-track{flex:1;height:22px;background:rgba(0,0,0,.04);border-radius:6px;overflow:hidden}
+.ig-rank-track{flex:1;height:22px;background:var(--border);border-radius:6px;overflow:hidden}
 .ig-rank-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:800;color:#fff;min-width:2px;transition:width .7s cubic-bezier(.4,0,.2,1)}
 .ig-rank-val{width:46px;font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;flex-shrink:0;text-align:right}
 /* quadrant */
-.ig-quad{position:relative;width:100%;max-width:540px;margin:6px auto 24px;aspect-ratio:1/1;border:1px solid var(--border);border-radius:var(--radius);overflow:visible;background:
+.ig-quad{position:relative;width:100%;max-width:540px;margin:6px auto 24px;aspect-ratio:1/1;border:1px solid var(--border);border-radius:var(--radius);overflow:visible;background:var(--surface);background-image:
   linear-gradient(90deg,transparent calc(50% - 1px),var(--border) calc(50% - 1px),var(--border) calc(50% + 1px),transparent calc(50% + 1px)),
   linear-gradient(0deg,transparent calc(50% - 1px),var(--border) calc(50% - 1px),var(--border) calc(50% + 1px),transparent calc(50% + 1px)),
-  radial-gradient(circle at 30% 28%,rgba(8,145,178,.06),transparent 55%),
-  radial-gradient(circle at 78% 80%,rgba(124,58,237,.05),transparent 55%),#fff}
+  radial-gradient(circle at 30% 28%,rgba(6,182,212,.1),transparent 55%),
+  radial-gradient(circle at 78% 80%,rgba(168,85,247,.1),transparent 55%)}
 .ig-quad-dot{position:absolute;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;box-shadow:0 0 0 4px rgba(255,255,255,.85)}
-.ig-quad-dot span{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:11px;font-weight:700;white-space:nowrap;color:var(--text);background:rgba(255,255,255,.9);padding:2px 7px;border-radius:5px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.ig-quad-dot span{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:11px;font-weight:700;white-space:nowrap;color:var(--text);background:rgba(15,23,42,.9);padding:2px 7px;border-radius:5px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
 .ig-quad-axx{position:absolute;right:10px;bottom:8px;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 .ig-quad-axy{position:absolute;left:8px;top:10px;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 /* timeline */
 .ig-timeline{display:flex;flex-direction:column}
 .ig-tl-row{display:flex;gap:16px;padding-bottom:20px;position:relative}
 .ig-tl-row:not(:last-child)::before{content:'';position:absolute;left:8px;top:18px;bottom:0;width:2px;background:var(--border)}
-.ig-tl-dot{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:2px;box-shadow:0 0 0 3px #fff;z-index:1}
+.ig-tl-dot{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:2px;box-shadow:0 0 0 3px var(--surface);z-index:1}
 .ig-tl-date{font-size:12px;font-weight:800}
 .ig-tl-text{font-size:13px;color:var(--text);line-height:1.55;margin-top:3px}
 /* decision */
 .ig-decision{display:flex;flex-direction:column;gap:10px}
 .ig-dec-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.ig-dec-q{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:11px 15px;border-radius:var(--radius);border:1px solid var(--border);border-left-width:4px;background:#fff;min-width:250px}
+.ig-dec-q{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:11px 15px;border-radius:var(--radius);border:1px solid var(--border);border-left-width:4px;background:var(--surface);min-width:250px}
 .ig-dec-arrow{font-size:18px;font-weight:800}
 .ig-dec-a{font-size:13px;color:var(--muted);font-weight:600;flex:1;min-width:180px}
 
@@ -288,14 +290,14 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 <!-- ── Navigation ── -->
 <nav class="top-nav">
   <div class="nav-inner">
-    <div class="nav-brand">🌐 Panorama IA 2026</div>
+    <div class="nav-brand"><i class="ph-fill ph-globe-hemisphere-west"></i> Panorama IA 2026</div>
     <div class="nav-tabs">
-      <button class="tab-btn active" onclick="switchTab('overview')">🗺️ Resumen</button>
-      <button class="tab-btn" onclick="switchTab('models')">🧠 Modelos LLM <span class="tab-badge">17</span></button>
-      <button class="tab-btn" onclick="switchTab('tools')">🛠️ Herramientas <span class="tab-badge">40+</span></button>
-      <button class="tab-btn" onclick="switchTab('pricing')">💰 Precios & Suscripciones</button>
-      <button class="tab-btn" onclick="switchTab('matrix')">📊 Matriz Comparativa</button>
-      <button class="tab-btn" onclick="switchTab('infographics')">📐 Infografías</button>
+      <button class="tab-btn active" onclick="switchTab('overview')"><i class="ph ph-map-trifold"></i> Resumen</button>
+      <button class="tab-btn" onclick="switchTab('models')"><i class="ph ph-brain"></i> Modelos LLM <span class="tab-badge">17</span></button>
+      <button class="tab-btn" onclick="switchTab('tools')"><i class="ph ph-wrench"></i> Herramientas <span class="tab-badge">40+</span></button>
+      <button class="tab-btn" onclick="switchTab('pricing')"><i class="ph ph-currency-circle-dollar"></i> Precios</button>
+      <button class="tab-btn" onclick="switchTab('matrix')"><i class="ph ph-chart-bar"></i> Comparativa</button>
+      <button class="tab-btn" onclick="switchTab('infographics')"><i class="ph ph-presentation-chart"></i> Infografías</button>
     </div>
   </div>
 </nav>
@@ -319,7 +321,7 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
   <div class="overview-layers" id="overview-layers"></div>
   <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
     <div class="card">
-      <div class="card-header"><h3>🎯 ¿Qué herramienta usar?</h3></div>
+      <div class="card-header"><h3><i class="ph ph-target"></i> ¿Qué herramienta usar?</h3></div>
       <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
         <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--muted)">Pregunta puntual →</span> <strong>ChatGPT, Claude.ai, Gemini</strong></div>
         <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--muted)">Programar más rápido →</span> <strong>Claude Code, Cursor, Antigravity</strong></div>
@@ -329,7 +331,7 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
       </div>
     </div>
     <div class="card">
-      <div class="card-header"><h3>📈 Tendencias 2026</h3></div>
+      <div class="card-header"><h3><i class="ph ph-trend-up"></i> Tendencias 2026</h3></div>
       <div class="card-body" style="display:flex;flex-direction:column;gap:10px">
         <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--cyan)">●</span> Los agentes de código trabajan horas sin supervisión (Fable 5, Devin, Codex)</div>
         <div style="font-size:13px;border-bottom:1px solid var(--border2);padding-bottom:10px"><span style="color:var(--purple)">●</span> MCP se consolida como el estándar para conectar agentes con todo</div>
@@ -470,83 +472,83 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 
 const MODELS = [
   // ── Anthropic ──
-  {id:'fable5',name:'Claude Fable 5',emoji:'🟠',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:89.0,gpqa:91.0,humaneval:92.0,math:96.0,sweBench:95.0,mmmu:null,apiIn:10.00,apiOut:50.00,startPrice:20,platforms:'Web, API, Claude Code',description:'El modelo más capaz de Anthropic (familia Claude 5). Líder en SWE-bench Verified (95%) y en trabajo agéntico de largo horizonte. Razonamiento siempre activo.',features:['Líder SWE-bench Verified (95%)','1M tokens de contexto','128K tokens de salida','Razonamiento adaptativo siempre activo','Agentes autónomos de horas','Visión de alta resolución'],strengths:['Código','Razonamiento','Agentes'],releaseDate:'Jun 2026'},
-  {id:'opus48',name:'Claude Opus 4.8',emoji:'🟠',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:87.0,gpqa:87.0,humaneval:88.0,math:93.0,sweBench:88.6,mmmu:null,apiIn:5.00,apiOut:25.00,startPrice:0,platforms:'Web, API, Mobile',description:'El Opus más capaz. Muy autónomo: ejecución agéntica de largo horizonte, knowledge work y memoria. Es el modelo por defecto de Claude Code.',features:['1M contexto sin sobreprecio','SWE-bench Verified 88.6%','Adaptive thinking','Task budgets para agentes','Computer use','Escritura clara y cálida'],strengths:['Agentes','Código','Escritura'],releaseDate:'2026'},
-  {id:'sonnet46',name:'Claude Sonnet 4.6',emoji:'🟠',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:84.0,gpqa:83.0,humaneval:84.0,math:88.0,sweBench:82.0,mmmu:null,apiIn:3.00,apiOut:15.00,startPrice:0,platforms:'Web, API, Mobile',description:'El mejor equilibrio velocidad/inteligencia de Anthropic. Ideal para producción de alto volumen y computer use.',features:['1M tokens de contexto','64K salida','Adaptive thinking','Excelente computer use','Parámetro effort (control coste)','Muy buena relación precio/calidad'],strengths:['Equilibrio','Producción','Computer use'],releaseDate:'Nov 2025'},
-  {id:'haiku45',name:'Claude Haiku 4.5',emoji:'🟤',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:200000,mmlu:78.0,gpqa:73.0,humaneval:75.0,math:80.0,sweBench:73.0,mmmu:null,apiIn:1.00,apiOut:5.00,startPrice:0,platforms:'Web, API',description:'El modelo más rápido y económico de Anthropic. Ideal para subagentes, clasificación y alto volumen.',features:['Muy rápido','200K contexto','Ideal para subagentes','Vision','Function calling','$1/1M entrada'],strengths:['Velocidad','Precio','Volumen'],releaseDate:'Oct 2025'},
+  {id:'fable5',name:'Claude Fable 5',emoji:'<i class="ph ph-brain"></i>',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:89.0,gpqa:91.0,humaneval:92.0,math:96.0,sweBench:95.0,mmmu:null,apiIn:10.00,apiOut:50.00,startPrice:20,platforms:'Web, API, Claude Code',description:'El modelo más capaz de Anthropic (familia Claude 5). Líder en SWE-bench Verified (95%) y en trabajo agéntico de largo horizonte. Razonamiento siempre activo.',features:['Líder SWE-bench Verified (95%)','1M tokens de contexto','128K tokens de salida','Razonamiento adaptativo siempre activo','Agentes autónomos de horas','Visión de alta resolución'],strengths:['Código','Razonamiento','Agentes'],releaseDate:'Jun 2026'},
+  {id:'opus48',name:'Claude Opus 4.8',emoji:'<i class="ph ph-brain"></i>',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:87.0,gpqa:87.0,humaneval:88.0,math:93.0,sweBench:88.6,mmmu:null,apiIn:5.00,apiOut:25.00,startPrice:0,platforms:'Web, API, Mobile',description:'El Opus más capaz. Muy autónomo: ejecución agéntica de largo horizonte, knowledge work y memoria. Es el modelo por defecto de Claude Code.',features:['1M contexto sin sobreprecio','SWE-bench Verified 88.6%','Adaptive thinking','Task budgets para agentes','Computer use','Escritura clara y cálida'],strengths:['Agentes','Código','Escritura'],releaseDate:'2026'},
+  {id:'sonnet46',name:'Claude Sonnet 4.6',emoji:'<i class="ph ph-brain"></i>',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:84.0,gpqa:83.0,humaneval:84.0,math:88.0,sweBench:82.0,mmmu:null,apiIn:3.00,apiOut:15.00,startPrice:0,platforms:'Web, API, Mobile',description:'El mejor equilibrio velocidad/inteligencia de Anthropic. Ideal para producción de alto volumen y computer use.',features:['1M tokens de contexto','64K salida','Adaptive thinking','Excelente computer use','Parámetro effort (control coste)','Muy buena relación precio/calidad'],strengths:['Equilibrio','Producción','Computer use'],releaseDate:'Nov 2025'},
+  {id:'haiku45',name:'Claude Haiku 4.5',emoji:'<i class="ph ph-brain"></i>',vendor:'Anthropic',vclass:'v-anthropic',type:'Propietario',openSource:false,selfHosted:false,context:200000,mmlu:78.0,gpqa:73.0,humaneval:75.0,math:80.0,sweBench:73.0,mmmu:null,apiIn:1.00,apiOut:5.00,startPrice:0,platforms:'Web, API',description:'El modelo más rápido y económico de Anthropic. Ideal para subagentes, clasificación y alto volumen.',features:['Muy rápido','200K contexto','Ideal para subagentes','Vision','Function calling','$1/1M entrada'],strengths:['Velocidad','Precio','Volumen'],releaseDate:'Oct 2025'},
   // ── OpenAI ──
-  {id:'gpt55',name:'GPT-5.5',emoji:'🟢',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:400000,mmlu:88.0,gpqa:89.0,humaneval:90.0,math:95.0,sweBench:86.0,mmmu:null,apiIn:5.00,apiOut:30.00,startPrice:0,platforms:'Web, API, Mobile',description:'El buque insignia de OpenAI. Razonamiento profundo unificado (sin modelos o-series separados). Variante Pro ($30/$180) para tareas críticas.',features:['Razonamiento unificado','400K contexto','Multimodal completo','Variante Pro para máxima fiabilidad','Caché de entrada -90%','Agentes vía AgentKit'],strengths:['Razonamiento','Multimodalidad','Ecosistema'],releaseDate:'2026'},
-  {id:'gpt54',name:'GPT-5.4',emoji:'🟢',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:400000,mmlu:85.0,gpqa:84.0,humaneval:85.0,math:91.0,sweBench:80.0,mmmu:null,apiIn:2.50,apiOut:15.00,startPrice:0,platforms:'Web, API, Mobile',description:'El caballo de batalla de OpenAI para producción. Excelente coste/rendimiento para la mayoría de aplicaciones.',features:['400K contexto','Producción mainstream','Function calling','Structured outputs','Batch API -50%'],strengths:['Coste/rendimiento','Producción','Versatilidad'],releaseDate:'2026'},
-  {id:'gpt54mini',name:'GPT-5.4 mini',emoji:'🟡',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:400000,mmlu:80.0,gpqa:77.0,humaneval:79.0,math:85.0,sweBench:71.0,mmmu:null,apiIn:0.75,apiOut:4.50,startPrice:0,platforms:'Web, API',description:'Versión compacta de GPT-5.4. Para tareas de alto volumen con buen razonamiento a bajo coste.',features:['Muy bajo coste','400K contexto','Alto throughput','Vision','Batch API'],strengths:['Precio','Velocidad','Volumen'],releaseDate:'2026'},
+  {id:'gpt55',name:'GPT-5.5',emoji:'<i class="ph ph-sparkle"></i>',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:400000,mmlu:88.0,gpqa:89.0,humaneval:90.0,math:95.0,sweBench:86.0,mmmu:null,apiIn:5.00,apiOut:30.00,startPrice:0,platforms:'Web, API, Mobile',description:'El buque insignia de OpenAI. Razonamiento profundo unificado (sin modelos o-series separados). Variante Pro ($30/$180) para tareas críticas.',features:['Razonamiento unificado','400K contexto','Multimodal completo','Variante Pro para máxima fiabilidad','Caché de entrada -90%','Agentes vía AgentKit'],strengths:['Razonamiento','Multimodalidad','Ecosistema'],releaseDate:'2026'},
+  {id:'gpt54',name:'GPT-5.4',emoji:'<i class="ph ph-sparkle"></i>',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:400000,mmlu:85.0,gpqa:84.0,humaneval:85.0,math:91.0,sweBench:80.0,mmmu:null,apiIn:2.50,apiOut:15.00,startPrice:0,platforms:'Web, API, Mobile',description:'El caballo de batalla de OpenAI para producción. Excelente coste/rendimiento para la mayoría de aplicaciones.',features:['400K contexto','Producción mainstream','Function calling','Structured outputs','Batch API -50%'],strengths:['Coste/rendimiento','Producción','Versatilidad'],releaseDate:'2026'},
+  {id:'gpt54mini',name:'GPT-5.4 mini',emoji:'<i class="ph ph-sparkle"></i>',vendor:'OpenAI',vclass:'v-openai',type:'Propietario',openSource:false,selfHosted:false,context:400000,mmlu:80.0,gpqa:77.0,humaneval:79.0,math:85.0,sweBench:71.0,mmmu:null,apiIn:0.75,apiOut:4.50,startPrice:0,platforms:'Web, API',description:'Versión compacta de GPT-5.4. Para tareas de alto volumen con buen razonamiento a bajo coste.',features:['Muy bajo coste','400K contexto','Alto throughput','Vision','Batch API'],strengths:['Precio','Velocidad','Volumen'],releaseDate:'2026'},
   // ── Google ──
-  {id:'gemini31pro',name:'Gemini 3.1 Pro',emoji:'🔷',vendor:'Google',vclass:'v-google',type:'Propietario',openSource:false,selfHosted:false,context:2000000,mmlu:86.0,gpqa:88.0,humaneval:86.0,math:93.0,sweBench:80.6,mmmu:83.6,apiIn:2.00,apiOut:12.00,startPrice:0,platforms:'Web, API, Mobile',description:'El modelo grande de Google. Contexto de 2 MILLONES de tokens, el mayor del mercado. Líder en razonamiento multimodal y computer use (OSWorld 78.4%).',features:['2M tokens de contexto ⭐','Líder multimodal (MMMU-Pro 83.6%)','Computer use (OSWorld 78.4%)','Video y audio nativo','Deep Research integrado','Google Search nativo'],strengths:['Contexto enorme','Multimodalidad','Computer use'],releaseDate:'2026'},
-  {id:'gemini35flash',name:'Gemini 3.5 Flash',emoji:'⚡',vendor:'Google',vclass:'v-google',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:83.0,gpqa:82.0,humaneval:87.0,math:90.0,sweBench:78.0,mmmu:null,apiIn:1.50,apiOut:9.00,startPrice:0,platforms:'Web, API',description:'El Flash de Google supera al 3.1 Pro en código y agentes siendo 25% más barato. Modelo por defecto de Antigravity 2.0.',features:['1M contexto','Supera a 3.1 Pro en código','Terminal-Bench 76.2%','Modelo por defecto de Antigravity','Muy rápido','Caché de entrada $0.15'],strengths:['Código','Precio','Velocidad'],releaseDate:'2026'},
+  {id:'gemini31pro',name:'Gemini 3.1 Pro',emoji:'<i class="ph ph-google-logo"></i>',vendor:'Google',vclass:'v-google',type:'Propietario',openSource:false,selfHosted:false,context:2000000,mmlu:86.0,gpqa:88.0,humaneval:86.0,math:93.0,sweBench:80.6,mmmu:83.6,apiIn:2.00,apiOut:12.00,startPrice:0,platforms:'Web, API, Mobile',description:'El modelo grande de Google. Contexto de 2 MILLONES de tokens, el mayor del mercado. Líder en razonamiento multimodal y computer use (OSWorld 78.4%).',features:['2M tokens de contexto ⭐','Líder multimodal (MMMU-Pro 83.6%)','Computer use (OSWorld 78.4%)','Video y audio nativo','Deep Research integrado','Google Search nativo'],strengths:['Contexto enorme','Multimodalidad','Computer use'],releaseDate:'2026'},
+  {id:'gemini35flash',name:'Gemini 3.5 Flash',emoji:'<i class="ph ph-lightning"></i>',vendor:'Google',vclass:'v-google',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:83.0,gpqa:82.0,humaneval:87.0,math:90.0,sweBench:78.0,mmmu:null,apiIn:1.50,apiOut:9.00,startPrice:0,platforms:'Web, API',description:'El Flash de Google supera al 3.1 Pro en código y agentes siendo 25% más barato. Modelo por defecto de Antigravity 2.0.',features:['1M contexto','Supera a 3.1 Pro en código','Terminal-Bench 76.2%','Modelo por defecto de Antigravity','Muy rápido','Caché de entrada $0.15'],strengths:['Código','Precio','Velocidad'],releaseDate:'2026'},
   // ── xAI ──
-  {id:'grok43',name:'Grok 4.3',emoji:'𝕏',vendor:'xAI',vclass:'v-xai',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:84.0,gpqa:86.0,humaneval:84.0,math:92.0,sweBench:76.0,mmmu:null,apiIn:1.25,apiOut:2.50,startPrice:0,platforms:'X, Web, API',description:'El modelo de xAI, agresivamente barato ($1.25/$2.50). Datos en tiempo real de X y búsqueda web integrada.',features:['1M contexto','Precio salida muy bajo','Datos en tiempo real de X','DeepSearch','Caché $0.20/1M','grok-build para código'],strengths:['Precio','Tiempo real','Razonamiento'],releaseDate:'Abr 2026'},
+  {id:'grok43',name:'Grok 4.3',emoji:'<i class="ph ph-x-logo"></i>',vendor:'xAI',vclass:'v-xai',type:'Propietario',openSource:false,selfHosted:false,context:1000000,mmlu:84.0,gpqa:86.0,humaneval:84.0,math:92.0,sweBench:76.0,mmmu:null,apiIn:1.25,apiOut:2.50,startPrice:0,platforms:'X, Web, API',description:'El modelo de xAI, agresivamente barato ($1.25/$2.50). Datos en tiempo real de X y búsqueda web integrada.',features:['1M contexto','Precio salida muy bajo','Datos en tiempo real de X','DeepSearch','Caché $0.20/1M','grok-build para código'],strengths:['Precio','Tiempo real','Razonamiento'],releaseDate:'Abr 2026'},
   // ── Open weights ──
-  {id:'deepseekv4',name:'DeepSeek V4 Pro',emoji:'🔬',vendor:'DeepSeek',vclass:'v-deepseek',type:'Open Source',openSource:true,selfHosted:true,context:256000,mmlu:85.0,gpqa:84.0,humaneval:88.0,math:92.0,sweBench:80.6,mmmu:null,apiIn:0.60,apiOut:2.50,startPrice:0,platforms:'Self-hosted, API DeepSeek',description:'El mejor modelo open weights del mundo. MoE de 1.6T parámetros (49B activos). SWE-bench 80.6%, empatado con Gemini 3.1 Pro.',features:['Mejor open weights (SWE-bench 80.6%)','1.6T parámetros (49B activos)','MoE eficiente','Licencia MIT','Variante Flash ultra barata','Caché de contexto'],strengths:['Open Source','Código','Razonamiento'],releaseDate:'2026'},
-  {id:'deepseekv4flash',name:'DeepSeek V4 Flash',emoji:'💨',vendor:'DeepSeek',vclass:'v-deepseek',type:'Open Source',openSource:true,selfHosted:true,context:128000,mmlu:79.0,gpqa:74.0,humaneval:80.0,math:84.0,sweBench:68.0,mmmu:null,apiIn:0.15,apiOut:0.75,startPrice:0,platforms:'Self-hosted, API DeepSeek',description:'Versión eficiente de V4: 284B parámetros (13B activos). Rendimiento sólido al precio más bajo del mercado.',features:['284B parámetros (13B activos)','Precio mínimo del mercado','Open Source','Self-hosteable','Ideal para volumen'],strengths:['Precio','Eficiencia','Open Source'],releaseDate:'2026'},
-  {id:'kimik26',name:'Kimi K2.6',emoji:'🌙',vendor:'Moonshot AI',vclass:'v-moonshot',type:'Open Source',openSource:true,selfHosted:true,context:262000,mmlu:84.0,gpqa:81.0,humaneval:86.0,math:89.0,sweBench:76.0,mmmu:null,apiIn:0.60,apiOut:2.50,startPrice:0,platforms:'Self-hosted, API Moonshot',description:'El flagship abierto de Moonshot AI: 1T parámetros MoE (32B activos, 384 expertos) con arquitectura Agent Swarm.',features:['1T parámetros (32B activos)','Arquitectura Agent Swarm','262K contexto','Open weights','Hasta 357 tok/s en proveedores'],strengths:['Agentes','Open Source','Velocidad'],releaseDate:'2026'},
-  {id:'qwen36',name:'Qwen 3.6 Plus',emoji:'🇨🇳',vendor:'Alibaba',vclass:'v-alibaba',type:'Open Source',openSource:true,selfHosted:true,context:1000000,mmlu:83.0,gpqa:80.0,humaneval:85.0,math:88.0,sweBench:78.0,mmmu:null,apiIn:0.40,apiOut:1.60,startPrice:0,platforms:'Self-hosted, Qwen API',description:'La mejor opción open weights para código agéntico exigente. 1M de contexto y licencia Apache 2.0 (segura para uso comercial).',features:['1M tokens de contexto','Apache 2.0 (uso comercial)','Top en código agéntico','Familia completa de tamaños','Multilingüe'],strengths:['Código agéntico','Licencia','Contexto'],releaseDate:'2026'},
-  {id:'glm51',name:'GLM-5.1',emoji:'🧩',vendor:'Zhipu AI',vclass:'v-zhipu',type:'Open Source',openSource:true,selfHosted:true,context:200000,mmlu:82.0,gpqa:79.0,humaneval:84.0,math:86.0,sweBench:77.0,mmmu:null,apiIn:0.60,apiOut:2.20,startPrice:0,platforms:'Self-hosted, Z.ai API',description:'Flagship abierto de Zhipu AI orientado a ingeniería agéntica y desarrollo de software de largo horizonte. Licencia MIT.',features:['Licencia MIT','Ingeniería agéntica','40B activos — barato de self-hostear','Fuerte en tareas largas','Open weights completos'],strengths:['Self-hosting','Código','Licencia'],releaseDate:'2026'},
-  {id:'llama4',name:'Llama 4 Maverick',emoji:'🦙',vendor:'Meta',vclass:'v-meta',type:'Open Source*',openSource:true,selfHosted:true,context:1000000,mmlu:80.0,gpqa:70.0,humaneval:77.0,math:80.0,sweBench:62.0,mmmu:null,apiIn:0.27,apiOut:0.85,startPrice:0,platforms:'Self-hosted, APIs externas',description:'MoE de Meta (~400B, 128 expertos). Multimodal nativo. *Restricciones en la UE y Meta ha virado hacia modelos cerrados; Behemoth nunca se publicó.',features:['MoE 400B (multimodal nativo)','1M contexto (Scout: 10M)','Muy barato en proveedores','⚠️ Prohibido para empresas UE','⚠️ Meta vira a closed-source'],strengths:['Precio','Multimodal','Ecosistema'],releaseDate:'Abr 2025'},
-  {id:'mistral3',name:'Mistral Large 3',emoji:'🌬️',vendor:'Mistral AI',vclass:'v-mistral',type:'Open Source',openSource:true,selfHosted:true,context:256000,mmlu:81.0,gpqa:76.0,humaneval:80.0,math:83.0,sweBench:70.0,mmmu:null,apiIn:2.00,apiOut:6.00,startPrice:0,platforms:'API, Self-hosted, Azure',description:'MoE europeo de 675B (41B activos) bajo Apache 2.0. La opción preferente para empresas de la UE: residencia de datos y cumplimiento RGPD.',features:['Apache 2.0','675B parámetros (41B activos)','Residencia de datos UE 🇪🇺','Multilingüe (ES, FR, DE...)','Familia Mistral 3 (14B/8B/3B)','Medium 3: $0.4/$2'],strengths:['Europa/RGPD','Open Source','Multilingüe'],releaseDate:'Nov 2025'},
+  {id:'deepseekv4',name:'DeepSeek V4 Pro',emoji:'<i class="ph ph-microscope"></i>',vendor:'DeepSeek',vclass:'v-deepseek',type:'Open Source',openSource:true,selfHosted:true,context:256000,mmlu:85.0,gpqa:84.0,humaneval:88.0,math:92.0,sweBench:80.6,mmmu:null,apiIn:0.60,apiOut:2.50,startPrice:0,platforms:'Self-hosted, API DeepSeek',description:'El mejor modelo open weights del mundo. MoE de 1.6T parámetros (49B activos). SWE-bench 80.6%, empatado con Gemini 3.1 Pro.',features:['Mejor open weights (SWE-bench 80.6%)','1.6T parámetros (49B activos)','MoE eficiente','Licencia MIT','Variante Flash ultra barata','Caché de contexto'],strengths:['Open Source','Código','Razonamiento'],releaseDate:'2026'},
+  {id:'deepseekv4flash',name:'DeepSeek V4 Flash',emoji:'<i class="ph ph-wind"></i>',vendor:'DeepSeek',vclass:'v-deepseek',type:'Open Source',openSource:true,selfHosted:true,context:128000,mmlu:79.0,gpqa:74.0,humaneval:80.0,math:84.0,sweBench:68.0,mmmu:null,apiIn:0.15,apiOut:0.75,startPrice:0,platforms:'Self-hosted, API DeepSeek',description:'Versión eficiente de V4: 284B parámetros (13B activos). Rendimiento sólido al precio más bajo del mercado.',features:['284B parámetros (13B activos)','Precio mínimo del mercado','Open Source','Self-hosteable','Ideal para volumen'],strengths:['Precio','Eficiencia','Open Source'],releaseDate:'2026'},
+  {id:'kimik26',name:'Kimi K2.6',emoji:'<i class="ph ph-moon"></i>',vendor:'Moonshot AI',vclass:'v-moonshot',type:'Open Source',openSource:true,selfHosted:true,context:262000,mmlu:84.0,gpqa:81.0,humaneval:86.0,math:89.0,sweBench:76.0,mmmu:null,apiIn:0.60,apiOut:2.50,startPrice:0,platforms:'Self-hosted, API Moonshot',description:'El flagship abierto de Moonshot AI: 1T parámetros MoE (32B activos, 384 expertos) con arquitectura Agent Swarm.',features:['1T parámetros (32B activos)','Arquitectura Agent Swarm','262K contexto','Open weights','Hasta 357 tok/s en proveedores'],strengths:['Agentes','Open Source','Velocidad'],releaseDate:'2026'},
+  {id:'qwen36',name:'Qwen 3.6 Plus',emoji:'<i class="ph ph-globe-hemisphere-east"></i>',vendor:'Alibaba',vclass:'v-alibaba',type:'Open Source',openSource:true,selfHosted:true,context:1000000,mmlu:83.0,gpqa:80.0,humaneval:85.0,math:88.0,sweBench:78.0,mmmu:null,apiIn:0.40,apiOut:1.60,startPrice:0,platforms:'Self-hosted, Qwen API',description:'La mejor opción open weights para código agéntico exigente. 1M de contexto y licencia Apache 2.0 (segura para uso comercial).',features:['1M tokens de contexto','Apache 2.0 (uso comercial)','Top en código agéntico','Familia completa de tamaños','Multilingüe'],strengths:['Código agéntico','Licencia','Contexto'],releaseDate:'2026'},
+  {id:'glm51',name:'GLM-5.1',emoji:'<i class="ph ph-puzzle-piece"></i>',vendor:'Zhipu AI',vclass:'v-zhipu',type:'Open Source',openSource:true,selfHosted:true,context:200000,mmlu:82.0,gpqa:79.0,humaneval:84.0,math:86.0,sweBench:77.0,mmmu:null,apiIn:0.60,apiOut:2.20,startPrice:0,platforms:'Self-hosted, Z.ai API',description:'Flagship abierto de Zhipu AI orientado a ingeniería agéntica y desarrollo de software de largo horizonte. Licencia MIT.',features:['Licencia MIT','Ingeniería agéntica','40B activos — barato de self-hostear','Fuerte en tareas largas','Open weights completos'],strengths:['Self-hosting','Código','Licencia'],releaseDate:'2026'},
+  {id:'llama4',name:'Llama 4 Maverick',emoji:'<i class="ph ph-meta-logo"></i>',vendor:'Meta',vclass:'v-meta',type:'Open Source*',openSource:true,selfHosted:true,context:1000000,mmlu:80.0,gpqa:70.0,humaneval:77.0,math:80.0,sweBench:62.0,mmmu:null,apiIn:0.27,apiOut:0.85,startPrice:0,platforms:'Self-hosted, APIs externas',description:'MoE de Meta (~400B, 128 expertos). Multimodal nativo. *Restricciones en la UE y Meta ha virado hacia modelos cerrados; Behemoth nunca se publicó.',features:['MoE 400B (multimodal nativo)','1M contexto (Scout: 10M)','Muy barato en proveedores','⚠️ Prohibido para empresas UE','⚠️ Meta vira a closed-source'],strengths:['Precio','Multimodal','Ecosistema'],releaseDate:'Abr 2025'},
+  {id:'mistral3',name:'Mistral Large 3',emoji:'<i class="ph ph-wind"></i>',vendor:'Mistral AI',vclass:'v-mistral',type:'Open Source',openSource:true,selfHosted:true,context:256000,mmlu:81.0,gpqa:76.0,humaneval:80.0,math:83.0,sweBench:70.0,mmmu:null,apiIn:2.00,apiOut:6.00,startPrice:0,platforms:'API, Self-hosted, Azure',description:'MoE europeo de 675B (41B activos) bajo Apache 2.0. La opción preferente para empresas de la UE: residencia de datos y cumplimiento RGPD.',features:['Apache 2.0','675B parámetros (41B activos)','Residencia de datos UE 🇪🇺','Multilingüe (ES, FR, DE...)','Familia Mistral 3 (14B/8B/3B)','Medium 3: $0.4/$2'],strengths:['Europa/RGPD','Open Source','Multilingüe'],releaseDate:'Nov 2025'},
 ];
 
 const TOOLS_DATA = {
   assistants: [
-    {id:'chatgpt',name:'ChatGPT',emoji:'🟢',vendor:'OpenAI',vclass:'v-openai',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'El asistente IA más popular del mundo, ahora con GPT-5.5. Agent mode para tareas autónomas, búsqueda, imágenes y análisis de datos.',features:['GPT-5.5 / GPT-5.4','Agent mode (tareas autónomas)','Búsqueda web en tiempo real','Generación de imágenes y vídeo (Sora)','Memory persistente','Voz avanzada','Code Interpreter','GPTs y Apps'],platforms:'Web, iOS, Android, API',highlight:false,badges:[]},
-    {id:'claudeai',name:'Claude.ai',emoji:'🟠',vendor:'Anthropic',vclass:'v-anthropic',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Anthropic con Claude Fable 5 y Opus 4.8. Referente en escritura, análisis de documentos largos y trabajo agéntico fiable.',features:['Claude Fable 5 / Opus 4.8','1M tokens de contexto','Artifacts (apps y docs interactivos)','Projects con memoria','Análisis de archivos (PDF, CSV, XLSX)','Conectores MCP (Drive, GitHub...)','Investigación autónoma (Research)'],platforms:'Web, iOS, Android, Desktop, API',highlight:false,badges:['New']},
-    {id:'gemini',name:'Gemini',emoji:'🔷',vendor:'Google',vclass:'v-google',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Google con Gemini 3.1 Pro. Integración total con Gmail, Drive y Docs. Deep Research para investigación autónoma.',features:['Gemini 3.1 Pro (2M contexto)','Integración Gmail/Drive/Docs','Deep Research autónomo','Video y audio nativo','Google Search nativo','Gems (asistentes custom)','Generación de imagen/vídeo (Veo)'],platforms:'Web, iOS, Android, API',highlight:false,badges:[]},
-    {id:'copilot',name:'Microsoft Copilot',emoji:'🟣',vendor:'Microsoft',vclass:'v-microsoft',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IA de Microsoft integrada en Windows, Edge y Microsoft 365. Combina modelos de OpenAI con los propios MAI de Microsoft.',features:['Integrado en Windows 11','Copilot en Word/Excel/PowerPoint','Agentes en Microsoft 365','Modelos OpenAI + MAI propios','Búsqueda Bing avanzada','Copilot Studio (agentes custom)'],platforms:'Windows, Web, iOS, Android, Office',highlight:false,badges:[]},
-    {id:'perplexity',name:'Perplexity AI',emoji:'🔍',vendor:'Perplexity',vclass:'v-perplexity',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Motor de respuestas con IA y fuentes verificadas. Su navegador Comet integra un asistente agéntico en la navegación.',features:['Búsqueda con fuentes en tiempo real','Navegador Comet (agéntico)','Elección de modelo (GPT, Claude, Gemini)','Deep Research','Páginas y reportes','API Sonar'],platforms:'Web, iOS, Android, Comet, API',highlight:false,badges:[]},
-    {id:'metaai',name:'Meta AI',emoji:'🔵',vendor:'Meta',vclass:'v-meta',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Meta integrado en WhatsApp, Instagram y Messenger. Basado en Llama 4. Gratis para miles de millones de usuarios.',features:['Integrado en WhatsApp/Instagram','Llama 4 multimodal','Generación de imágenes','Búsqueda web','Gratis en apps Meta','App standalone con feed social'],platforms:'WhatsApp, Instagram, Facebook, Web, App',highlight:false,badges:[]},
-    {id:'grok',name:'Grok',emoji:'𝕏',vendor:'xAI',vclass:'v-xai',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IA de xAI integrada en X. Grok 4.3 con datos en tiempo real de la red social y DeepSearch para investigación.',features:['Grok 4.3 (1M contexto)','Datos en tiempo real de X','DeepSearch (investigación)','Generación de imágenes (Aurora)','Voz','API muy barata ($1.25/$2.50)'],platforms:'X, Web, iOS, Android, API',highlight:false,badges:[]},
+    {id:'chatgpt',name:'ChatGPT',emoji:'<i class="ph ph-chat-circle-text"></i>',vendor:'OpenAI',vclass:'v-openai',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'El asistente IA más popular del mundo, ahora con GPT-5.5. Agent mode para tareas autónomas, búsqueda, imágenes y análisis de datos.',features:['GPT-5.5 / GPT-5.4','Agent mode (tareas autónomas)','Búsqueda web en tiempo real','Generación de imágenes y vídeo (Sora)','Memory persistente','Voz avanzada','Code Interpreter','GPTs y Apps'],platforms:'Web, iOS, Android, API',highlight:false,badges:[]},
+    {id:'claudeai',name:'Claude.ai',emoji:'<i class="ph ph-brain"></i>',vendor:'Anthropic',vclass:'v-anthropic',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Anthropic con Claude Fable 5 y Opus 4.8. Referente en escritura, análisis de documentos largos y trabajo agéntico fiable.',features:['Claude Fable 5 / Opus 4.8','1M tokens de contexto','Artifacts (apps y docs interactivos)','Projects con memoria','Análisis de archivos (PDF, CSV, XLSX)','Conectores MCP (Drive, GitHub...)','Investigación autónoma (Research)'],platforms:'Web, iOS, Android, Desktop, API',highlight:false,badges:['New']},
+    {id:'gemini',name:'Gemini',emoji:'<i class="ph ph-sparkle"></i>',vendor:'Google',vclass:'v-google',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Google con Gemini 3.1 Pro. Integración total con Gmail, Drive y Docs. Deep Research para investigación autónoma.',features:['Gemini 3.1 Pro (2M contexto)','Integración Gmail/Drive/Docs','Deep Research autónomo','Video y audio nativo','Google Search nativo','Gems (asistentes custom)','Generación de imagen/vídeo (Veo)'],platforms:'Web, iOS, Android, API',highlight:false,badges:[]},
+    {id:'copilot',name:'Microsoft Copilot',emoji:'<i class="ph ph-microsoft-logo"></i>',vendor:'Microsoft',vclass:'v-microsoft',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IA de Microsoft integrada en Windows, Edge y Microsoft 365. Combina modelos de OpenAI con los propios MAI de Microsoft.',features:['Integrado en Windows 11','Copilot en Word/Excel/PowerPoint','Agentes en Microsoft 365','Modelos OpenAI + MAI propios','Búsqueda Bing avanzada','Copilot Studio (agentes custom)'],platforms:'Windows, Web, iOS, Android, Office',highlight:false,badges:[]},
+    {id:'perplexity',name:'Perplexity AI',emoji:'<i class="ph ph-magnifying-glass"></i>',vendor:'Perplexity',vclass:'v-perplexity',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Motor de respuestas con IA y fuentes verificadas. Su navegador Comet integra un asistente agéntico en la navegación.',features:['Búsqueda con fuentes en tiempo real','Navegador Comet (agéntico)','Elección de modelo (GPT, Claude, Gemini)','Deep Research','Páginas y reportes','API Sonar'],platforms:'Web, iOS, Android, Comet, API',highlight:false,badges:[]},
+    {id:'metaai',name:'Meta AI',emoji:'<i class="ph ph-meta-logo"></i>',vendor:'Meta',vclass:'v-meta',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Asistente de Meta integrado en WhatsApp, Instagram y Messenger. Basado en Llama 4. Gratis para miles de millones de usuarios.',features:['Integrado en WhatsApp/Instagram','Llama 4 multimodal','Generación de imágenes','Búsqueda web','Gratis en apps Meta','App standalone con feed social'],platforms:'WhatsApp, Instagram, Facebook, Web, App',highlight:false,badges:[]},
+    {id:'grok',name:'Grok',emoji:'<i class="ph ph-x-logo"></i>',vendor:'xAI',vclass:'v-xai',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IA de xAI integrada en X. Grok 4.3 con datos en tiempo real de la red social y DeepSearch para investigación.',features:['Grok 4.3 (1M contexto)','Datos en tiempo real de X','DeepSearch (investigación)','Generación de imágenes (Aurora)','Voz','API muy barata ($1.25/$2.50)'],platforms:'X, Web, iOS, Android, API',highlight:false,badges:[]},
   ],
   devTools: [
-    {id:'claudecode',name:'Claude Code',emoji:'⌨️',vendor:'Anthropic',vclass:'v-anthropic',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'El agente de código de Anthropic, referente en 2026. Terminal, extensión de IDE, app de escritorio y web. Con Claude Fable 5 / Opus 4.8.',features:['Claude Fable 5 / Opus 4.8','Terminal + IDE + Desktop + Web','Subagentes en paralelo','Skills y hooks personalizables','MCP nativo','Plan mode y tareas en background','Agentes en la nube (ultrareview)','Pro $20 · Max $100/$200'],platforms:'macOS, Linux, Windows, VS Code, JetBrains, Web',highlight:true,badges:['⭐ Destacado']},
-    {id:'antigravity',name:'Antigravity 2.0',emoji:'🚀',vendor:'Google',vclass:'v-deepmind',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Suite multi-agente de Google relanzada en I/O 2026: app de escritorio rediseñada, CLI, SDK público y subagentes dinámicos. Gemini 3.5 Flash por defecto.',features:['Multi-agente con subagentes dinámicos','Browser Subagent','Antigravity CLI + SDK público','Tareas programadas en background','Gemini 3.5 Flash por defecto','Gratis con límites · Pro vía Google AI ($19.99)'],platforms:'macOS, Windows, Linux, CLI',highlight:true,badges:['⭐ Destacado','New']},
-    {id:'cursor',name:'Cursor',emoji:'🖱️',vendor:'Anysphere',vclass:'v-anysphere',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'El IDE con IA más adoptado. Fork de VS Code con agentes (Composer), modelos propios y soporte de todos los frontier models.',features:['Composer (agente multi-archivo)','Modelos propios + GPT/Claude/Gemini','Tab completions líderes','Agentes en paralelo y en nube','Reglas (.cursor/rules)','BugBot (revisión de PRs)','Pro $20 · Teams $40'],platforms:'Windows, macOS, Linux',highlight:false,badges:[]},
-    {id:'codex',name:'Codex',emoji:'📦',vendor:'OpenAI',vclass:'v-openai',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'Agente de código de OpenAI: CLI, extensión IDE y nube. Sandboxes aislados, abre PRs y ejecuta tareas en paralelo. Incluido en ChatGPT Plus/Pro.',features:['CLI + IDE + nube','Sandboxes aislados','Abre Pull Requests','Tareas paralelas asíncronas','GitHub integration','Incluido en Plus ($20) y Pro'],platforms:'macOS, Linux, Windows, Web',highlight:false,badges:[]},
-    {id:'copilotgh',name:'GitHub Copilot',emoji:'🐙',vendor:'GitHub/Microsoft',vclass:'v-microsoft',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'La IA de GitHub en VS Code y la web. Agent mode, coding agent autónomo asignable a issues, y elección de modelo (GPT, Claude, Gemini).',features:['Agent mode en VS Code','Coding agent (asignable a issues)','Multi-modelo (GPT, Claude, Gemini)','Code review automático','Free tier · Pro $10 · Pro+ $39','Integración total GitHub'],platforms:'VS Code, JetBrains, Web, CLI',highlight:false,badges:[]},
-    {id:'devindesktop',name:'Devin Desktop (ex Windsurf)',emoji:'🏄',vendor:'Cognition',vclass:'v-cognition',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Cognition compró Windsurf y en junio de 2026 lo relanzó como Devin Desktop: el IDE agéntico (Cascade) unido al agente autónomo Devin.',features:['Cascade (agente del IDE)','Integración con agente Devin','Rebrand junio 2026','Múltiples modelos','MCP','Teams $40/usuario'],platforms:'Windows, macOS, Linux',highlight:false,badges:['New']},
-    {id:'devin',name:'Devin',emoji:'🤖',vendor:'Cognition',vclass:'v-cognition',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'El "ingeniero de software IA" autónomo. Trabaja solo durante horas: entorno propio con IDE, navegador y terminal. Desde $20 (Core).',features:['Completamente autónomo','Entorno propio (IDE+browser+terminal)','Resuelve issues de GitHub','Sesiones paralelas','Core $20 · Team $500','Aprende el codebase'],platforms:'Web, Slack, API',highlight:false,badges:[]},
-    {id:'kiro',name:'Kiro',emoji:'👻',vendor:'AWS',vclass:'v-aws',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IDE agéntico de AWS centrado en spec-driven development: specs y hooks que estructuran el trabajo del agente antes de codificar.',features:['Spec-driven development','Hooks de automatización','Claude como modelo base','Integración AWS','Free tier disponible'],platforms:'Windows, macOS, Linux',highlight:false,badges:['New']},
-    {id:'zed',name:'Zed',emoji:'⚡',vendor:'Zed Industries',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:false,description:'Editor ultrarrápido en Rust con colaboración en tiempo real y panel de agentes (ACP) que soporta Claude Code y Gemini CLI.',features:['Ultrarrápido (Rust nativo)','Agent Client Protocol (ACP)','Soporta Claude Code, Gemini CLI','Colaboración en tiempo real','Open source','Edit predictions propias'],platforms:'macOS, Linux, Windows',highlight:false,badges:['OSS']},
-    {id:'aider',name:'Aider',emoji:'🔧',vendor:'Open Source',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Agente de código en terminal, open source. Edita directamente tu repositorio desde la línea de comandos con cualquier LLM.',features:['100% Open Source','CLI basado en git','Soporta 100+ LLMs','Funciona con Ollama local','Edición multi-archivo','Commits automáticos'],platforms:'macOS, Linux, Windows',highlight:false,badges:['OSS']},
-    {id:'jetbrains',name:'JetBrains AI + Junie',emoji:'🧠',vendor:'JetBrains',vclass:'v-oss',startPrice:10,type:'Propietario',openSource:false,selfHosted:false,description:'IA integrada en los IDEs de JetBrains. Junie es su agente de código autónomo dentro de IntelliJ, PyCharm, WebStorm, etc.',features:['Junie (agente autónomo)','Integrado en todos los IDEs JetBrains','Completado contextual','Múltiples LLMs','Generación de tests','Refactoring IA'],platforms:'Windows, macOS, Linux',highlight:false,badges:[]},
+    {id:'claudecode',name:'Claude Code',emoji:'<i class="ph ph-terminal-window"></i>',vendor:'Anthropic',vclass:'v-anthropic',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'El agente de código de Anthropic, referente en 2026. Terminal, extensión de IDE, app de escritorio y web. Con Claude Fable 5 / Opus 4.8.',features:['Claude Fable 5 / Opus 4.8','Terminal + IDE + Desktop + Web','Subagentes en paralelo','Skills y hooks personalizables','MCP nativo','Plan mode y tareas en background','Agentes en la nube (ultrareview)','Pro $20 · Max $100/$200'],platforms:'macOS, Linux, Windows, VS Code, JetBrains, Web',highlight:true,badges:['⭐ Destacado']},
+    {id:'antigravity',name:'Antigravity 2.0',emoji:'<i class="ph ph-rocket-launch"></i>',vendor:'Google',vclass:'v-deepmind',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Suite multi-agente de Google relanzada en I/O 2026: app de escritorio rediseñada, CLI, SDK público y subagentes dinámicos. Gemini 3.5 Flash por defecto.',features:['Multi-agente con subagentes dinámicos','Browser Subagent','Antigravity CLI + SDK público','Tareas programadas en background','Gemini 3.5 Flash por defecto','Gratis con límites · Pro vía Google AI ($19.99)'],platforms:'macOS, Windows, Linux, CLI',highlight:true,badges:['⭐ Destacado','New']},
+    {id:'cursor',name:'Cursor',emoji:'<i class="ph ph-cursor"></i>',vendor:'Anysphere',vclass:'v-anysphere',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'El IDE con IA más adoptado. Fork de VS Code con agentes (Composer), modelos propios y soporte de todos los frontier models.',features:['Composer (agente multi-archivo)','Modelos propios + GPT/Claude/Gemini','Tab completions líderes','Agentes en paralelo y en nube','Reglas (.cursor/rules)','BugBot (revisión de PRs)','Pro $20 · Teams $40'],platforms:'Windows, macOS, Linux',highlight:false,badges:[]},
+    {id:'codex',name:'Codex',emoji:'<i class="ph ph-code"></i>',vendor:'OpenAI',vclass:'v-openai',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'Agente de código de OpenAI: CLI, extensión IDE y nube. Sandboxes aislados, abre PRs y ejecuta tareas en paralelo. Incluido en ChatGPT Plus/Pro.',features:['CLI + IDE + nube','Sandboxes aislados','Abre Pull Requests','Tareas paralelas asíncronas','GitHub integration','Incluido en Plus ($20) y Pro'],platforms:'macOS, Linux, Windows, Web',highlight:false,badges:[]},
+    {id:'copilotgh',name:'GitHub Copilot',emoji:'<i class="ph ph-github-logo"></i>',vendor:'GitHub/Microsoft',vclass:'v-microsoft',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'La IA de GitHub en VS Code y la web. Agent mode, coding agent autónomo asignable a issues, y elección de modelo (GPT, Claude, Gemini).',features:['Agent mode en VS Code','Coding agent (asignable a issues)','Multi-modelo (GPT, Claude, Gemini)','Code review automático','Free tier · Pro $10 · Pro+ $39','Integración total GitHub'],platforms:'VS Code, JetBrains, Web, CLI',highlight:false,badges:[]},
+    {id:'devindesktop',name:'Devin Desktop (ex Windsurf)',emoji:'<i class="ph ph-desktop"></i>',vendor:'Cognition',vclass:'v-cognition',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Cognition compró Windsurf y en junio de 2026 lo relanzó como Devin Desktop: el IDE agéntico (Cascade) unido al agente autónomo Devin.',features:['Cascade (agente del IDE)','Integración con agente Devin','Rebrand junio 2026','Múltiples modelos','MCP','Teams $40/usuario'],platforms:'Windows, macOS, Linux',highlight:false,badges:['New']},
+    {id:'devin',name:'Devin',emoji:'<i class="ph ph-robot"></i>',vendor:'Cognition',vclass:'v-cognition',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'El "ingeniero de software IA" autónomo. Trabaja solo durante horas: entorno propio con IDE, navegador y terminal. Desde $20 (Core).',features:['Completamente autónomo','Entorno propio (IDE+browser+terminal)','Resuelve issues de GitHub','Sesiones paralelas','Core $20 · Team $500','Aprende el codebase'],platforms:'Web, Slack, API',highlight:false,badges:[]},
+    {id:'kiro',name:'Kiro',emoji:'<i class="ph ph-ghost"></i>',vendor:'AWS',vclass:'v-aws',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'IDE agéntico de AWS centrado en spec-driven development: specs y hooks que estructuran el trabajo del agente antes de codificar.',features:['Spec-driven development','Hooks de automatización','Claude como modelo base','Integración AWS','Free tier disponible'],platforms:'Windows, macOS, Linux',highlight:false,badges:['New']},
+    {id:'zed',name:'Zed',emoji:'<i class="ph ph-lightning"></i>',vendor:'Zed Industries',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:false,description:'Editor ultrarrápido en Rust con colaboración en tiempo real y panel de agentes (ACP) que soporta Claude Code y Gemini CLI.',features:['Ultrarrápido (Rust nativo)','Agent Client Protocol (ACP)','Soporta Claude Code, Gemini CLI','Colaboración en tiempo real','Open source','Edit predictions propias'],platforms:'macOS, Linux, Windows',highlight:false,badges:['OSS']},
+    {id:'aider',name:'Aider',emoji:'<i class="ph ph-wrench"></i>',vendor:'Open Source',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Agente de código en terminal, open source. Edita directamente tu repositorio desde la línea de comandos con cualquier LLM.',features:['100% Open Source','CLI basado en git','Soporta 100+ LLMs','Funciona con Ollama local','Edición multi-archivo','Commits automáticos'],platforms:'macOS, Linux, Windows',highlight:false,badges:['OSS']},
+    {id:'jetbrains',name:'JetBrains AI + Junie',emoji:'<i class="ph ph-code-block"></i>',vendor:'JetBrains',vclass:'v-oss',startPrice:10,type:'Propietario',openSource:false,selfHosted:false,description:'IA integrada en los IDEs de JetBrains. Junie es su agente de código autónomo dentro de IntelliJ, PyCharm, WebStorm, etc.',features:['Junie (agente autónomo)','Integrado en todos los IDEs JetBrains','Completado contextual','Múltiples LLMs','Generación de tests','Refactoring IA'],platforms:'Windows, macOS, Linux',highlight:false,badges:[]},
   ],
   agents: [
-    {id:'manus',name:'Manus',emoji:'🤖',vendor:'Manus AI',vclass:'v-monica',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'El agente general de referencia para trabajo tipo analista. App de escritorio con "My Computer" (mar 2026). La compra por Meta fue bloqueada por China en abril 2026.',features:['Navegador, archivos y terminal propios','Desktop app con My Computer','Investigación y reportes autónomos','Multi-step planning','Memoria persistente','Free · Basic $19 · Pro $199'],platforms:'Web, macOS, Windows',highlight:true,badges:['⭐ Líder']},
-    {id:'chatgptagent',name:'ChatGPT Agent',emoji:'🌐',vendor:'OpenAI',vclass:'v-openai',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'El modo agente de ChatGPT (fusión de Operator + Deep Research): navega, usa terminal virtual y completa tareas de principio a fin.',features:['Navegador virtual propio','Terminal y ejecución de código','Deep Research integrado','Formularios, compras, reservas','Conectores (Gmail, Drive...)','Incluido en Plus/Pro'],platforms:'Web (ChatGPT)',highlight:false,badges:[]},
-    {id:'openclaw',name:'OpenClaw 🦞',emoji:'🦞',vendor:'@steipete',vclass:'v-steipete',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Agente personal open source. Vive en WhatsApp/Telegram/Discord. Memoria 24/7, tareas proactivas y extensible con skills.',features:['WhatsApp/Telegram/Discord nativo','Memoria persistente 24/7','Cron jobs y tareas proactivas','Sistema de skills extensible','Self-hosted en tu PC','Open source (GitHub)'],platforms:'WhatsApp, Telegram, Discord, Web',highlight:true,badges:['⭐ OSS','Self-hosted']},
-    {id:'claudeagents',name:'Claude Managed Agents',emoji:'🟠',vendor:'Anthropic',vclass:'v-anthropic',startPrice:0,type:'Propietario (API)',openSource:false,selfHosted:false,description:'Agentes gestionados por API de Anthropic: Anthropic ejecuta el loop del agente en contenedores con bash, archivos y MCP. Sesiones persistentes y outcomes con rúbrica.',features:['Agente como recurso versionado','Contenedor sandbox por sesión','Outcomes con rúbrica (iterar→evaluar)','MCP + Skills + memoria','Deployments programados (cron)','Pago por uso (API)'],platforms:'API, SDK (Python/TS/Go...)',highlight:false,badges:['New','Beta']},
-    {id:'deepresearch',name:'Gemini Deep Research',emoji:'🔬',vendor:'Google',vclass:'v-google',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Agente de investigación de Google con Gemini 3.1 Pro. Navega la web autónomamente y genera informes detallados con fuentes.',features:['Investigación web autónoma','Informes con fuentes verificadas','Gemini 3.1 Pro (2M contexto)','Export a Google Docs','Múltiples rondas de búsqueda','Incluido en Google AI Pro'],platforms:'Web (Gemini)',highlight:false,badges:[]},
-    {id:'autogpt',name:'AutoGPT',emoji:'⚙️',vendor:'Significant Gravitas',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El pionero de los agentes autónomos open source (2023). Hoy es una plataforma low-code de agentes continuos.',features:['100% Open Source','Plataforma de agentes low-code','Memoria vectorial','Búsqueda web','Ejecución de código','Self-hosted'],platforms:'Self-hosted, Cloud',highlight:false,badges:['OSS','Pionero']},
+    {id:'manus',name:'Manus',emoji:'<i class="ph ph-robot"></i>',vendor:'Manus AI',vclass:'v-monica',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'El agente general de referencia para trabajo tipo analista. App de escritorio con "My Computer" (mar 2026). La compra por Meta fue bloqueada por China en abril 2026.',features:['Navegador, archivos y terminal propios','Desktop app con My Computer','Investigación y reportes autónomos','Multi-step planning','Memoria persistente','Free · Basic $19 · Pro $199'],platforms:'Web, macOS, Windows',highlight:true,badges:['⭐ Líder']},
+    {id:'chatgptagent',name:'ChatGPT Agent',emoji:'<i class="ph ph-globe"></i>',vendor:'OpenAI',vclass:'v-openai',startPrice:20,type:'Propietario',openSource:false,selfHosted:false,description:'El modo agente de ChatGPT (fusión de Operator + Deep Research): navega, usa terminal virtual y completa tareas de principio a fin.',features:['Navegador virtual propio','Terminal y ejecución de código','Deep Research integrado','Formularios, compras, reservas','Conectores (Gmail, Drive...)','Incluido en Plus/Pro'],platforms:'Web (ChatGPT)',highlight:false,badges:[]},
+    {id:'openclaw',name:'OpenClaw',emoji:'<i class="ph ph-bug"></i>',vendor:'@steipete',vclass:'v-steipete',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Agente personal open source. Vive en WhatsApp/Telegram/Discord. Memoria 24/7, tareas proactivas y extensible con skills.',features:['WhatsApp/Telegram/Discord nativo','Memoria persistente 24/7','Cron jobs y tareas proactivas','Sistema de skills extensible','Self-hosted en tu PC','Open source (GitHub)'],platforms:'WhatsApp, Telegram, Discord, Web',highlight:true,badges:['⭐ OSS','Self-hosted']},
+    {id:'claudeagents',name:'Claude Managed Agents',emoji:'<i class="ph ph-cloud-fog"></i>',vendor:'Anthropic',vclass:'v-anthropic',startPrice:0,type:'Propietario (API)',openSource:false,selfHosted:false,description:'Agentes gestionados por API de Anthropic: Anthropic ejecuta el loop del agente en contenedores con bash, archivos y MCP. Sesiones persistentes y outcomes con rúbrica.',features:['Agente como recurso versionado','Contenedor sandbox por sesión','Outcomes con rúbrica (iterar→evaluar)','MCP + Skills + memoria','Deployments programados (cron)','Pago por uso (API)'],platforms:'API, SDK (Python/TS/Go...)',highlight:false,badges:['New','Beta']},
+    {id:'deepresearch',name:'Gemini Deep Research',emoji:'<i class="ph ph-flask"></i>',vendor:'Google',vclass:'v-google',startPrice:0,type:'Propietario',openSource:false,selfHosted:false,description:'Agente de investigación de Google con Gemini 3.1 Pro. Navega la web autónomamente y genera informes detallados con fuentes.',features:['Investigación web autónoma','Informes con fuentes verificadas','Gemini 3.1 Pro (2M contexto)','Export a Google Docs','Múltiples rondas de búsqueda','Incluido en Google AI Pro'],platforms:'Web (Gemini)',highlight:false,badges:[]},
+    {id:'autogpt',name:'AutoGPT',emoji:'<i class="ph ph-gear"></i>',vendor:'Significant Gravitas',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El pionero de los agentes autónomos open source (2023). Hoy es una plataforma low-code de agentes continuos.',features:['100% Open Source','Plataforma de agentes low-code','Memoria vectorial','Búsqueda web','Ejecución de código','Self-hosted'],platforms:'Self-hosted, Cloud',highlight:false,badges:['OSS','Pionero']},
   ],
   frameworks: [
-    {id:'langgraph',name:'LangChain / LangGraph',emoji:'🔗',vendor:'LangChain Inc.',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El stack más desplegado en producción: ~400 empresas (Uber, LinkedIn, Klarna, JPMorgan...). LangGraph 1.x: grafos de estado, checkpointing y observabilidad con LangSmith.',features:['Grafos de estado con ciclos','Multi-agente nativo','Checkpointing y streaming','Human-in-the-loop','LangSmith (observabilidad)','~400 empresas en producción','LangGraph Platform (cloud)'],platforms:'Python, JavaScript',highlight:true,badges:['OSS','⭐ Más producción']},
-    {id:'crewai',name:'CrewAI',emoji:'👥',vendor:'CrewAI Inc.',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Framework de equipos de agentes con roles. La curva de aprendizaje más baja: un equipo funcional en ~20 líneas. Flows para control determinista.',features:['Agentes con roles y objetivos','Prototipado más rápido','Flows (control determinista)','Memoria compartida del equipo','Delegación entre agentes','CrewAI AMP (enterprise)'],platforms:'Python',highlight:false,badges:['OSS']},
-    {id:'msagentfw',name:'Microsoft Agent Framework',emoji:'🔄',vendor:'Microsoft',vclass:'v-microsoft',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'GA en abril 2026: fusiona AutoGen y Semantic Kernel en un único SDK .NET y Python. El camino enterprise de Microsoft para agentes.',features:['Fusión AutoGen + Semantic Kernel','GA abril 2026 (v1.0)','.NET y Python','Workflows multi-agente','Integración Azure AI Foundry','Enterprise-ready'],platforms:'.NET, Python',highlight:false,badges:['OSS','New']},
-    {id:'openaiagents',name:'OpenAI Agents SDK / AgentKit',emoji:'🌊',vendor:'OpenAI',vclass:'v-openai',startPrice:0,type:'OSS',openSource:true,selfHosted:false,description:'SDK oficial de OpenAI para agentes con handoffs, más AgentKit (Agent Builder visual, ChatKit, evals) para construir agentes de producto.',features:['Handoffs entre agentes','Guardrails integrados','AgentKit (builder visual)','Trazabilidad nativa','Open source (MIT)','Optimizado para GPT-5.x'],platforms:'Python, TypeScript',highlight:false,badges:['OSS']},
-    {id:'claudesdk',name:'Claude Agent SDK',emoji:'🟠',vendor:'Anthropic',vclass:'v-anthropic',startPrice:0,type:'OSS',openSource:true,selfHosted:false,description:'El SDK que da vida a Claude Code, abierto para construir agentes propios. Herramientas de archivos y shell integradas y la integración MCP más profunda.',features:['Herramientas file/bash integradas','Integración MCP más profunda','Subagentes y hooks','Skills reutilizables','Computer use','Python y TypeScript'],platforms:'Python, TypeScript',highlight:false,badges:['OSS','New']},
-    {id:'googleadk',name:'Google ADK',emoji:'🔷',vendor:'Google',vclass:'v-google',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Agent Development Kit de Google. El más fuerte para agentes multimodales (vídeo, voz, imagen y texto en un mismo flujo). Protocolo A2A.',features:['Multimodal (vídeo, voz, imagen)','Protocolo A2A (agent-to-agent)','Despliegue en Vertex AI','Multi-agente jerárquico','Open source','Optimizado para Gemini'],platforms:'Python, Java',highlight:false,badges:['OSS','New']},
-    {id:'mcp',name:'MCP (Model Context Protocol)',emoji:'🔌',vendor:'Anthropic / Linux Foundation',vclass:'v-oss',startPrice:0,type:'Estándar abierto',openSource:true,selfHosted:true,description:'El estándar de facto para conectar agentes con herramientas y datos. Soportado por Claude, OpenAI, Google, VS Code, JetBrains y miles de servidores.',features:['Estándar industria 2026','Miles de servidores MCP','Soportado por todos los vendors','Tools, resources y prompts','Local (stdio) y remoto (HTTP)','Donado a la comunidad'],platforms:'Cualquier lenguaje',highlight:true,badges:['OSS','⭐ Estándar']},
+    {id:'langgraph',name:'LangChain / LangGraph',emoji:'<i class="ph ph-link"></i>',vendor:'LangChain Inc.',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El stack más desplegado en producción: ~400 empresas (Uber, LinkedIn, Klarna, JPMorgan...). LangGraph 1.x: grafos de estado, checkpointing y observabilidad con LangSmith.',features:['Grafos de estado con ciclos','Multi-agente nativo','Checkpointing y streaming','Human-in-the-loop','LangSmith (observabilidad)','~400 empresas en producción','LangGraph Platform (cloud)'],platforms:'Python, JavaScript',highlight:true,badges:['OSS','⭐ Más producción']},
+    {id:'crewai',name:'CrewAI',emoji:'<i class="ph ph-users"></i>',vendor:'CrewAI Inc.',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Framework de equipos de agentes con roles. La curva de aprendizaje más baja: un equipo funcional en ~20 líneas. Flows para control determinista.',features:['Agentes con roles y objetivos','Prototipado más rápido','Flows (control determinista)','Memoria compartida del equipo','Delegación entre agentes','CrewAI AMP (enterprise)'],platforms:'Python',highlight:false,badges:['OSS']},
+    {id:'msagentfw',name:'Microsoft Agent Framework',emoji:'<i class="ph ph-arrows-clockwise"></i>',vendor:'Microsoft',vclass:'v-microsoft',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'GA en abril 2026: fusiona AutoGen y Semantic Kernel en un único SDK .NET y Python. El camino enterprise de Microsoft para agentes.',features:['Fusión AutoGen + Semantic Kernel','GA abril 2026 (v1.0)','.NET y Python','Workflows multi-agente','Integración Azure AI Foundry','Enterprise-ready'],platforms:'.NET, Python',highlight:false,badges:['OSS','New']},
+    {id:'openaiagents',name:'OpenAI Agents SDK / AgentKit',emoji:'<i class="ph ph-waves"></i>',vendor:'OpenAI',vclass:'v-openai',startPrice:0,type:'OSS',openSource:true,selfHosted:false,description:'SDK oficial de OpenAI para agentes con handoffs, más AgentKit (Agent Builder visual, ChatKit, evals) para construir agentes de producto.',features:['Handoffs entre agentes','Guardrails integrados','AgentKit (builder visual)','Trazabilidad nativa','Open source (MIT)','Optimizado para GPT-5.x'],platforms:'Python, TypeScript',highlight:false,badges:['OSS']},
+    {id:'claudesdk',name:'Claude Agent SDK',emoji:'<i class="ph ph-brackets-curly"></i>',vendor:'Anthropic',vclass:'v-anthropic',startPrice:0,type:'OSS',openSource:true,selfHosted:false,description:'El SDK que da vida a Claude Code, abierto para construir agentes propios. Herramientas de archivos y shell integradas y la integración MCP más profunda.',features:['Herramientas file/bash integradas','Integración MCP más profunda','Subagentes y hooks','Skills reutilizables','Computer use','Python y TypeScript'],platforms:'Python, TypeScript',highlight:false,badges:['OSS','New']},
+    {id:'googleadk',name:'Google ADK',emoji:'<i class="ph ph-cube"></i>',vendor:'Google',vclass:'v-google',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Agent Development Kit de Google. El más fuerte para agentes multimodales (vídeo, voz, imagen y texto en un mismo flujo). Protocolo A2A.',features:['Multimodal (vídeo, voz, imagen)','Protocolo A2A (agent-to-agent)','Despliegue en Vertex AI','Multi-agente jerárquico','Open source','Optimizado para Gemini'],platforms:'Python, Java',highlight:false,badges:['OSS','New']},
+    {id:'mcp',name:'MCP (Model Context Protocol)',emoji:'<i class="ph ph-plug"></i>',vendor:'Anthropic / Linux Foundation',vclass:'v-oss',startPrice:0,type:'Estándar abierto',openSource:true,selfHosted:true,description:'El estándar de facto para conectar agentes con herramientas y datos. Soportado por Claude, OpenAI, Google, VS Code, JetBrains y miles de servidores.',features:['Estándar industria 2026','Miles de servidores MCP','Soportado por todos los vendors','Tools, resources y prompts','Local (stdio) y remoto (HTTP)','Donado a la comunidad'],platforms:'Cualquier lenguaje',highlight:true,badges:['OSS','⭐ Estándar']},
   ],
   selfHosted: [
-    {id:'ollama',name:'Ollama',emoji:'🦙',vendor:'Ollama',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'La forma más fácil de ejecutar LLMs localmente. Un comando para correr DeepSeek, Qwen, Llama, GLM... Ahora con app de escritorio y cloud opcional.',features:['1 comando para cualquier modelo','Cientos de modelos (DeepSeek, Qwen...)','API compatible con OpenAI','App de escritorio','GPU acceleration (CUDA, Metal)','Docker support'],platforms:'macOS, Linux, Windows',highlight:true,badges:['OSS','⭐ Más popular']},
-    {id:'vllm',name:'vLLM',emoji:'🚄',vendor:'OSS / PyTorch',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El motor de inferencia estándar para servir LLMs en producción con GPUs. PagedAttention, batching continuo y throughput máximo.',features:['Estándar de producción','PagedAttention','Batching continuo','Multi-GPU / multi-nodo','API OpenAI-compatible','Proyecto PyTorch Foundation'],platforms:'Linux (GPU)',highlight:false,badges:['OSS','Producción']},
-    {id:'lmstudio',name:'LM Studio',emoji:'🎛️',vendor:'LM Studio',vclass:'v-oss',startPrice:0,type:'Gratis/Propietario',openSource:false,selfHosted:true,description:'Interfaz gráfica para ejecutar LLMs localmente. Descarga modelos de Hugging Face con un clic. Gratis también para uso comercial.',features:['GUI amigable','Descarga desde Hugging Face','API local OpenAI-compatible','MLX (Apple Silicon) y GGUF','GPU acceleration','Sin cuenta necesaria'],platforms:'macOS, Windows, Linux',highlight:false,badges:[]},
-    {id:'openclaudeinfra',name:'OpenClaude (servidor)',emoji:'🦀',vendor:'Quanlai Li',vclass:'v-oss',startPrice:0,type:'OSS (MIT)',openSource:true,selfHosted:true,description:'Servidor de inferencia en Rust. Ultrarrápido, binario único de 15MB. API compatible con OpenAI.',features:['Binario único ~15MB','Rust nativo (<2ms latencia)','API OpenAI-compatible','WASM plugins','Air-gapped capaz','cargo install openclaude'],platforms:'macOS, Linux, Windows',highlight:false,badges:['OSS']},
-    {id:'janai',name:'Jan.ai',emoji:'🌙',vendor:'Jan',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Alternativa open source a LM Studio. App de escritorio para correr LLMs localmente con interfaz limpia y asistentes propios.',features:['GUI limpia','Modelos de Hugging Face','API local OpenAI-compatible','Asistentes personalizables','100% offline','Open source'],platforms:'macOS, Windows, Linux',highlight:false,badges:['OSS']},
-    {id:'localai',name:'LocalAI',emoji:'🏠',vendor:'Ettore Di Giacinto',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'API REST compatible con OpenAI que corre localmente. Soporta texto, imágenes, audio y embeddings.',features:['API compatible con OpenAI','GGUF, GPTQ support','Imágenes (Stable Diffusion)','Audio (Whisper, TTS)','Docker-friendly','Sin GPU requerida (opcional)'],platforms:'Docker, Linux, macOS, Windows',highlight:false,badges:['OSS']},
-    {id:'llamacpp',name:'llama.cpp',emoji:'⚙️',vendor:'Georgi Gerganov',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El motor C++ de inferencia local. Ultra eficiente, es la base de Ollama, LM Studio, Jan y casi todo el ecosistema local.',features:['C++ puro, máxima eficiencia','GGUF format estándar','CPU inference excelente','GPU opcional (CUDA, Metal, Vulkan)','Quantización Q2 a Q8','Server mode incluido'],platforms:'macOS, Linux, Windows, Android, iOS',highlight:false,badges:['OSS','Base tecnológica']},
+    {id:'ollama',name:'Ollama',emoji:'<i class="ph ph-hard-drives"></i>',vendor:'Ollama',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'La forma más fácil de ejecutar LLMs localmente. Un comando para correr DeepSeek, Qwen, Llama, GLM... Ahora con app de escritorio y cloud opcional.',features:['1 comando para cualquier modelo','Cientos de modelos (DeepSeek, Qwen...)','API compatible con OpenAI','App de escritorio','GPU acceleration (CUDA, Metal)','Docker support'],platforms:'macOS, Linux, Windows',highlight:true,badges:['OSS','⭐ Más popular']},
+    {id:'vllm',name:'vLLM',emoji:'<i class="ph ph-train"></i>',vendor:'OSS / PyTorch',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El motor de inferencia estándar para servir LLMs en producción con GPUs. PagedAttention, batching continuo y throughput máximo.',features:['Estándar de producción','PagedAttention','Batching continuo','Multi-GPU / multi-nodo','API OpenAI-compatible','Proyecto PyTorch Foundation'],platforms:'Linux (GPU)',highlight:false,badges:['OSS','Producción']},
+    {id:'lmstudio',name:'LM Studio',emoji:'<i class="ph ph-faders"></i>',vendor:'LM Studio',vclass:'v-oss',startPrice:0,type:'Gratis/Propietario',openSource:false,selfHosted:true,description:'Interfaz gráfica para ejecutar LLMs localmente. Descarga modelos de Hugging Face con un clic. Gratis también para uso comercial.',features:['GUI amigable','Descarga desde Hugging Face','API local OpenAI-compatible','MLX (Apple Silicon) y GGUF','GPU acceleration','Sin cuenta necesaria'],platforms:'macOS, Windows, Linux',highlight:false,badges:[]},
+    {id:'openclaudeinfra',name:'OpenClaude (servidor)',emoji:'<i class="ph ph-terminal"></i>',vendor:'Quanlai Li',vclass:'v-oss',startPrice:0,type:'OSS (MIT)',openSource:true,selfHosted:true,description:'Servidor de inferencia en Rust. Ultrarrápido, binario único de 15MB. API compatible con OpenAI.',features:['Binario único ~15MB','Rust nativo (<2ms latencia)','API OpenAI-compatible','WASM plugins','Air-gapped capaz','cargo install openclaude'],platforms:'macOS, Linux, Windows',highlight:false,badges:['OSS']},
+    {id:'janai',name:'Jan.ai',emoji:'<i class="ph ph-moon"></i>',vendor:'Jan',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'Alternativa open source a LM Studio. App de escritorio para correr LLMs localmente con interfaz limpia y asistentes propios.',features:['GUI limpia','Modelos de Hugging Face','API local OpenAI-compatible','Asistentes personalizables','100% offline','Open source'],platforms:'macOS, Windows, Linux',highlight:false,badges:['OSS']},
+    {id:'localai',name:'LocalAI',emoji:'<i class="ph ph-house"></i>',vendor:'Ettore Di Giacinto',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'API REST compatible con OpenAI que corre localmente. Soporta texto, imágenes, audio y embeddings.',features:['API compatible con OpenAI','GGUF, GPTQ support','Imágenes (Stable Diffusion)','Audio (Whisper, TTS)','Docker-friendly','Sin GPU requerida (opcional)'],platforms:'Docker, Linux, macOS, Windows',highlight:false,badges:['OSS']},
+    {id:'llamacpp',name:'llama.cpp',emoji:'<i class="ph ph-gear-six"></i>',vendor:'Georgi Gerganov',vclass:'v-oss',startPrice:0,type:'OSS',openSource:true,selfHosted:true,description:'El motor C++ de inferencia local. Ultra eficiente, es la base de Ollama, LM Studio, Jan y casi todo el ecosistema local.',features:['C++ puro, máxima eficiencia','GGUF format estándar','CPU inference excelente','GPU opcional (CUDA, Metal, Vulkan)','Quantización Q2 a Q8','Server mode incluido'],platforms:'macOS, Linux, Windows, Android, iOS',highlight:false,badges:['OSS','Base tecnológica']},
   ],
 };
 
 const VENDORS_PRICING = [
   {
-    vendor:'OpenAI (ChatGPT)', emoji:'🟢', vclass:'v-openai',
+    vendor:'OpenAI (ChatGPT)', emoji:'<i class="ph ph-sparkle"></i>', vclass:'v-openai',
     plans:[
       {name:'Free',price:0,period:'mes',features:['GPT-5.2 limitado','Búsqueda web','Imágenes básicas'],highlight:false},
       {name:'Go',price:8,period:'mes',features:['Más uso que Free','GPT-5.4','Pensado para mercados sensibles a precio'],highlight:false},
@@ -555,7 +557,7 @@ const VENDORS_PRICING = [
     ]
   },
   {
-    vendor:'Anthropic (Claude)', emoji:'🟠', vclass:'v-anthropic',
+    vendor:'Anthropic (Claude)', emoji:'<i class="ph ph-brain"></i>', vclass:'v-anthropic',
     plans:[
       {name:'Free',price:0,period:'mes',features:['Claude Sonnet 4.6 con límites diarios','Upload de archivos','Artifacts'],highlight:false},
       {name:'Pro',price:20,period:'mes',features:['Claude Opus 4.8 y Fable 5','Claude Code incluido','Projects y conectores MCP','Research','5x más uso que Free'],highlight:true},
@@ -564,7 +566,7 @@ const VENDORS_PRICING = [
     ]
   },
   {
-    vendor:'Google (Gemini)', emoji:'🔷', vclass:'v-google',
+    vendor:'Google (Gemini)', emoji:'<i class="ph ph-google-logo"></i>', vclass:'v-google',
     plans:[
       {name:'Free',price:0,period:'mes',features:['Gemini 3.5 Flash','Antigravity con límites','Integración Google básica'],highlight:false},
       {name:'Google AI Pro',price:19.99,period:'mes',features:['Gemini 3.1 Pro','Deep Research','Antigravity Pro','NotebookLM ampliado','Veo (vídeo)','2TB storage'],highlight:true},
@@ -573,7 +575,7 @@ const VENDORS_PRICING = [
     ]
   },
   {
-    vendor:'Cursor', emoji:'🖱️', vclass:'v-anysphere',
+    vendor:'Cursor', emoji:'<i class="ph ph-cursor"></i>', vclass:'v-anysphere',
     plans:[
       {name:'Hobby',price:0,period:'mes',features:['Uso limitado del agente','Tab completions','Modelos básicos'],highlight:false},
       {name:'Pro',price:20,period:'mes',features:['Agente con todos los modelos frontier','$20 de uso incluido','Background agents','BugBot'],highlight:true},
@@ -582,7 +584,7 @@ const VENDORS_PRICING = [
     ]
   },
   {
-    vendor:'GitHub Copilot', emoji:'🐙', vclass:'v-microsoft',
+    vendor:'GitHub Copilot', emoji:'<i class="ph ph-github-logo"></i>', vclass:'v-microsoft',
     plans:[
       {name:'Free',price:0,period:'mes',features:['2000 completions/mes','50 chats premium/mes','Agent mode limitado'],highlight:false},
       {name:'Pro',price:10,period:'mes',features:['Completions ilimitadas','Agent mode','Coding agent','Multi-modelo (GPT, Claude, Gemini)'],highlight:true},
@@ -590,7 +592,7 @@ const VENDORS_PRICING = [
     ]
   },
   {
-    vendor:'Perplexity', emoji:'🔍', vclass:'v-perplexity',
+    vendor:'Perplexity', emoji:'<i class="ph ph-magnifying-glass"></i>', vclass:'v-perplexity',
     plans:[
       {name:'Free',price:0,period:'mes',features:['Búsquedas estándar','Comet browser','3 Pro searches/día'],highlight:false},
       {name:'Pro',price:20,period:'mes',features:['Pro searches ilimitadas','GPT, Claude, Gemini a elegir','Deep Research','Comet con asistente completo'],highlight:true},
@@ -641,20 +643,20 @@ function switchTab(tab){
    OVERVIEW
 ════════════════════════════════════════════════════════ */
 const OV_LAYERS = [
-  {num:6,color:'var(--gray)',bg:'rgba(148,163,184,.15)',title:'🖥️ Infraestructura Self-Hosted',sub:'Ejecuta modelos en tu hardware — sin API keys, sin enviar datos, sin límites de uso',badge:'Privacidad total',
+  {num:6,color:'var(--gray)',bg:'rgba(148,163,184,.15)',title:'<i class="ph ph-hard-drives"></i> Infraestructura Self-Hosted',sub:'Ejecuta modelos en tu hardware — sin API keys, sin enviar datos, sin límites de uso',badge:'Privacidad total',
    items:[{t:'Ollama ⭐',tip:'El más popular: descarga y corre modelos con 1 comando'},{t:'vLLM',tip:'El motor estándar para servir LLMs en producción con GPU'},{t:'LM Studio',tip:'GUI para LLMs locales, descarga de Hugging Face'},{t:'OpenClaude',tip:'Servidor Rust, API OpenAI-compatible, <2ms latencia'},{t:'Jan.ai',tip:'Alternativa OSS a LM Studio, app de escritorio'},{t:'LocalAI',tip:'API REST local compatible con OpenAI, texto+imagen+audio'},{t:'llama.cpp',tip:'La base C++ que usa todo el ecosistema local'}]},
-  {num:5,color:'var(--green)',bg:'rgba(34,197,94,.1)',title:'🔧 Frameworks de Agentes & Protocolos',sub:'Para desarrolladores — orquestan agentes con roles, memoria y herramientas. MCP es el estándar de conexión',badge:'Dev / Técnico',
+  {num:5,color:'var(--green)',bg:'rgba(34,197,94,.1)',title:'<i class="ph ph-wrench"></i> Frameworks de Agentes & Protocolos',sub:'Para desarrolladores — orquestan agentes con roles, memoria y herramientas. MCP es el estándar de conexión',badge:'Dev / Técnico',
    items:[{t:'LangChain / LangGraph ⭐',tip:'El stack con más producción: ~400 empresas (Uber, LinkedIn, Klarna...)'},{t:'CrewAI',tip:'Equipos de agentes con roles — la curva más baja'},{t:'MS Agent Framework',tip:'Fusión de AutoGen + Semantic Kernel (GA abril 2026)'},{t:'OpenAI Agents SDK',tip:'SDK oficial de OpenAI + AgentKit (builder visual)'},{t:'Claude Agent SDK',tip:'El SDK de Claude Code, con la integración MCP más profunda'},{t:'Google ADK',tip:'El más fuerte en agentes multimodales; protocolo A2A'},{t:'MCP ⭐',tip:'Model Context Protocol — el estándar de facto para conectar agentes con herramientas'}]},
-  {num:4,color:'var(--orange)',bg:'rgba(249,115,22,.1)',title:'🤖 Agentes IA Generales',sub:'Autónomos — reciben un objetivo y actúan en el mundo real: web, email, archivos, apps',badge:'Alta autonomía',
-   items:[{t:'Manus ⭐',tip:'Referente en trabajo tipo analista; desktop app con My Computer'},{t:'OpenClaw 🦞 ⭐',tip:'OSS, vive en WhatsApp/Telegram, memoria 24/7 — @steipete'},{t:'ChatGPT Agent',tip:'Fusión de Operator + Deep Research; navega y ejecuta tareas'},{t:'Claude Managed Agents',tip:'Agentes gestionados por API: Anthropic ejecuta el loop en sandbox'},{t:'Gemini Deep Research',tip:'Investigación web autónoma con fuentes verificadas'},{t:'AutoGPT',tip:'El pionero open source de los agentes autónomos'}]},
-  {num:3,color:'var(--cyan)',bg:'rgba(6,182,212,.1)',title:'💻 IDEs con IA & Agentes de Código',sub:'Integrados en el editor o terminal — planifican, escriben, depuran y despliegan software de forma autónoma',badge:'Dev / Código',
+  {num:4,color:'var(--orange)',bg:'rgba(249,115,22,.1)',title:'<i class="ph ph-robot"></i> Agentes IA Generales',sub:'Autónomos — reciben un objetivo y actúan en el mundo real: web, email, archivos, apps',badge:'Alta autonomía',
+   items:[{t:'Manus ⭐',tip:'Referente en trabajo tipo analista; desktop app con My Computer'},{t:'OpenClaw <i class="ph ph-bug"></i> ⭐',tip:'OSS, vive en WhatsApp/Telegram, memoria 24/7 — @steipete'},{t:'ChatGPT Agent',tip:'Fusión de Operator + Deep Research; navega y ejecuta tareas'},{t:'Claude Managed Agents',tip:'Agentes gestionados por API: Anthropic ejecuta el loop en sandbox'},{t:'Gemini Deep Research',tip:'Investigación web autónoma con fuentes verificadas'},{t:'AutoGPT',tip:'El pionero open source de los agentes autónomos'}]},
+  {num:3,color:'var(--cyan)',bg:'rgba(6,182,212,.1)',title:'<i class="ph ph-code"></i> IDEs con IA & Agentes de Código',sub:'Integrados en el editor o terminal — planifican, escriben, depuran y despliegan software de forma autónoma',badge:'Dev / Código',
    dividers:[{after:-1,label:'Agentes de Código'},{after:3,label:'IDEs y Editores'}],
    items:[{t:'Claude Code ⭐',tip:'Anthropic — el agente de código referente: terminal, IDE, web y subagentes',star:true},{t:'Codex (OpenAI)',tip:'CLI + nube — abre PRs, tareas paralelas en sandbox'},{t:'Devin',tip:'El "ingeniero IA" autónomo de Cognition — desde $20'},{t:'GitHub Copilot',tip:'Agent mode + coding agent asignable a issues'},{t:'Antigravity 2.0 ⭐',tip:'Google — suite multi-agente con CLI, SDK y Browser Subagent',star:true},{t:'Cursor',tip:'IDE fork de VS Code — el más adoptado por devs'},{t:'Devin Desktop',tip:'ex-Windsurf — Cognition lo relanzó en junio 2026'},{t:'Kiro (AWS)',tip:'Spec-driven development con hooks'},{t:'Zed',tip:'Editor en Rust con Agent Client Protocol'},{t:'JetBrains Junie',tip:'Agente autónomo en IntelliJ, PyCharm...'},{t:'Aider',tip:'CLI agente OSS — edita repos desde terminal'}]},
-  {num:2,color:'var(--blue)',bg:'rgba(59,130,246,.1)',title:'💬 Asistentes IA',sub:'Conversacionales — responden y cada vez más actúan (agent modes). Basados en LLMs de capa 1',badge:'Reactivo → Agéntico',
+  {num:2,color:'var(--blue)',bg:'rgba(59,130,246,.1)',title:'<i class="ph ph-chat-circle-dots"></i> Asistentes IA',sub:'Conversacionales — responden y cada vez más actúan (agent modes). Basados en LLMs de capa 1',badge:'Reactivo → Agéntico',
    items:[{t:'ChatGPT',tip:'OpenAI — el más popular del mundo, con Agent mode'},{t:'Claude.ai',tip:'Anthropic — líder en escritura, análisis y Artifacts'},{t:'Gemini',tip:'Google — integrado con Gmail, Drive, Docs'},{t:'Microsoft Copilot',tip:'Microsoft — integrado en Windows y Office'},{t:'Perplexity',tip:'Búsqueda con fuentes + navegador agéntico Comet'},{t:'Meta AI',tip:'Meta — en WhatsApp, Instagram, Facebook'},{t:'Grok (xAI)',tip:'Grok 4.3 — datos de X en tiempo real'}]},
-  {num:1,color:'var(--purple)',bg:'rgba(139,92,246,.12)',title:'🧠 Modelos Fundacionales',sub:'El cerebro — todo el ecosistema se construye sobre ellos. Son el motor de razonamiento',badge:'Capa base',
+  {num:1,color:'var(--purple)',bg:'rgba(139,92,246,.12)',title:'<i class="ph ph-brain"></i> Modelos Fundacionales',sub:'El cerebro — todo el ecosistema se construye sobre ellos. Son el motor de razonamiento',badge:'Capa base',
    dividers:[{after:-1,label:'Propietarios (cerrados)'},{after:4,label:'Open Weights (libres)'}],
-   items:[{t:'Claude Fable 5 / Opus 4.8 ⭐',tip:'Anthropic — líder SWE-bench Verified (95%); Opus 4.8 es el Opus más capaz'},{t:'GPT-5.5 (OpenAI)',tip:'Flagship de OpenAI con razonamiento unificado; variante Pro'},{t:'Gemini 3.1 Pro (Google)',tip:'2M de contexto — el mayor del mercado; líder multimodal'},{t:'Grok 4.3 (xAI)',tip:'1M contexto a precio mínimo ($1.25/$2.50)'},{t:'DeepSeek V4 ⭐',tip:'El mejor open weights: SWE-bench 80.6%, licencia MIT'},{t:'Kimi K2.6 (Moonshot)',tip:'1T parámetros MoE con Agent Swarm'},{t:'Qwen 3.6 (Alibaba)',tip:'Apache 2.0, 1M contexto, top en código agéntico'},{t:'GLM-5.1 (Zhipu)',tip:'MIT, orientado a ingeniería agéntica'},{t:'Llama 4 (Meta)',tip:'Multimodal nativo — restricciones en la UE'},{t:'Mistral Large 3 🇪🇺',tip:'Apache 2.0, europeo — la opción RGPD'}]},
+   items:[{t:'Claude Fable 5 / Opus 4.8 ⭐',tip:'Anthropic — líder SWE-bench Verified (95%); Opus 4.8 es el Opus más capaz'},{t:'GPT-5.5 (OpenAI)',tip:'Flagship de OpenAI con razonamiento unificado; variante Pro'},{t:'Gemini 3.1 Pro (Google)',tip:'2M de contexto — el mayor del mercado; líder multimodal'},{t:'Grok 4.3 (xAI)',tip:'1M contexto a precio mínimo ($1.25/$2.50)'},{t:'DeepSeek V4 ⭐',tip:'El mejor open weights: SWE-bench 80.6%, licencia MIT'},{t:'Kimi K2.6 (Moonshot)',tip:'1T parámetros MoE con Agent Swarm'},{t:'Qwen 3.6 (Alibaba)',tip:'Apache 2.0, 1M contexto, top en código agéntico'},{t:'GLM-5.1 (Zhipu)',tip:'MIT, orientado a ingeniería agéntica'},{t:'Llama 4 (Meta)',tip:'Multimodal nativo — restricciones en la UE'},{t:'Mistral Large 3 <i class="ph ph-flag"></i>',tip:'Apache 2.0, europeo — la opción RGPD'}]},
 ];
 
 function renderOverview(){
@@ -663,7 +665,7 @@ function renderOverview(){
   [...OV_LAYERS].reverse().forEach(layer=>{
     const div=document.createElement('div');
     div.className='ov-layer';
-    div.style=`background:linear-gradient(135deg,${layer.bg} 0%,transparent 100%);border-color:${layer.color}33`;
+      div.style=`background-image:linear-gradient(135deg,${layer.bg} 0%,transparent 100%);border-color:${layer.color}33`;
     div.style.setProperty('--hc',layer.color);
     div.onmouseenter=()=>{div.style.boxShadow=`0 8px 32px ${layer.color}22`;div.style.transform='translateY(-2px)'};
     div.onmouseleave=()=>{div.style.boxShadow='';div.style.transform=''};
@@ -673,7 +675,7 @@ function renderOverview(){
       const starred=item.t.includes('⭐')||item.star;
       tagsHtml+=`<span class="ov-tag" title="${item.tip}" style="${starred?`border-color:${layer.color}66;background:${layer.bg}`:''}">
         <span class="ov-tag-dot" style="background:${layer.color}"></span>
-        ${item.t.replace('⭐','<span class="ov-star">⭐</span>')}
+        ${item.t.replace('⭐','<span class="ov-star"><i class="ph-fill ph-star"></i></span>')}
       </span>`;
     });
     tagsHtml+='</div>';
@@ -787,11 +789,11 @@ function renderModels(){
    TOOLS
 ════════════════════════════════════════════════════════ */
 const TOOL_CATS=[
-  {id:'assistants',label:'💬 Asistentes',data:TOOLS_DATA.assistants,category:'assistant'},
-  {id:'devTools',label:'💻 IDEs & Dev',data:TOOLS_DATA.devTools,category:'devTool'},
-  {id:'agents',label:'🤖 Agentes Generales',data:TOOLS_DATA.agents,category:'agent'},
-  {id:'frameworks',label:'🔧 Frameworks',data:TOOLS_DATA.frameworks,category:'framework'},
-  {id:'selfHosted',label:'🖥️ Self-Hosted',data:TOOLS_DATA.selfHosted,category:'selfHosted'},
+  {id:'assistants',label:'<i class="ph ph-chat-circle-dots"></i> Asistentes',data:TOOLS_DATA.assistants,category:'assistant'},
+  {id:'devTools',label:'<i class="ph ph-code"></i> IDEs & Dev',data:TOOLS_DATA.devTools,category:'devTool'},
+  {id:'agents',label:'<i class="ph ph-robot"></i> Agentes Generales',data:TOOLS_DATA.agents,category:'agent'},
+  {id:'frameworks',label:'<i class="ph ph-wrench"></i> Frameworks',data:TOOLS_DATA.frameworks,category:'framework'},
+  {id:'selfHosted',label:'<i class="ph ph-hard-drives"></i> Self-Hosted',data:TOOLS_DATA.selfHosted,category:'selfHosted'},
 ];
 
 function renderTools(){
@@ -849,7 +851,7 @@ function renderPricing(){
 
   // API pricing table
   html+=`<div style="margin-top:12px">
-    <h3 style="font-size:18px;font-weight:800;margin-bottom:8px">📡 Precios de API (por 1M tokens)</h3>
+    <h3 style="font-size:18px;font-weight:800;margin-bottom:8px"><i class="ph ph-broadcast"></i> Precios de API (por 1M tokens)</h3>
     <p style="font-size:13px;color:var(--muted);margin-bottom:4px">Precios aproximados de junio 2026. Pueden variar con descuentos por volumen.</p>
     <div class="api-table-wrap"><table class="api-table">
       <thead><tr><th>Modelo</th><th>Empresa</th><th>Tipo</th><th>Entrada ($/1M)</th><th>Salida ($/1M)</th><th>Contexto</th></tr></thead>
@@ -1025,11 +1027,11 @@ const IG_QUAD=[
 ];
 
 const IG_DECISION=[
-  {q:'Pregunta puntual',a:'ChatGPT · Claude.ai · Gemini',c:'var(--blue)',i:'💬'},
-  {q:'Escribir / depurar código',a:'Claude Code · Cursor · Antigravity 2.0',c:'var(--cyan)',i:'💻'},
-  {q:'Tarea compleja autónoma',a:'Manus · ChatGPT Agent · OpenClaw',c:'var(--orange)',i:'🤖'},
-  {q:'Crear mis propios agentes',a:'LangGraph · CrewAI · Claude Agent SDK',c:'var(--green)',i:'🔧'},
-  {q:'Privacidad / sin coste API',a:'Ollama · vLLM · LM Studio',c:'var(--pink)',i:'🖥️'},
+  {q:'Pregunta puntual',a:'ChatGPT · Claude.ai · Gemini',c:'var(--blue)',i:'<i class="ph ph-chat-circle-dots"></i>'},
+  {q:'Escribir / depurar código',a:'Claude Code · Cursor · Antigravity 2.0',c:'var(--cyan)',i:'<i class="ph ph-code"></i>'},
+  {q:'Tarea compleja autónoma',a:'Manus · ChatGPT Agent · OpenClaw',c:'var(--orange)',i:'<i class="ph ph-robot"></i>'},
+  {q:'Crear mis propios agentes',a:'LangGraph · CrewAI · Claude Agent SDK',c:'var(--green)',i:'<i class="ph ph-wrench"></i>'},
+  {q:'Privacidad / sin coste API',a:'Ollama · vLLM · LM Studio',c:'var(--pink)',i:'<i class="ph ph-hard-drives"></i>'},
 ];
 
 function renderInfographics(){
@@ -1040,7 +1042,7 @@ function renderInfographics(){
   let html='';
 
   // ── Stats hero ──
-  html+=`<div class="ig-panel"><h3>📊 El ecosistema IA en cifras</h3><div class="ig-sub">Fotografía de junio 2026 · ámbito general</div>
+  html+=`<div class="ig-panel"><h3><i class="ph ph-chart-pie-slice"></i> El ecosistema IA en cifras</h3><div class="ig-sub">Fotografía de junio 2026 · ámbito general</div>
     <div class="ig-stats">
       <div class="ig-stat"><div class="ig-stat-num gradient-text">6</div><div class="ig-stat-label">Capas del ecosistema</div></div>
       <div class="ig-stat"><div class="ig-stat-num gradient-text">${nModels}</div><div class="ig-stat-label">Modelos LLM</div></div>
@@ -1050,14 +1052,14 @@ function renderInfographics(){
     </div></div>`;
 
   // ── Poster ──
-  html+=`<div class="ig-panel"><h3>🖼️ Póster del ecosistema</h3><div class="ig-sub">El panorama completo en una imagen — <a href="assets/infografia_ecosistema_2026.svg" target="_blank" rel="noopener" style="color:var(--purple);font-weight:700">abrir / descargar SVG ↗</a></div>
+  html+=`<div class="ig-panel"><h3><i class="ph ph-image"></i> Póster del ecosistema</h3><div class="ig-sub">El panorama completo en una imagen — <a href="assets/infografia_ecosistema_2026.svg" target="_blank" rel="noopener" style="color:var(--purple);font-weight:700">abrir / descargar SVG ↗</a></div>
     <div class="ig-poster"><img src="assets/infografia_ecosistema_2026.svg" alt="Infografía del ecosistema de la IA 2026 — las 6 capas" loading="lazy"/></div></div>`;
 
   // ── 6-layer stack ──
   const layers=[...OV_LAYERS].sort((a,b)=>a.num-b.num);
-  html+=`<div class="ig-panel"><h3>🗺️ El ecosistema en 6 capas</h3><div class="ig-sub">Desde los modelos base hasta los agentes autónomos · ámbito general</div><div class="ig-stack">`;
+  html+=`<div class="ig-panel"><h3><i class="ph ph-layers"></i> El ecosistema en 6 capas</h3><div class="ig-sub">Desde los modelos base hasta los agentes autónomos · ámbito general</div><div class="ig-stack">`;
   layers.forEach(L=>{
-    const items=L.items.slice(0,6).map(it=>it.t.replace(/⭐/g,'').replace(/\(este\)/g,'').replace(/\s+/g,' ').trim()).join(' · ');
+    const items=L.items.slice(0,6).map(it=>it.t.replace(/⭐/g,'').replace(/<i[^>]+><\/i>/g,'').replace(/\(este\)/g,'').replace(/\s+/g,' ').trim()).join(' · ');
     html+=`<div class="ig-band" style="background:linear-gradient(90deg,${L.bg},transparent);border-color:${L.color}33">
       <div class="ig-band-num" style="background:${L.color}">${L.num}</div>
       <div class="ig-band-body"><div class="ig-band-title" style="color:${L.color}">${L.title}</div><div class="ig-band-items">${items}</div></div>
@@ -1068,7 +1070,7 @@ function renderInfographics(){
 
   // ── SWE-bench ranking ──
   const ranked=MODELS.filter(m=>m.sweBench!=null).sort((a,b)=>b.sweBench-a.sweBench);
-  html+=`<div class="ig-panel"><h3>🏆 Liga SWE-bench Verified</h3><div class="ig-sub">Capacidad real de ingeniería de software, % (mayor es mejor) · ámbito particular</div><div class="ig-rank">`;
+  html+=`<div class="ig-panel"><h3><i class="ph ph-trophy"></i> Liga SWE-bench Verified</h3><div class="ig-sub">Capacidad real de ingeniería de software, % (mayor es mejor) · ámbito particular</div><div class="ig-rank">`;
   ranked.forEach(m=>{
     const col=VENDOR_COLOR[m.vendor]||'#7c3aed';
     html+=`<div class="ig-rank-row"><div class="ig-rank-name">${m.emoji} ${m.name}</div>
@@ -1079,7 +1081,7 @@ function renderInfographics(){
   // ── Price map ──
   const priced=MODELS.filter(m=>m.apiIn!=null).sort((a,b)=>a.apiIn-b.apiIn);
   const maxP=Math.max(...priced.map(m=>m.apiIn));
-  html+=`<div class="ig-panel"><h3>💰 Mapa de precios de API (entrada)</h3><div class="ig-sub">$ por millón de tokens — del más barato al más caro · ámbito particular</div><div class="ig-rank">`;
+  html+=`<div class="ig-panel"><h3><i class="ph ph-coin"></i> Mapa de precios de API (entrada)</h3><div class="ig-sub">$ por millón de tokens — del más barato al más caro · ámbito particular</div><div class="ig-rank">`;
   priced.forEach(m=>{
     const col=VENDOR_COLOR[m.vendor]||'#7c3aed';
     const w=Math.max(3,Math.sqrt(m.apiIn/maxP)*100);
@@ -1090,7 +1092,7 @@ function renderInfographics(){
   html+=`</div><p class="text-xs text-muted" style="margin-top:10px">* Los modelos open weights pueden además autoalojarse sin coste de API. Precios aproximados de junio 2026.</p></div>`;
 
   // ── Quadrant ──
-  html+=`<div class="ig-panel"><h3>🧭 Autonomía vs Privacidad</h3><div class="ig-sub">Dónde se sitúa cada categoría del ecosistema · ámbito general</div>
+  html+=`<div class="ig-panel"><h3><i class="ph ph-compass"></i> Autonomía vs Privacidad</h3><div class="ig-sub">Dónde se sitúa cada categoría del ecosistema · ámbito general</div>
     <div class="ig-quad"><span class="ig-quad-axx">Autonomía →</span><span class="ig-quad-axy">Privacidad →</span>`;
   IG_QUAD.forEach(d=>{
     html+=`<div class="ig-quad-dot" style="left:${d.x*100}%;top:${(1-d.y)*100}%;background:${d.c}"><span>${d.l}</span></div>`;
@@ -1098,14 +1100,14 @@ function renderInfographics(){
   html+=`</div></div>`;
 
   // ── Timeline ──
-  html+=`<div class="ig-panel"><h3>🗓️ Hitos de 2026</h3><div class="ig-sub">Los movimientos que han marcado el año · ámbito particular</div><div class="ig-timeline">`;
+  html+=`<div class="ig-panel"><h3><i class="ph ph-calendar-blank"></i> Hitos de 2026</h3><div class="ig-sub">Los movimientos que han marcado el año · ámbito particular</div><div class="ig-timeline">`;
   IG_TIMELINE.forEach(t=>{
     html+=`<div class="ig-tl-row"><div class="ig-tl-dot" style="background:${t.color}"></div><div class="ig-tl-body"><div class="ig-tl-date" style="color:${t.color}">${t.date}</div><div class="ig-tl-text">${t.text}</div></div></div>`;
   });
   html+=`</div></div>`;
 
   // ── Decision ──
-  html+=`<div class="ig-panel"><h3>🎯 ¿Qué herramienta usar?</h3><div class="ig-sub">Ruta rápida según tu necesidad · ámbito particular</div><div class="ig-decision">`;
+  html+=`<div class="ig-panel"><h3><i class="ph ph-target"></i> ¿Qué herramienta usar?</h3><div class="ig-sub">Ruta rápida según tu necesidad · ámbito particular</div><div class="ig-decision">`;
   IG_DECISION.forEach(d=>{
     html+=`<div class="ig-dec-row"><div class="ig-dec-q" style="border-left-color:${d.c}"><span style="font-size:18px">${d.i}</span> ${d.q}</div><div class="ig-dec-arrow" style="color:${d.c}">→</div><div class="ig-dec-a">${d.a}</div></div>`;
   });

@@ -1,14 +1,14 @@
-# 🌐 El Panorama Global de la IA — 2026
+# El Panorama Global de la IA — 2026
 
-![Panorama Global IA 2026](panorama_ia_2026_1781163905014.png)
+![Panorama Global IA 2026](infografia_ecosistema_2026.svg)
 
 > **Actualizado: junio 2026**
 
 ---
 
-## 🗺️ Las 6 Capas del Ecosistema IA
+## Las 6 Capas del Ecosistema IA
 
-### 🧠 CAPA 1 — Modelos Fundacionales
+### CAPA 1 — Modelos Fundacionales
 > *El cerebro. Todo lo demás se construye sobre ellos.*
 
 | Modelo | Empresa | Tipo | API ($/1M in/out) |
@@ -24,13 +24,13 @@
 | Qwen 3.6 | Alibaba | **Open weights (Apache 2.0)** | ~$0.4 / $1.6 |
 | GLM-5.1 | Zhipu AI | **Open weights (MIT)** | ~$0.6 / $2.2 |
 | Llama 4 | Meta | Open weights (⚠️ no UE) | ~$0.27 / $0.85 |
-| Mistral Large 3 🇪🇺 | Mistral AI | **Open weights (Apache 2.0)** | $2 / $6 |
+| Mistral Large 3 | Mistral AI | **Open weights (Apache 2.0)** | $2 / $6 |
 
 **Claves de 2026:** Claude Fable 5 lidera SWE-bench Verified (95%); Gemini 3.1 Pro tiene el mayor contexto (2M tokens); los open weights chinos (DeepSeek, Kimi, Qwen, GLM) dominan la gama abierta; Mistral es la opción europea/RGPD.
 
 ---
 
-### 💬 CAPA 2 — Asistentes IA (cada vez más agénticos)
+### CAPA 2 — Asistentes IA (cada vez más agénticos)
 > *Responden cuando les preguntas... y ya empiezan a actuar solos (agent modes).*
 
 | Asistente | Empresa | Acceso |
@@ -44,7 +44,7 @@
 
 ---
 
-### 💻 CAPA 3 — IDEs con IA & Agentes de Código
+### CAPA 3 — IDEs con IA & Agentes de Código
 > *Integrados en el editor o terminal. Escriben, depuran y despliegan software.*
 
 | Herramienta | Empresa | Integración |
@@ -67,21 +67,21 @@
 
 ---
 
-### 🤖 CAPA 4 — Agentes IA Generales (Autónomos)
+### CAPA 4 — Agentes IA Generales (Autónomos)
 > *Reciben un objetivo y actúan en el mundo real: web, email, archivos, apps...*
 
 | Agente | Empresa | Destacado por |
 |---|---|---|
 | ⭐ **Manus** | Manus AI | Referente en trabajo tipo analista; desktop app "My Computer" |
 | **ChatGPT Agent** | OpenAI | Fusión Operator + Deep Research; navega y ejecuta |
-| **OpenClaw** 🦞 | @steipete | Open source, vive en WhatsApp/Telegram, memoria 24/7 |
+| **OpenClaw** | @steipete | Open source, vive en WhatsApp/Telegram, memoria 24/7 |
 | **Claude Managed Agents** | Anthropic | Agentes por API: el proveedor ejecuta el loop en sandbox |
 | **Gemini Deep Research** | Google | Investigación profunda autónoma |
 | **AutoGPT** | Significant Gravitas | Open source, pionero (2023) |
 
 ---
 
-### 🔧 CAPA 5 — Frameworks de Agentes & Protocolos
+### CAPA 5 — Frameworks de Agentes & Protocolos
 > *Para desarrolladores. Permiten crear equipos de agentes IA con roles distintos.*
 
 | Framework | Uso |
@@ -96,7 +96,7 @@
 
 ---
 
-### 🖥️ CAPA 6 — Infraestructura Self-Hosted
+### CAPA 6 — Infraestructura Self-Hosted
 > *Ejecuta modelos en tu propia máquina. Sin API keys, sin límites, sin enviar datos.*
 
 | Herramienta | Destacado |
@@ -110,7 +110,7 @@
 
 ---
 
-## 🎯 ¿Dónde encaja cada cosa?
+## ¿Dónde encaja cada cosa?
 
 ```
 PREGUNTA RÁPIDA → Asistente IA (ChatGPT, Claude.ai, Gemini)
