@@ -1,7 +1,7 @@
 # 🌐 Panorama Global de la IA — 2026
 
 > Informe interactivo del ecosistema de Inteligencia Artificial para el **Master en IA Aplicada**.  
-> Benchmarks, precios, comparativas y más de 40 herramientas organizadas en 6 capas.
+> Benchmarks, precios, comparativas y más de 40 herramientas organizadas en 6 capas. **Actualizado: junio 2026.**
 
 🔗 **[Ver informe en vivo → pjbarberoiglesias.github.io/Panorama-IA](https://pjbarberoiglesias.github.io/Panorama-IA/)**
 
@@ -14,27 +14,27 @@
 flowchart TB
     subgraph L6["🖥️ CAPA 6 — Infraestructura Self-Hosted  |  PRIVACIDAD TOTAL"]
         direction LR
-        Ollama["🦙 Ollama ⭐"] --- LMStudio["🎛️ LM Studio"] --- LocalAI["🏠 LocalAI"] --- JanAI["🌙 Jan.ai"] --- llamacpp["⚙️ llama.cpp"]
+        Ollama["🦙 Ollama ⭐"] --- vLLM["🚄 vLLM"] --- LMStudio["🎛️ LM Studio"] --- JanAI["🌙 Jan.ai"] --- llamacpp["⚙️ llama.cpp"]
     end
-    subgraph L5["🔧 CAPA 5 — Frameworks Multi-Agente  |  DEV / TÉCNICO"]
+    subgraph L5["🔧 CAPA 5 — Frameworks de Agentes & MCP  |  DEV / TÉCNICO"]
         direction LR
-        LangChain["🔗 LangChain"] --- LangGraph["📊 LangGraph"] --- CrewAI["👥 CrewAI"] --- AutoGen["🔄 AutoGen"] --- SK["🎯 Semantic Kernel"]
+        LangGraph["🔗 LangGraph ⭐"] --- CrewAI["👥 CrewAI"] --- MSAF["🔄 MS Agent Framework"] --- ClaudeSDK["🟠 Claude Agent SDK"] --- MCP["🔌 MCP ⭐"]
     end
     subgraph L4["🤖 CAPA 4 — Agentes IA Generales  |  ALTA AUTONOMÍA"]
         direction LR
-        Manus["🤖 Manus ⭐"] --- OpenHands["🙌 OpenHands"] --- Operator["🌐 Operator"] --- DeepR["🔬 Deep Research"]
+        Manus["🤖 Manus ⭐"] --- ChatGPTAgent["🌐 ChatGPT Agent"] --- OpenClaw["🦞 OpenClaw"] --- ManagedAgents["🟠 Managed Agents"] --- DeepR["🔬 Deep Research"]
     end
     subgraph L3["💻 CAPA 3 — IDEs con IA & Agentes de Código  |  DEV / CÓDIGO"]
         direction LR
-        AG["🚀 Antigravity ⭐"] --- Cursor["🖱️ Cursor"] --- WS["🏄 Windsurf"] --- CC["⌨️ Claude Code"] --- Codex["📦 Codex"]
+        CC["⌨️ Claude Code ⭐"] --- AG["🚀 Antigravity 2.0 ⭐"] --- Cursor["🖱️ Cursor"] --- Codex["📦 Codex"] --- DevinD["🏄 Devin Desktop"]
     end
-    subgraph L2["💬 CAPA 2 — Asistentes IA  |  REACTIVOS"]
+    subgraph L2["💬 CAPA 2 — Asistentes IA  |  REACTIVOS → AGÉNTICOS"]
         direction LR
         ChatGPT["🟢 ChatGPT"] --- ClaudeAI["🟠 Claude.ai"] --- GeminiA["🔷 Gemini"] --- Copilot["🟣 Copilot"] --- Perp["🔍 Perplexity"]
     end
     subgraph L1["🧠 CAPA 1 — Modelos Fundacionales  |  CAPA BASE"]
         direction LR
-        GPT["GPT-4o/o3"] --- Cl["Claude 3.7"] --- Gem["Gemini 2.5"] --- Ll["Llama 3.3"] --- DS["DeepSeek V3/R1"]
+        Cl["Claude Fable 5 / Opus 4.8"] --- GPT["GPT-5.5"] --- Gem["Gemini 3.1 Pro"] --- DS["DeepSeek V4"] --- Kimi["Kimi K2.6"]
     end
 
     L1 --> L2
@@ -63,11 +63,12 @@ quadrantChart
     quadrant-2 Privado pero basico
     quadrant-3 Uso personal en la nube
     quadrant-4 Muy potente, datos en la nube
-    Asistentes IA: [0.15, 0.05]
-    IDEs con IA: [0.45, 0.35]
-    Agentes Generales: [0.85, 0.08]
+    Asistentes IA: [0.25, 0.08]
+    Agentes de Codigo: [0.62, 0.30]
+    Agentes Generales: [0.88, 0.10]
     Self-Hosted: [0.50, 0.92]
-    Frameworks: [0.62, 0.65]
+    Frameworks: [0.65, 0.65]
+    OpenClaw self-hosted: [0.80, 0.85]
 ```
 
 ---
@@ -78,53 +79,60 @@ quadrantChart
 mindmap
   root((🌐 Ecosistema IA 2026))
     🧠 Modelos LLM
-      OpenAI
-        GPT-4o
-        o3 / o4-mini
       Anthropic
-        Claude 3.7 Sonnet
-        Claude 3.5 Haiku
+        Claude Fable 5 ⭐
+        Claude Opus 4.8
+        Claude Sonnet 4.6
+        Claude Haiku 4.5
+      OpenAI
+        GPT-5.5 / 5.5 Pro
+        GPT-5.4 / mini
       Google
-        Gemini 2.5 Pro
-        Gemini 2.0 Flash
-        Gemma 3
-      Open Source
-        Llama 3.3 70B
-        DeepSeek V3 / R1
-        Mistral Large 2
-        Qwen 2.5 / Phi-4
+        Gemini 3.1 Pro (2M ctx)
+        Gemini 3.5 Flash
+      xAI
+        Grok 4.3
+      Open Weights
+        DeepSeek V4 Pro/Flash
+        Kimi K2.6
+        Qwen 3.6
+        GLM-5.1
+        Llama 4
+        Mistral Large 3 🇪🇺
     💬 Asistentes
-      ChatGPT
+      ChatGPT (Agent mode)
       Claude.ai
       Gemini
       Microsoft Copilot
-      Perplexity
-      Grok 3
-    💻 IDEs con IA
-      Antigravity ⭐
+      Perplexity + Comet
+      Grok
+    💻 IDEs & Agentes de Código
+      Claude Code ⭐
+      Antigravity 2.0 ⭐
       Cursor
-      Windsurf
-      VS Code + Copilot
-      Zed / Aider
-      JetBrains AI
+      Codex (OpenAI)
+      GitHub Copilot
+      Devin / Devin Desktop
+      Kiro · Zed · Aider · Junie
     🤖 Agentes Generales
       Manus ⭐
-      OpenHands
-      OpenAI Operator
+      ChatGPT Agent
+      OpenClaw 🦞
+      Claude Managed Agents
       Gemini Deep Research
-      AutoGPT
     🔧 Frameworks
-      LangChain
-      LangGraph
+      LangChain / LangGraph
       CrewAI
-      AutoGen
-      Semantic Kernel
+      MS Agent Framework
       OpenAI Agents SDK
+      Claude Agent SDK
+      Google ADK
+      MCP (estándar) ⭐
     🖥️ Self-Hosted
       Ollama ⭐
+      vLLM
       LM Studio
-      LocalAI
-      Jan.ai
+      Jan.ai · LocalAI
       llama.cpp
 ```
 
@@ -135,10 +143,10 @@ mindmap
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {'xyChart': {'backgroundColor': '#ffffff', 'plotColorPalette': '#7c3aed'}}}}%%
 xychart-beta
-    title "MMLU % — Conocimiento General (mayor es mejor)"
-    x-axis ["o3/o4", "DeepSeek R1", "Gemini 2.5 Pro", "GPT-4o", "DeepSeek V3", "Claude 3.7", "Gemma 3", "Llama 3.3", "Qwen 2.5", "Phi-4"]
-    y-axis 78 --> 99
-    bar [96.7, 90.8, 89.0, 88.7, 88.5, 88.3, 82.2, 86.0, 86.7, 84.8]
+    title "SWE-bench Verified % — Ingenieria de software real (mayor es mejor)"
+    x-axis ["Fable 5", "Opus 4.8", "GPT-5.5", "Sonnet 4.6", "DeepSeek V4", "Gemini 3.1", "GPT-5.4", "Qwen 3.6", "GLM-5.1", "Grok 4.3"]
+    y-axis 55 --> 100
+    bar [95.0, 88.6, 86.0, 82.0, 80.6, 80.6, 80.0, 78.0, 77.0, 76.0]
 ```
 
 ---
@@ -149,9 +157,9 @@ xychart-beta
 %%{init: {'theme': 'base', 'themeVariables': {'xyChart': {'backgroundColor': '#ffffff', 'plotColorPalette': '#059669'}}}}%%
 xychart-beta
     title "Precio de API — Entrada $/1M tokens (menor es mejor)"
-    x-axis ["o3", "Claude 3.7", "GPT-4o", "Mistral L2", "Gemini 2.5 Pro", "DeepSeek R1", "DeepSeek V3", "Llama 3.3", "Gemini Flash", "Phi-4"]
+    x-axis ["Fable 5", "GPT-5.5", "Opus 4.8", "Sonnet 4.6", "Gemini 3.1", "Mistral L3", "Gemini 3.5F", "Grok 4.3", "DeepSeek V4", "Qwen 3.6"]
     y-axis 0 --> 12
-    bar [10.0, 3.0, 2.5, 2.0, 1.25, 0.55, 0.27, 0.59, 0.10, 0.07]
+    bar [10.0, 5.0, 5.0, 3.0, 2.0, 2.0, 1.5, 1.25, 0.6, 0.4]
 ```
 
 ---
@@ -164,10 +172,10 @@ flowchart LR
     NECESIDAD{{"❓ Que necesito?"}}
 
     NECESIDAD -->|Pregunta puntual| ASIST["💬 Asistente IA\nChatGPT · Claude.ai · Gemini"]
-    NECESIDAD -->|Escribir / depurar codigo| IDE["💻 IDE con IA\nAntigravity · Cursor · Windsurf"]
-    NECESIDAD -->|Tarea compleja autonoma| AGENTE["🤖 Agente General\nManus · OpenHands · Operator"]
-    NECESIDAD -->|Crear mis propios agentes| FW["🔧 Framework\nLangChain · CrewAI · AutoGen"]
-    NECESIDAD -->|Privacidad / sin coste API| SH["🖥️ Self-Hosted\nOllama · LM Studio · LocalAI"]
+    NECESIDAD -->|Escribir / depurar codigo| IDE["💻 Agente de codigo\nClaude Code · Cursor · Antigravity"]
+    NECESIDAD -->|Tarea compleja autonoma| AGENTE["🤖 Agente General\nManus · ChatGPT Agent · OpenClaw"]
+    NECESIDAD -->|Crear mis propios agentes| FW["🔧 Framework\nLangGraph · CrewAI · Claude Agent SDK"]
+    NECESIDAD -->|Privacidad / sin coste API| SH["🖥️ Self-Hosted\nOllama · vLLM · LM Studio"]
 
     style NECESIDAD fill:#ede9fe,stroke:#7c3aed,color:#1e1b4b
     style ASIST fill:#dbeafe,stroke:#2563eb,color:#1e3a5f
@@ -182,14 +190,12 @@ flowchart LR
 ## 📁 Estructura del Proyecto
 
 ```
-1.Panorama IA/
+Panorama-IA/
 ├── index.html          ← Informe interactivo principal
 ├── README.md           ← Este archivo (con diagramas Mermaid)
 └── assets/
     ├── panorama_ia_2026_resumen.md     ← Resumen en Markdown
-    ├── panorama_ia_2026_*.png          ← Infografía (PNG)
-    ├── panorama_ia_infografia_*.webp   ← Infografía completa
-    └── panorama_ia_preview_*.webp      ← Preview del diagrama
+    └── panorama_ia_2026_*.png          ← Infografía (PNG)
 ```
 
 ## 🚀 Secciones del Informe Interactivo
@@ -197,7 +203,7 @@ flowchart LR
 | # | Sección | Contenido |
 |---|---------|-----------|
 | 1 | 🗺️ Resumen | Las 6 capas del ecosistema IA con tooltips |
-| 2 | 🧠 Modelos LLM | 14 modelos con benchmarks ordenables (MMLU, GPQA, HumanEval, MATH, SWE-bench) |
+| 2 | 🧠 Modelos LLM | 17 modelos con benchmarks ordenables (MMLU-Pro, GPQA Diamond, LiveCodeBench, AIME, SWE-bench Verified) |
 | 3 | 🛠️ Herramientas | 40+ herramientas en 5 categorías con filtros |
 | 4 | 💰 Precios | Suscripciones y precios de API de todos los proveedores |
 | 5 | 📊 Matriz Comparativa | Selección y comparación lado a lado de 2+ elementos |
@@ -208,6 +214,7 @@ flowchart LR
 |-------|---------|---------|
 | Junio 2026 | v1.0 | Creación inicial del informe interactivo |
 | Junio 2026 | v1.1 | Publicación en GitHub Pages + README con Mermaid |
+| Junio 2026 | v2.0 | Actualización completa: 17 modelos (Claude Fable 5, GPT-5.5, Gemini 3.1...), nuevas herramientas (Antigravity 2.0, Devin Desktop, Kiro, MCP...), precios y benchmarks de junio 2026 |
 
 ---
 
