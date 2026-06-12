@@ -219,6 +219,57 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
 .compare-row-label{color:var(--muted);font-weight:600}
 .compare-row-val{font-weight:700;text-align:right}
 
+/* ── Infografías ── */
+.ig-wrap{display:flex;flex-direction:column;gap:22px}
+.ig-panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.ig-panel h3{font-size:17px;font-weight:800;margin-bottom:3px}
+.ig-sub{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.5}
+.ig-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+.ig-stat{text-align:center;padding:18px 12px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(124,58,237,.07),rgba(8,145,178,.05));border:1px solid var(--border2)}
+.ig-stat-num{font-size:34px;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1}
+.ig-stat-label{font-size:11px;color:var(--muted);font-weight:600;margin-top:6px}
+/* poster image */
+.ig-poster{text-align:center}
+.ig-poster img{max-width:100%;width:660px;border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 6px 24px rgba(0,0,0,.1)}
+/* 6-layer stack */
+.ig-stack{display:flex;flex-direction:column;gap:8px}
+.ig-band{display:flex;align-items:center;gap:16px;padding:13px 18px;border-radius:var(--radius);border:1px solid var(--border)}
+.ig-band-num{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0;color:#fff}
+.ig-band-body{flex:1;min-width:0}
+.ig-band-title{font-size:14px;font-weight:800}
+.ig-band-items{font-size:11px;color:var(--muted);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ig-band-count{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;flex-shrink:0}
+/* ranking bars (benchmarks & price) */
+.ig-rank{display:flex;flex-direction:column;gap:7px}
+.ig-rank-row{display:flex;align-items:center;gap:10px}
+.ig-rank-name{width:160px;font-size:12px;font-weight:600;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ig-rank-track{flex:1;height:22px;background:rgba(0,0,0,.04);border-radius:6px;overflow:hidden}
+.ig-rank-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:800;color:#fff;min-width:2px;transition:width .7s cubic-bezier(.4,0,.2,1)}
+.ig-rank-val{width:46px;font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;flex-shrink:0;text-align:right}
+/* quadrant */
+.ig-quad{position:relative;width:100%;max-width:540px;margin:6px auto 24px;aspect-ratio:1/1;border:1px solid var(--border);border-radius:var(--radius);overflow:visible;background:
+  linear-gradient(90deg,transparent calc(50% - 1px),var(--border) calc(50% - 1px),var(--border) calc(50% + 1px),transparent calc(50% + 1px)),
+  linear-gradient(0deg,transparent calc(50% - 1px),var(--border) calc(50% - 1px),var(--border) calc(50% + 1px),transparent calc(50% + 1px)),
+  radial-gradient(circle at 30% 28%,rgba(8,145,178,.06),transparent 55%),
+  radial-gradient(circle at 78% 80%,rgba(124,58,237,.05),transparent 55%),#fff}
+.ig-quad-dot{position:absolute;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;box-shadow:0 0 0 4px rgba(255,255,255,.85)}
+.ig-quad-dot span{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:11px;font-weight:700;white-space:nowrap;color:var(--text);background:rgba(255,255,255,.9);padding:2px 7px;border-radius:5px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.ig-quad-axx{position:absolute;right:10px;bottom:8px;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.ig-quad-axy{position:absolute;left:8px;top:10px;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+/* timeline */
+.ig-timeline{display:flex;flex-direction:column}
+.ig-tl-row{display:flex;gap:16px;padding-bottom:20px;position:relative}
+.ig-tl-row:not(:last-child)::before{content:'';position:absolute;left:8px;top:18px;bottom:0;width:2px;background:var(--border)}
+.ig-tl-dot{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:2px;box-shadow:0 0 0 3px #fff;z-index:1}
+.ig-tl-date{font-size:12px;font-weight:800}
+.ig-tl-text{font-size:13px;color:var(--text);line-height:1.55;margin-top:3px}
+/* decision */
+.ig-decision{display:flex;flex-direction:column;gap:10px}
+.ig-dec-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ig-dec-q{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:11px 15px;border-radius:var(--radius);border:1px solid var(--border);border-left-width:4px;background:#fff;min-width:250px}
+.ig-dec-arrow{font-size:18px;font-weight:800}
+.ig-dec-a{font-size:13px;color:var(--muted);font-weight:600;flex:1;min-width:180px}
+
 /* ── Responsive ── */
 @media(max-width:768px){
   .main{padding:20px 16px 60px}
@@ -226,6 +277,8 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
   .nav-brand{display:none}
   .compare-grid{grid-template-columns:1fr}
   .bench-table th,.bench-table td{padding:8px 10px}
+  .ig-rank-name{width:108px;font-size:11px}
+  .ig-dec-q{min-width:0;width:100%}
 }
 </style>
 </head>
@@ -242,6 +295,7 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
       <button class="tab-btn" onclick="switchTab('tools')">🛠️ Herramientas <span class="tab-badge">40+</span></button>
       <button class="tab-btn" onclick="switchTab('pricing')">💰 Precios & Suscripciones</button>
       <button class="tab-btn" onclick="switchTab('matrix')">📊 Matriz Comparativa</button>
+      <button class="tab-btn" onclick="switchTab('infographics')">📐 Infografías</button>
     </div>
   </div>
 </nav>
@@ -380,6 +434,17 @@ h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
       <tbody id="matrix-tbody"></tbody>
     </table>
   </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 6 · INFOGRAPHICS
+═══════════════════════════════════════════════════════ -->
+<div id="section-infographics" class="section">
+  <div class="section-header">
+    <h2 class="gradient-text">Infografías del Panorama IA</h2>
+    <p>Visualizaciones del ecosistema completo (ámbito general) y de sus piezas clave: modelos, precios, posicionamiento e hitos del año (ámbito particular). Datos de junio 2026.</p>
+  </div>
+  <div class="ig-wrap" id="infographics-content"></div>
 </div>
 
 </div><!-- /main -->
@@ -569,6 +634,7 @@ function switchTab(tab){
   if(tab==='tools')renderTools();
   if(tab==='pricing')renderPricing();
   if(tab==='matrix')renderMatrix();
+  if(tab==='infographics')renderInfographics();
 }
 
 /* ════════════════════════════════════════════════════════
@@ -933,6 +999,119 @@ function openComparison(){
 
 function closeComparison(){
   document.getElementById('compare-overlay').classList.remove('open');
+}
+
+/* ════════════════════════════════════════════════════════
+   INFOGRAPHICS
+════════════════════════════════════════════════════════ */
+const VENDOR_COLOR={'Anthropic':'#d4863a','OpenAI':'#10a37f','Google':'#4285f4','xAI':'#0f172a','DeepSeek':'#4d9de0','Moonshot AI':'#0ea5a4','Alibaba':'#ff6900','Zhipu AI':'#2563eb','Meta':'#0866ff','Mistral AI':'#ff6a00'};
+
+const IG_TIMELINE=[
+  {date:'Feb 2026',color:'var(--green)',text:'OpenAI unifica el razonamiento: la familia GPT-5.x absorbe la serie «o». Anthropic consolida Claude Sonnet 4.6 con 1M de contexto.'},
+  {date:'Abr 2026',color:'var(--blue)',text:'Microsoft Agent Framework 1.0 (GA) fusiona AutoGen y Semantic Kernel en un solo SDK. xAI lanza Grok 4.3 a $1.25/$2.50 por 1M.'},
+  {date:'Abr 2026',color:'var(--orange)',text:'China bloquea la adquisición de Manus por Meta (~$2–3 B). El producto sigue operativo y con suscripciones activas.'},
+  {date:'May 2026',color:'var(--cyan)',text:'Google relanza Antigravity 2.0 en I/O: suite multi-agente con app de escritorio, CLI, SDK público y subagentes dinámicos.'},
+  {date:'Jun 2026',color:'var(--purple)',text:'Claude Fable 5 lidera SWE-bench Verified (95%). Cognition convierte Windsurf en Devin Desktop. Gemini 2.0 Flash se apaga.'},
+  {date:'2026',color:'var(--pink)',text:'MCP se consolida como estándar universal de conexión de agentes. Los open weights chinos (DeepSeek V4, Kimi, Qwen, GLM) dominan la gama abierta.'},
+];
+
+const IG_QUAD=[
+  {l:'Asistentes IA',x:.24,y:.08,c:'var(--blue)'},
+  {l:'Agentes de Código',x:.62,y:.30,c:'var(--cyan)'},
+  {l:'Agentes Generales',x:.88,y:.10,c:'var(--orange)'},
+  {l:'Frameworks',x:.64,y:.64,c:'var(--green)'},
+  {l:'Self-Hosted',x:.48,y:.92,c:'var(--gray)'},
+  {l:'OpenClaw (OSS)',x:.80,y:.84,c:'var(--pink)'},
+];
+
+const IG_DECISION=[
+  {q:'Pregunta puntual',a:'ChatGPT · Claude.ai · Gemini',c:'var(--blue)',i:'💬'},
+  {q:'Escribir / depurar código',a:'Claude Code · Cursor · Antigravity 2.0',c:'var(--cyan)',i:'💻'},
+  {q:'Tarea compleja autónoma',a:'Manus · ChatGPT Agent · OpenClaw',c:'var(--orange)',i:'🤖'},
+  {q:'Crear mis propios agentes',a:'LangGraph · CrewAI · Claude Agent SDK',c:'var(--green)',i:'🔧'},
+  {q:'Privacidad / sin coste API',a:'Ollama · vLLM · LM Studio',c:'var(--pink)',i:'🖥️'},
+];
+
+function renderInfographics(){
+  const c=document.getElementById('infographics-content');
+  const nModels=MODELS.length;
+  const nTools=Object.values(TOOLS_DATA).reduce((s,a)=>s+a.length,0);
+  const maxCtx=Math.max(...MODELS.map(m=>m.context||0));
+  let html='';
+
+  // ── Stats hero ──
+  html+=`<div class="ig-panel"><h3>📊 El ecosistema IA en cifras</h3><div class="ig-sub">Fotografía de junio 2026 · ámbito general</div>
+    <div class="ig-stats">
+      <div class="ig-stat"><div class="ig-stat-num gradient-text">6</div><div class="ig-stat-label">Capas del ecosistema</div></div>
+      <div class="ig-stat"><div class="ig-stat-num gradient-text">${nModels}</div><div class="ig-stat-label">Modelos LLM</div></div>
+      <div class="ig-stat"><div class="ig-stat-num gradient-text">${nTools}+</div><div class="ig-stat-label">Herramientas</div></div>
+      <div class="ig-stat"><div class="ig-stat-num gradient-text">${fmtCtx(maxCtx)}</div><div class="ig-stat-label">Tokens máx. de contexto</div></div>
+      <div class="ig-stat"><div class="ig-stat-num gradient-text">95%</div><div class="ig-stat-label">Top SWE-bench Verified</div></div>
+    </div></div>`;
+
+  // ── Poster ──
+  html+=`<div class="ig-panel"><h3>🖼️ Póster del ecosistema</h3><div class="ig-sub">El panorama completo en una imagen — <a href="assets/infografia_ecosistema_2026.svg" target="_blank" rel="noopener" style="color:var(--purple);font-weight:700">abrir / descargar SVG ↗</a></div>
+    <div class="ig-poster"><img src="assets/infografia_ecosistema_2026.svg" alt="Infografía del ecosistema de la IA 2026 — las 6 capas" loading="lazy"/></div></div>`;
+
+  // ── 6-layer stack ──
+  const layers=[...OV_LAYERS].sort((a,b)=>a.num-b.num);
+  html+=`<div class="ig-panel"><h3>🗺️ El ecosistema en 6 capas</h3><div class="ig-sub">Desde los modelos base hasta los agentes autónomos · ámbito general</div><div class="ig-stack">`;
+  layers.forEach(L=>{
+    const items=L.items.slice(0,6).map(it=>it.t.replace(/⭐/g,'').replace(/\(este\)/g,'').replace(/\s+/g,' ').trim()).join(' · ');
+    html+=`<div class="ig-band" style="background:linear-gradient(90deg,${L.bg},transparent);border-color:${L.color}33">
+      <div class="ig-band-num" style="background:${L.color}">${L.num}</div>
+      <div class="ig-band-body"><div class="ig-band-title" style="color:${L.color}">${L.title}</div><div class="ig-band-items">${items}</div></div>
+      <div class="ig-band-count" style="background:${L.bg};color:${L.color}">${L.items.length} ítems</div>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  // ── SWE-bench ranking ──
+  const ranked=MODELS.filter(m=>m.sweBench!=null).sort((a,b)=>b.sweBench-a.sweBench);
+  html+=`<div class="ig-panel"><h3>🏆 Liga SWE-bench Verified</h3><div class="ig-sub">Capacidad real de ingeniería de software, % (mayor es mejor) · ámbito particular</div><div class="ig-rank">`;
+  ranked.forEach(m=>{
+    const col=VENDOR_COLOR[m.vendor]||'#7c3aed';
+    html+=`<div class="ig-rank-row"><div class="ig-rank-name">${m.emoji} ${m.name}</div>
+      <div class="ig-rank-track"><div class="ig-rank-fill" style="width:${m.sweBench}%;background:${col}">${m.sweBench>=18?m.sweBench+'%':''}</div></div></div>`;
+  });
+  html+=`</div></div>`;
+
+  // ── Price map ──
+  const priced=MODELS.filter(m=>m.apiIn!=null).sort((a,b)=>a.apiIn-b.apiIn);
+  const maxP=Math.max(...priced.map(m=>m.apiIn));
+  html+=`<div class="ig-panel"><h3>💰 Mapa de precios de API (entrada)</h3><div class="ig-sub">$ por millón de tokens — del más barato al más caro · ámbito particular</div><div class="ig-rank">`;
+  priced.forEach(m=>{
+    const col=VENDOR_COLOR[m.vendor]||'#7c3aed';
+    const w=Math.max(3,Math.sqrt(m.apiIn/maxP)*100);
+    html+=`<div class="ig-rank-row"><div class="ig-rank-name">${m.emoji} ${m.name}</div>
+      <div class="ig-rank-track"><div class="ig-rank-fill" style="width:${w}%;background:${col}"></div></div>
+      <div class="ig-rank-val">$${m.apiIn}</div></div>`;
+  });
+  html+=`</div><p class="text-xs text-muted" style="margin-top:10px">* Los modelos open weights pueden además autoalojarse sin coste de API. Precios aproximados de junio 2026.</p></div>`;
+
+  // ── Quadrant ──
+  html+=`<div class="ig-panel"><h3>🧭 Autonomía vs Privacidad</h3><div class="ig-sub">Dónde se sitúa cada categoría del ecosistema · ámbito general</div>
+    <div class="ig-quad"><span class="ig-quad-axx">Autonomía →</span><span class="ig-quad-axy">Privacidad →</span>`;
+  IG_QUAD.forEach(d=>{
+    html+=`<div class="ig-quad-dot" style="left:${d.x*100}%;top:${(1-d.y)*100}%;background:${d.c}"><span>${d.l}</span></div>`;
+  });
+  html+=`</div></div>`;
+
+  // ── Timeline ──
+  html+=`<div class="ig-panel"><h3>🗓️ Hitos de 2026</h3><div class="ig-sub">Los movimientos que han marcado el año · ámbito particular</div><div class="ig-timeline">`;
+  IG_TIMELINE.forEach(t=>{
+    html+=`<div class="ig-tl-row"><div class="ig-tl-dot" style="background:${t.color}"></div><div class="ig-tl-body"><div class="ig-tl-date" style="color:${t.color}">${t.date}</div><div class="ig-tl-text">${t.text}</div></div></div>`;
+  });
+  html+=`</div></div>`;
+
+  // ── Decision ──
+  html+=`<div class="ig-panel"><h3>🎯 ¿Qué herramienta usar?</h3><div class="ig-sub">Ruta rápida según tu necesidad · ámbito particular</div><div class="ig-decision">`;
+  IG_DECISION.forEach(d=>{
+    html+=`<div class="ig-dec-row"><div class="ig-dec-q" style="border-left-color:${d.c}"><span style="font-size:18px">${d.i}</span> ${d.q}</div><div class="ig-dec-arrow" style="color:${d.c}">→</div><div class="ig-dec-a">${d.a}</div></div>`;
+  });
+  html+=`</div></div>`;
+
+  c.innerHTML=html;
 }
 
 /* ════════════════════════════════════════════════════════

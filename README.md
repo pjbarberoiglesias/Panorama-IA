@@ -7,6 +7,14 @@
 
 ---
 
+## 🖼️ Póster del Ecosistema
+
+> Infografía resumen de las 6 capas en una sola imagen. El informe interactivo incluye además una pestaña **📐 Infografías** con liga de benchmarks, mapa de precios, cuadrante autonomía/privacidad e hitos del año.
+
+![Infografía del ecosistema de la IA 2026](assets/infografia_ecosistema_2026.svg)
+
+---
+
 ## 🗺️ El Ecosistema IA en 6 Capas
 
 ```mermaid
@@ -194,8 +202,9 @@ Panorama-IA/
 ├── index.html          ← Informe interactivo principal
 ├── README.md           ← Este archivo (con diagramas Mermaid)
 └── assets/
-    ├── panorama_ia_2026_resumen.md     ← Resumen en Markdown
-    └── panorama_ia_2026_*.png          ← Infografía (PNG)
+    ├── panorama_ia_2026_resumen.md        ← Resumen en Markdown
+    ├── infografia_ecosistema_2026.svg     ← Póster del ecosistema (SVG)
+    └── panorama_ia_2026_*.png             ← Infografía (PNG)
 ```
 
 ## 🚀 Secciones del Informe Interactivo
@@ -207,6 +216,7 @@ Panorama-IA/
 | 3 | 🛠️ Herramientas | 40+ herramientas en 5 categorías con filtros |
 | 4 | 💰 Precios | Suscripciones y precios de API de todos los proveedores |
 | 5 | 📊 Matriz Comparativa | Selección y comparación lado a lado de 2+ elementos |
+| 6 | 📐 Infografías | Póster del ecosistema, liga de benchmarks, mapa de precios, cuadrante autonomía/privacidad e hitos de 2026 |
 
 ## 📅 Historial de Versiones
 
@@ -215,6 +225,7 @@ Panorama-IA/
 | Junio 2026 | v1.0 | Creación inicial del informe interactivo |
 | Junio 2026 | v1.1 | Publicación en GitHub Pages + README con Mermaid |
 | Junio 2026 | v2.0 | Actualización completa: 17 modelos (Claude Fable 5, GPT-5.5, Gemini 3.1...), nuevas herramientas (Antigravity 2.0, Devin Desktop, Kiro, MCP...), precios y benchmarks de junio 2026 |
+| Junio 2026 | v2.1 | Nueva pestaña 📐 Infografías (póster del ecosistema, liga de benchmarks, mapa de precios, cuadrante autonomía/privacidad, hitos del año) + póster SVG en assets |
 
 ---
 
